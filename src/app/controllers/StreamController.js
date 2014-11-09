@@ -1,12 +1,14 @@
 'use strict';
 
-var Feed = require('../models/Feed.js');
+var Feed = require('../models/Feed.js'),
+    settings = require('../settings.js'),
+    ORDERS = settings.SUBREDDIT_ORDERS;
 
 module.exports = Ember.ObjectController.extend({
 
     needs: 'feeds',
 
-    order: '',
+    order: ORDERS.HOT,
 
     after: null,
 
@@ -26,7 +28,8 @@ module.exports = Ember.ObjectController.extend({
         this.get('feeds').clear();
         this.setProperties({
             requestID: null,
-            after: null
+            after: null,
+            order: ORDERS.HOT
         });
     }.observes('name', 'order'),
 
@@ -69,6 +72,10 @@ module.exports = Ember.ObjectController.extend({
     },
 
     actions: {
+
+        load: function(){
+            this.loadMore();
+        }
 
     }
 
