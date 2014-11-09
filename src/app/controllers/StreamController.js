@@ -10,6 +10,8 @@ module.exports = Ember.ArrayController.extend({
 
     itemController: 'feed',
 
+    model: [],
+
     name: Ember.computed.alias('controllers.subreddit.name'),
 
     order: Ember.computed.alias('controllers.subreddit.order'),
@@ -26,60 +28,57 @@ module.exports = Ember.ArrayController.extend({
         return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
     }.property('name', 'order'),
 
-    onSwitchStream: function(){
-        if (this.get('name') && this.get('order')) {
-            this.get('model').clear();
-            this.setProperties({
-                requestID: null,
-                after: null,
-                order: ORDERS.HOT
-            });
-            this.loadMore();
-        }
-    }.observes('name', 'order'),
-
-    loadMore: function(){
-
-        if (this.get('isLoading')) {
-            return;
-        }
-
-        var _self = this,
-            feeds = this.get('model'),
-            timestamp = (new Date()).getTime();
-
-        this.set('requestID', timestamp);
-
-        var params = {
-            jsonp: 'jsonp',
-            dataType: 'jsonp',
-            type: 'GET'
-        };
-
-        if (this.get('after') !== null) {
-            params.data = {
-                after: this.get('after')
-            };
-        }
-
-        jQuery
-            .ajax(_self.get('url'), params)
-            .then(function(data){
-                if (_self.get('requestID') === timestamp) {
-                    var listing = data.data.children;
-                    feeds.pushObjects(listing.map(function(article){
-                        return Feed.create(article.data);
-                    }));
-                    _self.set('requestID', null);
-                }
-            });
-
-    },
 
     actions: {
 
-        load: function(){
-            this.loadMore();
+        loadMore: function(){
+
+            if (this.get('isLoading')) {
+                return;
+            }
+
+            var _self = this,
+                feeds = this.get('model'),
+                timestamp = (new Date()).getTime();
+
+            this.set('requestID', timestamp);
+
+            var params = {
+                jsonp: 'jsonp',
+                dataType: 'jsonp',
+                type: 'GET'
+            };
+
+            if (this.get('after') !== null) {
+                params.data = {
+                    after: this.get('after')
+                };
+            }
+
+            jQuery
+                .ajax(_self.get('url'), params)
+                .then(function(data){
+                    if (_self.get('requestID') === timestamp) {
+                        var listing = data.data.children;
+                        feeds.pushObjects(listing.map(function(article){
+                            return Feed.create(article.data);
+                        }));
+                        _self.set('requestID', null);
+                    }
+                });
+        },
+
+
+        refresh: function(){
+            if (this.get('name') && this.get('order')) {
+                this.get('model').clear();
+                this.setProperties({
+                    requestID: null,
+                    after: null,
+                    order: ORDERS.HOT
+                });
+                this.send('loadMore');
+            }
         }
 
     }

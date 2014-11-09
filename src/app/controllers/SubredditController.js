@@ -9,6 +9,10 @@ module.exports = Ember.ObjectController.extend({
 
     queryParams: ['order'],
 
-    order: ORDERS.HOT
+    order: ORDERS.HOT,
+
+    updateStream: function(){
+        this.get('controllers.stream').send('refresh');
+    }.observes('name', 'order')
 
 });
