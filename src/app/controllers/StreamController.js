@@ -4,17 +4,19 @@ var Feed = require('../models/Feed.js'),
     settings = require('../settings.js'),
     ORDERS = settings.SUBREDDIT_ORDERS;
 
-module.exports = Ember.ObjectController.extend({
+module.exports = Ember.ArrayController.extend({
 
-    needs: 'feeds',
+    needs: ['subreddit'],
 
-    order: ORDERS.HOT,
+    itemController: 'feed',
+
+    name: Ember.computed.alias('controllers.subreddit.name'),
+
+    order: Ember.computed.alias('controllers.subreddit.order'),
 
     after: null,
 
     requestID: null,
-
-    feeds: Ember.computed.alias('controllers.feeds.model'),
 
     isLoading: function(){
         return this.get('requestID') !== null;
@@ -25,7 +27,7 @@ module.exports = Ember.ObjectController.extend({
     }.property('name', 'order'),
 
     onSwitchStream: function(){
-        this.get('feeds').clear();
+        this.get('model').clear();
         this.setProperties({
             requestID: null,
             after: null,
@@ -40,7 +42,7 @@ module.exports = Ember.ObjectController.extend({
         }
 
         var _self = this,
-            feeds = this.get('feeds'),
+            feeds = this.get('model'),
             timestamp = (new Date()).getTime();
 
         this.set('requestID', timestamp);
