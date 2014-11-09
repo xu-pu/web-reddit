@@ -27,12 +27,15 @@ module.exports = Ember.ArrayController.extend({
     }.property('name', 'order'),
 
     onSwitchStream: function(){
-        this.get('model').clear();
-        this.setProperties({
-            requestID: null,
-            after: null,
-            order: ORDERS.HOT
-        });
+        if (this.get('name') && this.get('order')) {
+            this.get('model').clear();
+            this.setProperties({
+                requestID: null,
+                after: null,
+                order: ORDERS.HOT
+            });
+            this.loadMore();
+        }
     }.observes('name', 'order'),
 
     loadMore: function(){
