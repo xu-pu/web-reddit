@@ -1,3 +1,5 @@
+'use strict';
+
 var setupControllers = require('./controllers.js'),
     setupRoutes = require('./router.js'),
     setupViews = require('./views.js');
