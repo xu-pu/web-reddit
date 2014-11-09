@@ -1,0 +1,11 @@
+<div>{{name}}</div>
+<div>{{order}}</div>
+<div>
+    <ul>
+        {{#each feed in controllers.stream}}
+            <li>
+                {{feed.subreddit}}
+            </li>
+        {{/each}}
+    </ul>
+</div>
