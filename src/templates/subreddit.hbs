@@ -2,11 +2,15 @@
 <div>{{order}}</div>
 <div>{{controllers.stream.name}}</div>
 <div>
+
     <ul>
         {{#each feed in controllers.stream}}
             <li>
-                {{feed.subreddit}}
+                {{feed.author}}
             </li>
         {{/each}}
     </ul>
+
+    <div {{action "loadMore"}}>load more</div>
+
 </div>

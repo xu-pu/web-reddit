@@ -63,6 +63,7 @@ module.exports = Ember.ArrayController.extend({
                         feeds.pushObjects(listing.map(function(article){
                             return Feed.create(article.data);
                         }));
+                        _self.set('after', data.data.after);
                         _self.set('requestID', null);
                     }
                 });
