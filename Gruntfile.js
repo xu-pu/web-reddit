@@ -5,8 +5,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         pathConfig: {
-            app: 'app',
-            dist: 'dist',
+            src: 'src',
             build: 'build',
             venders: 'venders'
         },
@@ -36,20 +35,6 @@ module.exports = function (grunt) {
 
         },
 
-        neuter :{
-
-            options: {
-                template: '{%= src %}'
-            },
-
-            'build/scripts/application.js':'app/scripts/application.js',
-
-            'build/scripts/worker.js':'app/scripts/worker.js',
-
-            'build/scripts/sfm.js':'app/scripts/sfm.js'
-
-        },
-
         emberTemplates: {
             options: {
                 templateName: function (tName) {
@@ -63,14 +48,6 @@ module.exports = function (grunt) {
                 }
             }
 
-        },
-
-        copy: {
-            build: {
-                files: {
-                    'build/index.html': 'app/index.build.html'
-                }
-            }
         },
 
         compass: {
@@ -98,11 +75,8 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'browserify:build',
         'emberTemplates:build',
-        'compass:build',
-        'copy:build'
+        'compass:build'
     ]);
-
-//    grunt.registerTask('dist', ['build', 'uglify:dist']);
 
 };
 
