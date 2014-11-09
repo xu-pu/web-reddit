@@ -12,9 +12,7 @@ module.exports = Ember.ArrayController.extend({
 
     model: [],
 
-    name: Ember.computed.alias('controllers.subreddit.name'),
-
-    order: Ember.computed.alias('controllers.subreddit.order'),
+    url: Ember.computed.alias('controllers.subreddit.url'),
 
     after: null,
 
@@ -23,10 +21,6 @@ module.exports = Ember.ArrayController.extend({
     isLoading: function(){
         return this.get('requestID') !== null;
     }.property('requestID'),
-
-    url: function(){
-        return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
-    }.property('name', 'order'),
 
 
     actions: {
@@ -71,15 +65,13 @@ module.exports = Ember.ArrayController.extend({
 
 
         refresh: function(){
-            if (this.get('name') && this.get('order')) {
-                this.get('model').clear();
-                this.setProperties({
-                    requestID: null,
-                    after: null,
-                    order: ORDERS.HOT
-                });
-                this.send('loadMore');
-            }
+            this.get('model').clear();
+            this.setProperties({
+                requestID: null,
+                after: null,
+                order: ORDERS.HOT
+            });
+            this.send('loadMore');
         }
 
     }

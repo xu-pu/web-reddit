@@ -13,9 +13,13 @@ module.exports = Ember.ObjectController.extend({
 
     order: ORDERS.HOT,
 
+    url: function(){
+        return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
+    }.property('name', 'order'),
+
     updateStream: function(){
         this.get('stream').send('refresh');
-    }.observes('name', 'order'),
+    }.observes('order', 'name'),
 
     actions: {
 
