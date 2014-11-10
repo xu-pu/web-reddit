@@ -91,11 +91,46 @@ $navbar-height: 4em;
 .subreddit__navbar__order-switcher {
 
   position: absolute;
+  right: 1em;
+  top: 0;
+  bottom: 0;
+  height: 100%;
 
-  right: 0;
+  font-size: 100%;
 
   li {
+
     display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    min-width: 5em;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-top: 1.2em;
+
+    a, a:link, a:visited {
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      height: 100%;
+      width: 100%;
+      color: white;
+    }
+
+    span {
+      font-size: 1.5em;
+      height: 1em;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    &:hover, &.is-current {
+      border-bottom: solid 0.5em $pale-green;
+    }
+
   }
 
 }

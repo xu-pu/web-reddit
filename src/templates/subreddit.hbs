@@ -1,38 +1,39 @@
-<div class="subreddit-container">
+<div class="subreddit__navbar">
 
-    <div class="subreddit__navbar">
-
-        <div class="subreddit__navbar__toggle">
-            <span>&#9776;</span>
-        </div>
-
-        <div class="subreddit__navbar__header">
-            <h1>{{name}}</h1>
-        </div>
-
-        <ul class="subreddit__navbar__order-switcher">
-            <li>{{#link-to "subreddit" this.model (query-params order="hot")}}HOT{{/link-to}}</li>
-            <li>{{#link-to "subreddit" this.model (query-params order="new")}}NEW{{/link-to}}</li>
-            <li>{{#link-to "subreddit" this.model (query-params order="top")}}TOP{{/link-to}}</li>
-            <li>{{#link-to "subreddit" this.model (query-params order="controversial")}}CONTROVERSIAL{{/link-to}}</li>
-        </ul>
-
+    <div class="subreddit__navbar__toggle">
+        <span>&#9776;</span>
     </div>
 
-    <div class="subreddit__grid-container">
-
-        {{#view "feedGrid" controller=controllers.stream}}
-
-            {{#each feed in this}}
-
-                {{view "feedTile" controller=feed}}
-
-            {{/each}}
-
-        {{/view}}
-
-        <div class="subreddit__load" {{action "loadMore"}}>load More</div>
-
+    <div class="subreddit__navbar__header">
+        <h1>{{name}}</h1>
     </div>
+
+    <ul class="subreddit__navbar__order-switcher">
+        {{#each order in orders}}
+
+            {{#view view.OrderTabView order=order}}
+                {{#link-to "subreddit" model (query-params order=order)}}
+                    <span>{{order}}</span>
+                {{/link-to}}
+            {{/view}}
+
+        {{/each}}
+    </ul>
+
+</div>
+
+<div class="subreddit__grid-container">
+
+    {{#view "feedGrid" controller=controllers.stream}}
+
+        {{#each feed in this}}
+
+            {{view "feedTile" controller=feed}}
+
+        {{/each}}
+
+    {{/view}}
+
+    <div class="subreddit__load" {{action "loadMore"}}>load More</div>
 
 </div>
