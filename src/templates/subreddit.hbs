@@ -1,14 +1,19 @@
 <div>{{name}}</div>
 <div>{{order}}</div>
-<div>
 
-    <ul>
+<div class="subreddit__grid-container">
+
+    {{#view "feedGrid"}}
+
         {{#each feed in controllers.stream}}
-            <li>
-                {{feed.author}}
-            </li>
+
+            {{#view "feedTile" controller=feed}}
+                {{author}}
+            {{/view}}
+
         {{/each}}
-    </ul>
+
+    {{/view}}
 
     <div {{action "loadMore"}}>load more</div>
 
