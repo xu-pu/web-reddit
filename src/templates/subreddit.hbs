@@ -1,15 +1,20 @@
 <div>{{name}}</div>
 <div>{{order}}</div>
 
+<div>
+    <div>{{#link-to "subreddit" this.model (query-params order="hot")}}HOT{{/link-to}}</div>
+    <div>{{#link-to "subreddit" this.model (query-params order="new")}}NEW{{/link-to}}</div>
+    <div>{{#link-to "subreddit" this.model (query-params order="top")}}TOP{{/link-to}}</div>
+    <div>{{#link-to "subreddit" this.model (query-params order="controversial")}}CONTROVERSIAL{{/link-to}}</div>
+</div>
+
 <div class="subreddit__grid-container">
 
     {{#view "feedGrid"}}
 
         {{#each feed in controllers.stream}}
 
-            {{#view "feedTile" controller=feed}}
-                {{author}}
-            {{/view}}
+            {{view "feedTile" controller=feed}}
 
         {{/each}}
 

@@ -31,6 +31,10 @@ module.exports = Ember.ArrayController.extend({
                 return;
             }
 
+            if (!this.get('controllers.subreddit.name')) {
+                return;
+            }
+
             var _self = this,
                 feeds = this.get('model'),
                 timestamp = (new Date()).getTime();
