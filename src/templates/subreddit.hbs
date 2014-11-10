@@ -1,25 +1,32 @@
-<div>{{name}}</div>
-<div>{{order}}</div>
+<div class="subreddit-container">
 
-<div>
-    <div>{{#link-to "subreddit" this.model (query-params order="hot")}}HOT{{/link-to}}</div>
-    <div>{{#link-to "subreddit" this.model (query-params order="new")}}NEW{{/link-to}}</div>
-    <div>{{#link-to "subreddit" this.model (query-params order="top")}}TOP{{/link-to}}</div>
-    <div>{{#link-to "subreddit" this.model (query-params order="controversial")}}CONTROVERSIAL{{/link-to}}</div>
-</div>
+    <div class="subreddit__navbar">
 
-<div class="subreddit__grid-container">
+        <div>{{name}}</div>
+        <div>{{order}}</div>
 
-    {{#view "feedGrid"}}
+        <ul class="subreddit__navbar__order-switcher">
+            <li>{{#link-to "subreddit" this.model (query-params order="hot")}}HOT{{/link-to}}</li>
+            <li>{{#link-to "subreddit" this.model (query-params order="new")}}NEW{{/link-to}}</li>
+            <li>{{#link-to "subreddit" this.model (query-params order="top")}}TOP{{/link-to}}</li>
+            <li>{{#link-to "subreddit" this.model (query-params order="controversial")}}CONTROVERSIAL{{/link-to}}</li>
+        </ul>
+    </div>
 
-        {{#each feed in controllers.stream}}
+    <div class="subreddit__grid-container">
 
-            {{view "feedTile" controller=feed}}
+        {{#view "feedGrid"}}
 
-        {{/each}}
+            {{#each feed in controllers.stream}}
 
-    {{/view}}
+                {{view "feedTile" controller=feed}}
 
-    <div {{action "loadMore"}}>load more</div>
+            {{/each}}
+
+        {{/view}}
+
+        <div {{action "loadMore"}}>load more</div>
+
+    </div>
 
 </div>

@@ -1,0 +1,42 @@
+
+$navbar-height: 3em;
+
+.subreddit-container {
+  position: relative;
+  padding-top: $navbar-height+1em;
+  padding-left: 1em;
+}
+
+
+.subreddit__navbar {
+  position: absolute;
+  height: $navbar-height;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: greenyellow;
+}
+
+
+.subreddit__grid {
+  position: relative;
+}
+
+
+.subreddit__grid-tile {
+  width: 300px;
+  background-color: gray;
+}
+
+
+.subreddit__navbar__order-switcher {
+
+  position: absolute;
+
+  right: 0;
+
+  li {
+    display: inline-block;
+  }
+
+}
