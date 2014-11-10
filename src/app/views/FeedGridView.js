@@ -6,6 +6,10 @@ module.exports = Ember.View.extend({
 
     classNames: ['subreddit__grid'],
 
+    onChangeSize: function(){
+        this.send('organize');
+    }.observes('controller.length'),
+
     actions: {
 
         organize: function(){

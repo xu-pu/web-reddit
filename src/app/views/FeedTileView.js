@@ -12,7 +12,11 @@ module.exports = Ember.View.extend({
     ],
 
     didInsertElement: function(){
+        var _self = this;
         this.get('parentView').send('organize');
+        $('img', this.get('element')).on('load', function(){
+            _self.get('parentView').send('organize');
+        })
     }
 
 });

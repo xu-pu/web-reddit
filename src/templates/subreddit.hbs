@@ -15,9 +15,9 @@
 
     <div class="subreddit__grid-container">
 
-        {{#view "feedGrid"}}
+        {{#view "feedGrid" controller=controllers.stream}}
 
-            {{#each feed in controllers.stream}}
+            {{#each feed in this}}
 
                 {{view "feedTile" controller=feed}}
 
