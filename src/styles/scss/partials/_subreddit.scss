@@ -3,10 +3,17 @@
 $navbar-height: 4em;
 
 .subreddit-container {
-  position: relative;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
   padding-top: $navbar-height+1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  background-color: $deep-green;
 }
 
 
@@ -16,7 +23,7 @@ $navbar-height: 4em;
   left: 0;
   right: 0;
   top: 0;
-  background-color: greenyellow;
+  background-color: $dark-green;
 }
 
 .subreddit__navbar__toggle {
@@ -52,18 +59,32 @@ $navbar-height: 4em;
 
 }
 
+
+.subreddit__grid-container {
+  padding-top: 1em;
+  position: absolute;
+  top: $navbar-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
 .subreddit__grid {
   position: relative;
+  min-height: 95%;
 }
 
 
 .subreddit__load {
   font-size: $navbar-height/3;
-  height: 1em;
+  height: 5%;
   width: 100%;
   cursor: pointer;
   text-align: center;
-  background-color: darkgrey;
+  background-color: $pale-green;
 }
 
 
