@@ -1,10 +1,12 @@
+@import "../utils";
 
-$navbar-height: 3em;
+$navbar-height: 4em;
 
 .subreddit-container {
   position: relative;
   padding-top: $navbar-height+1em;
-  padding-left: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 
@@ -17,10 +19,53 @@ $navbar-height: 3em;
   background-color: greenyellow;
 }
 
+.subreddit__navbar__toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $navbar-height;
+  height: $navbar-height;
+  cursor: pointer;
+
+  span {
+    @extend %center-element;
+    font-size: $navbar-height/2;
+    height: 1em;
+    width: 1em;
+  }
+
+}
+
+
+.subreddit__navbar__header {
+  position: absolute;
+  left: $navbar-height+1em;
+  top: 0;
+  height: 100%;
+
+  h1 {
+    @extend %center-element;
+    font-size: $navbar-height/2;
+    height: 1em;
+    text-transform: uppercase;
+  }
+
+}
 
 .subreddit__grid {
   position: relative;
 }
+
+
+.subreddit__load {
+  font-size: $navbar-height/3;
+  height: 1em;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  background-color: darkgrey;
+}
+
 
 .subreddit__navbar__order-switcher {
 

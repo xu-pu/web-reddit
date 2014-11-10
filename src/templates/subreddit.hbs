@@ -2,8 +2,13 @@
 
     <div class="subreddit__navbar">
 
-        <div>{{name}}</div>
-        <div>{{order}}</div>
+        <div class="subreddit__navbar__toggle">
+            <span>&#9776;</span>
+        </div>
+
+        <div class="subreddit__navbar__header">
+            <h1>{{name}}</h1>
+        </div>
 
         <ul class="subreddit__navbar__order-switcher">
             <li>{{#link-to "subreddit" this.model (query-params order="hot")}}HOT{{/link-to}}</li>
@@ -11,6 +16,7 @@
             <li>{{#link-to "subreddit" this.model (query-params order="top")}}TOP{{/link-to}}</li>
             <li>{{#link-to "subreddit" this.model (query-params order="controversial")}}CONTROVERSIAL{{/link-to}}</li>
         </ul>
+
     </div>
 
     <div class="subreddit__grid-container">
@@ -25,7 +31,7 @@
 
         {{/view}}
 
-        <div {{action "loadMore"}}>load more</div>
+        <div class="subreddit__load" {{action "loadMore"}}>load More</div>
 
     </div>
 

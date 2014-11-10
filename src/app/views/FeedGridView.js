@@ -15,7 +15,7 @@ module.exports = Ember.View.extend({
         organize: function(){
             $('.js__grid-tile').wookmark({
                 container: jQuery(this.get('element')),
-                align: 'left',
+                align: 'center',
                 offset: 15
             });
         }
