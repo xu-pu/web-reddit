@@ -4,24 +4,8 @@
 $navbar-height: 4em;
 
 .subreddit-container {
-
-  @include box-shadow(-4px 0px 3px 0px rgba(68, 68, 68, 0.7));
-  @include transition(left 0.5s);
-  position: absolute;
-  top:0;
-  bottom: 0;
-  right: 0;
-  left: 15em;
-
-  padding-top: $navbar-height+1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: $deep-green;
-
-  &.is-fullscreen {
-    left: 0;
-  }
-
+  height: 100%;
+  width: 100%;
 }
 
 

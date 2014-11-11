@@ -5,7 +5,7 @@ var settings = require('../settings.js'),
 
 module.exports = Ember.ObjectController.extend({
 
-    needs: ['stream'],
+    needs: ['stream', 'application'],
 
     stream: Ember.computed.alias('controllers.stream'),
 
@@ -14,8 +14,6 @@ module.exports = Ember.ObjectController.extend({
     order: ORDERS.HOT,
 
     orders: ['hot', 'top', 'new', 'controversial'],
-
-    isFullscreen: false,
 
     url: function(){
         return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
@@ -28,7 +26,7 @@ module.exports = Ember.ObjectController.extend({
     actions: {
 
         toggleFullscreen: function(){
-            this.toggleProperty('isFullscreen');
+            this.get('controllers.application').send('toggleFullscreen');
         },
 
         loadMore: function(){
