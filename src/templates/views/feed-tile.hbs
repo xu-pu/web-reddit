@@ -1,8 +1,17 @@
-{{#if isImage}}
-    <img class="subreddit__grid-tile__thumbnail" {{bind-attr src=thumbnail}}>
+{{#if view.thumbnailVisiable}}
+    <img class="thumbnail" {{bind-attr src=thumbnail}}>
+{{/if}}
+
+{{#if hasImage}}
+    <img {{bind-attr src=url class=":full-size view.imageReady"}}>
 {{/if}}
 
 <div class="subreddit__grid-tile__header">
     <h1>{{author}}</h1>
     <h1>{{title}}</h1>
+    {{#if url}}
+        <h1>
+            <a target="_blank" {{bind-attr href=url}}>{{url}}</a>
+        </h1>
+    {{/if}}
 </div>

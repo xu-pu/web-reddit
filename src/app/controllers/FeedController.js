@@ -4,15 +4,12 @@ module.exports = Ember.ObjectController.extend({
 
     isImage: function(){
         var thumb = this.get('thumbnail');
-        return !!thumb && thumb!='self';
+        return !!thumb && thumb != 'self' && thumb != 'default' && thumb != 'nsfw';
     }.property('thumbnail'),
 
-    actions: {
-
-        loadImage: function(){
-
-        }
-
-    }
+    hasImage: function(){
+        var url = this.get('url');
+        return url && url.match(/.(jpg)|(jpeg)|(gif)|(png)$/);
+    }.property('url')
 
 });

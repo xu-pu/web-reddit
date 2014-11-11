@@ -1,11 +1,25 @@
-.subreddit__grid-tile {
-  width: 300px;
-  background-color: #ffffff;
-}
+@import "compass";
 
-.subreddit__grid-tile__thumbnail {
-  display: block;
-  width: 100%;
+.subreddit__grid-tile {
+
+  width: 400px;
+  background-color: #ffffff;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  img.full-size {
+
+    display: none;
+
+    &.image-ready {
+      display: block;
+    }
+
+  }
+
 }
 
 .subreddit__grid-tile__header {
