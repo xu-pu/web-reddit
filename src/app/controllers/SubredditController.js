@@ -15,6 +15,8 @@ module.exports = Ember.ObjectController.extend({
 
     orders: ['hot', 'top', 'new', 'controversial'],
 
+    isFullscreen: false,
+
     url: function(){
         return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
     }.property('name', 'order'),
@@ -24,6 +26,10 @@ module.exports = Ember.ObjectController.extend({
     }.observes('order', 'name'),
 
     actions: {
+
+        toggleFullscreen: function(){
+            this.toggleProperty('isFullscreen');
+        },
 
         loadMore: function(){
             this.get('stream').send('loadMore');

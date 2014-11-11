@@ -6,6 +6,10 @@ module.exports = Ember.View.extend({
 
     classNames: ['subreddit-container'],
 
+    classNameBindings: ['isFullscreen'],
+
+    isFullscreen: Ember.computed.alias('controller.isFullscreen'),
+
     OrderTabView: Ember.View.extend({
 
         tagName: 'li',
