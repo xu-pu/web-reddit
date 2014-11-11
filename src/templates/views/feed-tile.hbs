@@ -11,7 +11,8 @@
     <h1>{{title}}</h1>
     {{#if url}}
         <h1>
-            <a target="_blank" {{bind-attr href=url}}>{{url}}</a>
+            <a target="_blank" {{bind-attr href=url}}>Link</a>
+            <a target="_blank" {{bind-attr href=redditLink}}>Comments</a>
         </h1>
     {{/if}}
 </div>

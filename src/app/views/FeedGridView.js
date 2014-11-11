@@ -21,7 +21,7 @@ module.exports = Ember.View.extend({
             this.set('resizeFlag', true);
             _.delay(function(){
                 _self.send('organizeNow');
-            }, 0)
+            }, 10)
         },
 
         organizeNow: function(){

@@ -10,6 +10,10 @@ module.exports = Ember.ObjectController.extend({
     hasImage: function(){
         var url = this.get('url');
         return url && url.match(/.(jpg)|(jpeg)|(gif)|(png)$/);
-    }.property('url')
+    }.property('url'),
+
+    redditLink: function(){
+        return 'https://www.reddit.com' + this.get('permalink');
+    }.property('permalink')
 
 });
