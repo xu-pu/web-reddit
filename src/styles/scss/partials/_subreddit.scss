@@ -1,4 +1,5 @@
 @import "../utils";
+@import "compass";
 
 $navbar-height: 4em;
 
@@ -105,9 +106,7 @@ $navbar-height: 4em;
     box-sizing: border-box;
     position: relative;
     min-width: 5em;
-    padding-right: 2em;
-    padding-left: 2em;
-    padding-top: 1.2em;
+    background-color: rgb(74, 110, 74);
 
     a, a:link, a:visited {
       text-align: center;
@@ -117,6 +116,10 @@ $navbar-height: 4em;
       height: 100%;
       width: 100%;
       color: white;
+      padding-right: 2em;
+      padding-left: 2em;
+      padding-top: 1.2em;
+      box-sizing: border-box;
     }
 
     span {
@@ -128,7 +131,8 @@ $navbar-height: 4em;
     }
 
     &:hover, &.is-current {
-      border-bottom: solid 0.5em $pale-green;
+      border-bottom: solid 0.5em #A9FFB6;
+      background-color: rgb(114, 181, 114);
     }
 
   }
