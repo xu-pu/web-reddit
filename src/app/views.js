@@ -6,5 +6,6 @@ module.exports = function(App){
     App.FeedTileView = require('./views/FeedTileView.js');
     App.SubredditView = require('./views/SubredditView.js');
     App.SidebarView = require('./views/SidebarView.js');
+    App.ImageThumbnailView = require('./views/ImageThumbnailView.js');
 
 };

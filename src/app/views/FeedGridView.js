@@ -17,11 +17,13 @@ module.exports = Ember.View.extend({
     actions: {
 
         organize: function(){
-            var _self = this;
-            this.set('resizeFlag', true);
-            _.delay(function(){
-                _self.send('organizeNow');
-            }, 10)
+            if (!this.get('resizeFlag')) {
+                var _self = this;
+                this.set('resizeFlag', true);
+                _.delay(function(){
+                    _self.send('organizeNow');
+                }, 20)
+            }
         },
 
         organizeNow: function(){

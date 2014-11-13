@@ -1,9 +1,5 @@
-{{#if view.thumbnailVisiable}}
-    <img class="thumbnail" {{bind-attr src=thumbnail}}>
-{{/if}}
-
-{{#if hasImage}}
-    <img {{bind-attr src=url class=":full-size view.imageReady"}}>
+{{#if isImage}}
+    {{view "imageThumbnail" thumbnail=thumbnail url=url}}
 {{/if}}
 
 <div class="subreddit__grid-tile__header">
