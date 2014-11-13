@@ -12,8 +12,8 @@
         {{#each order in orders}}
 
             {{#view view.OrderTabView order=order}}
-                {{#link-to "subreddit" model (query-params order=order)}}
-                    <span>{{order}}</span>
+                {{#link-to "subreddit" name (query-params order=view.order)}}
+                    <span>{{view.order}}</span>
                 {{/link-to}}
             {{/view}}
 
