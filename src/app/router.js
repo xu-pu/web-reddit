@@ -26,7 +26,6 @@ module.exports = function(App){
     App.SubredditRoute = Ember.Route.extend({
 
         model: function(params){
-            console.log(params);
             return Subreddit.create(params)
         },
 
