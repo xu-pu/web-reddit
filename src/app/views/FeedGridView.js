@@ -12,31 +12,20 @@ module.exports = Ember.View.extend({
         this.send('organize');
     }.observes('controller.length'),
 
-    resizeFlag: false,
-
     actions: {
 
         organize: function(){
-            if (!this.get('resizeFlag')) {
-                var _self = this;
-                this.set('resizeFlag', true);
-                _.delay(function(){
-                    _self.send('organizeNow');
-                }, 20)
-            }
-        },
-
-        organizeNow: function(){
-            if (this.get('resizeFlag')) {
-                jQuery('.js__grid-tile').wookmark({
-                    container: jQuery(this.get('element')),
-                    align: 'center',
-                    offset: 15
-                });
-                this.set('resizeFlag', false);
-            }
+            Ember.run.once(this, 'reorganize');
         }
 
-    }
+    },
+
+    reorganize: function(){
+        jQuery('.js__grid-tile').wookmark({
+            container: jQuery(this.get('element')),
+            align: 'center',
+            offset: 15
+        });
+    }.on('didInsertElement')
 
 });
