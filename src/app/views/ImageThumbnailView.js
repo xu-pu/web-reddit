@@ -4,58 +4,74 @@ module.exports = Ember.View.extend({
 
     tagName: 'div',
 
+    classNames: ['thumbnail-container'],
+
     templateName: 'views/image-thumbnail',
+
+    tile: Ember.computed.alias('parentView'),
+
+    $thumbnail: null,
+
+    $fullsize: null,
 
     thumbnailReady: false,
 
-    imageReady: false,
+    fullsizeReady: false,
 
-    $thumbnail: function(){
-        return jQuery('img.thumbnail', this.get('element')).first();
-    }.property(),
+    initDownload: function(){
 
-    $fullsize: function(){
-        return jQuery('img.full-size', this.get('element')).first();
-    }.property(),
-
-    hasFull: function(){
-        var url = this.get('url');
-        return url && url.match(/.(jpg)|(jpeg)|(gif)|(png)$/);
-    }.property('url'),
-
-    hasThumbnail: function(){
-        var thumb = this.get('thumbnail');
-        return !!thumb && thumb != 'self' && thumb != 'default' && thumb != 'nsfw';
-    }.property('thumbnail'),
-
-    didInsertElement: function(){
         var _self = this;
-        this.get('$thumbnail').on('load', function(){
-            _self.get('$thumbnail').off('load');
-            _self.set('thumbnailReady', true);
-            _self.send('loaded');
-        });
-        if (this.get('hasFull')) {
-            this.get('$fullsize').on('load', function(){
-                _self.get('$thumbnail').off('load');
-                _self.get('$fullsize').off('load');
-                _self.set('imageReady', true);
-                _self.send('loaded');
-            })
-        }
-    },
 
-    willDestroyElement: function(){
-        this.get('$thumbnail').off('load');
-        this.get('$fullsize').off('load')
-    },
-
-    actions: {
-
-        loaded: function(){
-            this.get('parentView').send('resize');
+        if (this.get('controller.hasThumbnail')) {
+            var thumbnail = document.createElement('img');
+            var $thumbnail = jQuery(thumbnail);
+            thumbnail.src = this.get('thumbnail');
+            $thumbnail
+                .addClass('thumbnail')
+                .on('load', function(){
+                    _self.set('thumbnailReady', true);
+                    Ember.run.once(_self, 'onThumbnailReady');
+                });
+            this.set('$thumbnail', $thumbnail);
         }
 
-    }
+        if (this.get('controller.hasFull')) {
+            var fullsize = document.createElement('img');
+            var $fullsize = jQuery(fullsize);
+            fullsize.src = this.get('url');
+            $fullsize
+                .addClass('fullsize')
+                .on('load', function(){
+                    _self.get('fullsizeReady', true);
+                    Ember.run.once(_self, 'onFullsizeReady');
+                });
+            this.set('$fullsize', $fullsize);
+        }
+
+    }.on('didInsertElement'),
+
+    onThumbnailReady: function(){
+        if (!this.get('fullsizeReady')) {
+            jQuery(this.get('element'))
+                .append(this.get('$thumbnail'));
+        }
+        this.get('tile').send('resize');
+    },
+
+    onFullsizeReady: function(){
+        jQuery(this.get('element'))
+            .empty()
+            .append(this.get('$fullsize'));
+        this.get('tile').send('resize');
+    },
+
+    abortDownload: function(){
+        if (this.get('$thumbnail')) {
+            this.get('$thumbnail').off('load');
+        }
+        if (this.get('$fullsize')) {
+            this.get('$fullsize').off('load')
+        }
+    }.on('willDestroyElement')
 
 });

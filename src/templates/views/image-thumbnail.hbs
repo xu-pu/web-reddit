@@ -1,9 +1,0 @@
-{{#if view.hasThumbnail}}
-    {{#unless view.imageReady}}
-        <img class="thumbnail" {{bind-attr src=thumbnail}}>
-    {{/unless}}
-{{/if}}
-
-{{#if view.hasFull}}
-    <img {{bind-attr src=url class=":full-size view.imageReady"}}>
-{{/if}}
