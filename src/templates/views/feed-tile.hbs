@@ -2,13 +2,17 @@
     {{view "imageThumbnail" thumbnail=thumbnail url=url}}
 {{/if}}
 
-<div class="subreddit__grid-tile__header">
-    <h1>{{author}}</h1>
-    <h1>{{title}}</h1>
+<h1 class="grid-tile__metadata">
+    <span>{{author}}</span>
+    <a target="_blank" {{bind-attr href=redditLink}}>Comments</a>
+</h1>
+
+<h1 class="grid-tile__title-bar">
     {{#if url}}
-        <h1>
-            <a target="_blank" {{bind-attr href=url}}>Link</a>
-            <a target="_blank" {{bind-attr href=redditLink}}>Comments</a>
-        </h1>
+        <a target="_blank" {{bind-attr href=url}}>
+            <span>{{title}}</span>
+        </a>
+    {{else}}
+        <span>{{title}}</span>
     {{/if}}
-</div>
+</h1>
