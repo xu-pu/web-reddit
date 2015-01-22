@@ -2,10 +2,13 @@
 
 .subreddit__grid-tile {
 
-  @include border-radius(8px);
   overflow: hidden;
   width: 400px;
-  background-color: #ffffff;
+  background-color: #3F3D3F;
+
+  span, a {
+    color: #ADADAD;
+  }
 
   img {
     display: block;
@@ -20,20 +23,14 @@
 
 .grid-tile__title-bar {
 
-  a:link, a:hover, a:visited, a:active {
-    text-decoration: none;
-  }
-
   a {
     display: block;
   }
 
   span {
-    color: rgb(0, 92, 0);
     font-weight: bold;
   }
 
-  background-color: rgb(207, 255, 134);
   font-size: 1.2em;
   padding: 0.5em;
 

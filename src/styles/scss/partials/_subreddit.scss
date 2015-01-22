@@ -15,7 +15,13 @@ $navbar-height: 4em;
   left: 0;
   right: 0;
   top: 0;
-  background-color: $dark-green;
+  background-color: #212022;
+  color: #ADADAD;
+
+  span {
+    color: #ADADAD;
+  }
+
 }
 
 .subreddit__navbar__toggle {
@@ -97,7 +103,7 @@ $navbar-height: 4em;
     box-sizing: border-box;
     position: relative;
     min-width: 5em;
-    background-color: rgb(74, 110, 74);
+    background-color: #3C3B3C;
 
     a, a:link, a:visited {
       text-align: center;
@@ -122,8 +128,8 @@ $navbar-height: 4em;
     }
 
     &:hover, &.is-current {
-      border-bottom: solid 0.5em #A9FFB6;
-      background-color: rgb(114, 181, 114);
+      border-bottom: solid 0.5em #5E94B2;
+      background-color: #504F50;
     }
 
   }
