@@ -1,8 +1,13 @@
 'use strict';
 
-var settings = require('../settings.js');
+var settings = require('../settings.js'),
+    ORDERS = settings.SUBREDDIT_ORDERS;
 
 module.exports = Ember.ObjectController.extend({
+
+    queryParams: ['order'],
+
+    order: ORDERS.HOT,
 
     needs: ['stream', 'application'],
 

@@ -5,8 +5,7 @@ module.exports = function(App){
 
     App.Router.map(function() {
         this.route('welcome');
-        this.route('shortcut', { path: '/subreddit/:name' });
-        this.route('subreddit', { path: '/subreddit/:name/:order' })
+        this.route('subreddit', { path: '/r/:name' })
     });
 
     App.ApplicationRoute = Ember.Route.extend();
@@ -14,14 +13,6 @@ module.exports = function(App){
     App.IndexRoute = Ember.Route.extend();
 
     App.WelcomeRoute = Ember.Route.extend();
-
-    App.ShortcutRoute = Ember.Route.extend({
-
-        model: function(params){
-            this.transitionTo('subreddit', Subreddit.create(params));
-        }
-
-    });
 
     App.SubredditRoute = Ember.Route.extend({
 
@@ -31,7 +22,6 @@ module.exports = function(App){
 
         serialize: function(model){
             return {
-                order: model.get('order'),
                 name: model.get('name')
             };
         }
