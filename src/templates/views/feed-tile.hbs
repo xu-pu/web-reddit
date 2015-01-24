@@ -5,6 +5,7 @@
 <h1 class="grid-tile__metadata">
     <span>{{author}}</span>
     <a target="_blank" {{bind-attr href=redditLink}}>Comments</a>
+    {{#link-to "subreddit.post" model}}Enter{{/link-to}}
 </h1>
 
 <h1 class="grid-tile__title-bar">
