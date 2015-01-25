@@ -48,7 +48,8 @@
                 <ul>
                     {{#each feed in controllers.stream}}
                         <li class="subreddit__feed-list__item">
-                            {{feed.title}}
+                            <div class="feed-list__item__thumbnail">{{feed.score}}</div>
+                            <div class="feed-list__item__title">{{feed.title}}</div>
                         </li>
                     {{/each}}
                 </ul>

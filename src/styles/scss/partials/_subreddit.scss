@@ -112,6 +112,11 @@ $feed-list-gap: 8px;
   background-color: #3F3D3F;
   height: 5em;
   margin-bottom: $feed-list-gap;
+  padding: 5px;
+  font-size: 1.2em;
+  color: gray;
+  display: flex;
+  @include align-items(center);
 }
 
 .subreddit__load {
