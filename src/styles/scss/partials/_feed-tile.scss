@@ -9,6 +9,16 @@
   color: white;
   background-position: 50%;
   background-size: cover;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    @include text-shadow(0 0 10px black)
+  }
+
 }
 
 .feed-list__item__title {
