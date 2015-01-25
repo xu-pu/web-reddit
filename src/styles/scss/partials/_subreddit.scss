@@ -57,22 +57,28 @@ $navbar-height: 4em;
 
 }
 
-
-.subreddit__grid-container {
-  padding-top: 1em;
+.subreddit__container {
   position: absolute;
   top: $navbar-height;
   bottom: 0;
   left: 0;
   right: 0;
+  overflow: hidden;
+}
+
+.subreddit__feeds-container {
+  padding-top: 1em;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
+.subreddit__grid-container {
+  min-height: 95%;
+}
 
 .subreddit__grid {
   position: relative;
-  min-height: 95%;
 }
 
 
