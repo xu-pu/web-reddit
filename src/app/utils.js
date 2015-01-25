@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('underscore');
+
 module.exports.promiseLoadedUrl = function(url){
 
     return new Promise(function(resolve, reject){
@@ -19,5 +21,24 @@ module.exports.promiseLoadedUrl = function(url){
         request.send();
 
     });
+
+};
+
+
+module.exports.promiseRedditListing = function(url, params){
+
+    _.extend(params, {
+        jsonp: 'jsonp',
+        dataType: 'jsonp',
+        type: 'GET'
+    });
+
+    return jQuery
+        .ajax(url, params)
+        .then(function(data){
+            return data.data.children.map(function(entry){
+                return entry.data;
+            });
+        });
 
 };
