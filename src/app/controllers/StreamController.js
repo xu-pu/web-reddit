@@ -1,6 +1,6 @@
 'use strict';
 
-var Feed = require('../models/Feed.js'),
+var Link = require('../models/Link.js'),
     settings = require('../settings.js'),
     ORDERS = settings.SUBREDDIT_ORDERS;
 
@@ -59,7 +59,7 @@ module.exports = Ember.ArrayController.extend({
                     if (_self.get('requestID') === timestamp) {
                         var listing = data.data.children;
                         feeds.pushObjects(listing.map(function(article){
-                            return Feed.create(article.data);
+                            return Link.create(article.data);
                         }));
                         _self.set('after', data.data.after);
                         _self.set('requestID', null);

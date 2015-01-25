@@ -2,6 +2,7 @@
 
 var utils = require('./utils.js'),
     Subreddit = require('./models/Subreddit.js'),
+    Link = require('./models/Link.js'),
     settings = require('./settings.js'),
     TYPES = settings.CONTENT_TYPES;
 
@@ -45,7 +46,7 @@ module.exports = function(App){
                 return utils
                     .promiseRedditListing('https://reddit.com/by_id/' + TYPES.LINK + '_' + params.post + '.json')
                     .then(function(listing){
-                        return listing[0];
+                        return Link.create(listing[0]);
                     });
             }
         },

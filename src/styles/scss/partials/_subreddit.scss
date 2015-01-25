@@ -92,7 +92,7 @@ $feed-list-gap: 8px;
 }
 
 .subreddit__post-container {
-  @include flex(1 0 auto);
+  @include flex(1 0 0);
   background-color: #424245;
 }
 
