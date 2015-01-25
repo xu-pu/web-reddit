@@ -57,6 +57,11 @@ $navbar-height: 4em;
 
 }
 
+//=======================================================
+// Subreddit
+//=======================================================
+
+
 .subreddit__container {
   position: absolute;
   top: $navbar-height;
@@ -73,6 +78,24 @@ $navbar-height: 4em;
   overflow-y: scroll;
 }
 
+// when post
+
+.subreddit__container.not-full {
+  display: flex;
+  @include flex-direction(row);
+}
+
+.subreddit__feeds-container.not-full {
+  @include flex(0 0 25em);
+}
+
+.subreddit__post-container {
+  @include flex(1 0 auto);
+  background-color: #424245;
+}
+
+// grid tile
+
 .subreddit__grid-container {
   min-height: 95%;
 }
@@ -88,7 +111,7 @@ $navbar-height: 4em;
   width: 100%;
   cursor: pointer;
   text-align: center;
-  background-color: $pale-green;
+  background-color: #212022;
 }
 
 

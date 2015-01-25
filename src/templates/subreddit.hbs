@@ -22,9 +22,9 @@
 
 </div>
 
-<div class="subreddit__container">
+<div {{bind-attr class=":subreddit__container isFull::not-full"}}>
 
-    <div class="subreddit__feeds-container">
+    <div {{bind-attr class=":subreddit__feeds-container isFull::not-full"}}>
 
         {{#if isFull}}
 
@@ -52,6 +52,6 @@
 
     </div>
 
-</div>
+    {{outlet}}
 
-{{outlet}}
+</div>
