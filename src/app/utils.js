@@ -27,6 +27,8 @@ module.exports.promiseLoadedUrl = function(url){
 
 module.exports.promiseRedditListing = function(url, params){
 
+    params = params || {};
+
     _.extend(params, {
         jsonp: 'jsonp',
         dataType: 'jsonp',

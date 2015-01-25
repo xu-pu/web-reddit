@@ -20,3 +20,7 @@ module.exports.SUBREDDIT_ORDERS = {
     RANDOM: 'random',
     CONTROVERSIAL: 'controversial'
 };
+
+module.exports.CONTENT_TYPES = {
+    LINK: 't3'
+};

@@ -1,6 +1,9 @@
 "use strict";
 
-var Subreddit = require('./models/Subreddit.js');
+var utils = require('./utils.js'),
+    Subreddit = require('./models/Subreddit.js'),
+    settings = require('./settings.js'),
+    TYPES = settings.CONTENT_TYPES;
 
 module.exports = function(App){
 
@@ -34,7 +37,17 @@ module.exports = function(App){
     App.SubredditPostRoute = Ember.Route.extend({
 
         model: function(params){
-            return this.controllerFor('stream').get('model').findBy('id', params.post);
+            var post = this.controllerFor('stream').get('model').findBy('id', params.post);
+            if (post) {
+                return post;
+            }
+            else {
+                return utils
+                    .promiseRedditListing('https://reddit.com/by_id/' + TYPES.LINK + '_' + params.post + '.json')
+                    .then(function(listing){
+                        return listing[0];
+                    });
+            }
         },
 
         serialize: function(model){
