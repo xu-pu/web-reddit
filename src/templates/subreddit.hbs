@@ -44,7 +44,15 @@
 
         {{else}}
 
-            <span>a list</span>
+            <div class="subreddit__feed-list-container">
+                <ul>
+                    {{#each feed in controllers.stream}}
+                        <li class="subreddit__feed-list__item">
+                            {{feed.title}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
 
         {{/if}}
 

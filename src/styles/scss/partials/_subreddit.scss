@@ -61,6 +61,7 @@ $navbar-height: 4em;
 // Subreddit
 //=======================================================
 
+$feed-list-gap: 1em;
 
 .subreddit__container {
   position: absolute;
@@ -87,6 +88,7 @@ $navbar-height: 4em;
 
 .subreddit__feeds-container.not-full {
   @include flex(0 0 25em);
+  padding: $feed-list-gap;
 }
 
 .subreddit__post-container {
@@ -104,6 +106,13 @@ $navbar-height: 4em;
   position: relative;
 }
 
+// feed list
+
+.subreddit__feed-list__item {
+  background-color: #3F3D3F;
+  height: 5em;
+  margin-bottom: $feed-list-gap;
+}
 
 .subreddit__load {
   font-size: $navbar-height/3;
