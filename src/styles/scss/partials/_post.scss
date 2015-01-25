@@ -1,9 +1,58 @@
+@import "compass";
+
 .subreddit__post-container {
 
-   overflow-y: scroll;
+   overflow-y: auto;
 
   img {
     width: 100%;
   }
 
+}
+
+.post__title-bar {
+  height: 3em;
+  display: flex;
+  @include align-items(center);
+  background-color: #A1A1A1;
+  padding-left: 1em;
+  padding-right: 0.4em;
+}
+
+.post__title-bar__title {
+  @include flex(1 0 0);
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.post__title-bar__stats {
+  @include flex(0 0 auto);
+  margin-left: 1em;
+  height: 80%;
+}
+
+%stats-entry {
+  display: inline-flex;
+  height: 100%;
+  font-weight: bold;
+  font-size: 2em;
+  min-width: 2.5em;
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+.post__title-bar__up {
+  @extend %stats-entry;
+  background-color: green;
+  color: greenyellow;
+}
+
+.post__title-bar__down {
+  @extend %stats-entry;
+  background-color: darkred;
+  color: red;
 }

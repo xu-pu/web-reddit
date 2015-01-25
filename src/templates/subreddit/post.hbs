@@ -4,6 +4,12 @@
         <img {{bind-attr src=url}}>
     {{/if}}
 
-    <div> this is a post </div>
+    <div class="post__title-bar">
+        <h1 class="post__title-bar__title">{{title}}</h1>
+        <h1 class="post__title-bar__stats">
+            <span class="post__title-bar__up">{{ups}}</span>
+            <span class="post__title-bar__down">{{downs}}</span>
+        </h1>
+    </div>
 
 </div>
