@@ -47,10 +47,27 @@
             <div class="subreddit__feed-list-container">
                 <ul>
                     {{#each feed in controllers.stream}}
-                        <li class="subreddit__feed-list__item">
-                            <div class="feed-list__item__thumbnail">{{feed.score}}</div>
-                            <div class="feed-list__item__title">{{feed.title}}</div>
-                        </li>
+
+                        {{#link-to "subreddit.post" feed.model}}
+
+                            <li class="subreddit__feed-list__item">
+
+                                {{#if feed.hasThumbnail}}
+                                    <div class="feed-list__item__thumbnail" {{bind-attr style=feed.backgroundStyle}}>
+                                        {{feed.score}}
+                                    </div>
+                                {{else}}
+                                    <div class="feed-list__item__thumbnail">
+                                        {{feed.score}}
+                                    </div>
+                                {{/if}}
+
+                                <div class="feed-list__item__title">{{feed.title}}</div>
+
+                            </li>
+
+                        {{/link-to}}
+
                     {{/each}}
                 </ul>
             </div>
