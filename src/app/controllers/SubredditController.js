@@ -13,6 +13,12 @@ module.exports = Ember.ObjectController.extend({
 
     stream: Ember.computed.alias('controllers.stream'),
 
+    currentPath: Ember.computed.alias('controllers.application.currentPath'),
+
+    isFull: function(){
+        return this.get('currentPath') === 'subreddit.index';
+    }.property('currentPath'),
+
     orders: ['hot', 'top', 'new', 'controversial'],
 
     url: function(){

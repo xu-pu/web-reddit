@@ -24,15 +24,23 @@
 
 <div class="subreddit__grid-container">
 
-    {{#view "feedGrid" controller=controllers.stream}}
+    {{#if isFull}}
 
-        {{#each feed in this}}
+        {{#view "feedGrid" controller=controllers.stream}}
 
-            {{view "feedTile" controller=feed}}
+            {{#each feed in this}}
 
-        {{/each}}
+                {{view "feedTile" controller=feed}}
 
-    {{/view}}
+            {{/each}}
+
+        {{/view}}
+
+    {{else}}
+
+        <span>a list</span>
+
+    {{/if}}
 
     <div class="subreddit__load" {{action "loadMore"}}>load More</div>
 
