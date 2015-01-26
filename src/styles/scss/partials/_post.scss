@@ -63,7 +63,7 @@
 $comments-indentation: 10px;
 
 .post__comments-container {
-
+  overflow: hidden;
 }
 
 .post__comments__root {
@@ -81,7 +81,7 @@ $comments-indentation: 10px;
   display: flex;
   @include align-items(center);
 
-  span {
+  p {
     font-size: 1.2em;
   }
 

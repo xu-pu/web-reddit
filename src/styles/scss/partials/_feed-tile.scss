@@ -22,8 +22,10 @@
 }
 
 .feed-list__item__title {
+  font-size: 1.2em;
   @include flex(1 0 0);
   margin-left: 0.5em;
+  font-weight: bold;
 }
 
 // feed grid
