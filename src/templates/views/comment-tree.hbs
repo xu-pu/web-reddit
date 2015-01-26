@@ -1,8 +1,10 @@
-<ul>
+<ul class="post__comments__list">
     {{#each comment in view.comments}}
-        <li>
+        <li class="post__comments__item">
 
-            <h1>{{comment.data.body}}</h1>
+            <h1 class="post__comments__body">
+                <span>{{comment.data.body}}</span>
+            </h1>
 
             {{#if comment.data.replies}}
                 {{view "commentTree" comments=comment.data.replies.data.children}}

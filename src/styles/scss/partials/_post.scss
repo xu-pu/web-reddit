@@ -57,3 +57,32 @@
   background-color: darkred;
   color: red;
 }
+
+// comments
+
+$comments-indentation: 10px;
+
+.post__comments-container {
+
+}
+
+.post__comments__root {
+  margin-left: $comments-indentation;
+}
+
+.post__comments__body {
+  background-color: #252525;
+  color: gray;
+  min-height: 2em;
+  margin: $comments-indentation;
+  margin-left: 0;
+  border-left: solid 10px #5E94B2;
+  padding: 10px;
+  display: flex;
+  @include align-items(center);
+
+  span {
+    font-size: 1.2em;
+  }
+
+}
