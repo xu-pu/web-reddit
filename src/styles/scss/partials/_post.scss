@@ -2,7 +2,7 @@
 
 .subreddit__post-container {
 
-   overflow-y: auto;
+  overflow-y: auto;
 
   img {
     display: block;
@@ -28,6 +28,7 @@
   color: rgb(48, 48, 48);
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .post__title-bar__stats {
@@ -41,10 +42,12 @@
   height: 100%;
   font-weight: bold;
   font-size: 2em;
-  min-width: 2.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   @include justify-content(center);
   @include align-items(center);
 }
+
 
 .post__title-bar__up {
   @extend %stats-entry;
@@ -58,12 +61,19 @@
   color: red;
 }
 
+.post__title-bar__link {
+  @extend %stats-entry;
+  background-color: rgb(231, 231, 231);
+  color: rgb(69, 69, 69);
+}
+
 // comments
 
 $comments-indentation: 10px;
 
 .post__comments-container {
   overflow: hidden;
+  padding-right: $comments-indentation;
 }
 
 .post__comments__root {
@@ -76,6 +86,7 @@ $comments-indentation: 10px;
   min-height: 2em;
   margin: $comments-indentation;
   margin-left: 0;
+  margin-right: 0;
   border-left: solid 10px #5E94B2;
   padding: 10px;
   display: flex;

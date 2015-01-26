@@ -117,6 +117,7 @@ $feed-list-gap: 8px;
   color: gray;
   display: flex;
   @include align-items(center);
+  overflow: hidden;
 }
 
 .subreddit__load {
