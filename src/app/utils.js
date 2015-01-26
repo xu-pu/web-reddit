@@ -24,6 +24,20 @@ module.exports.promiseLoadedUrl = function(url){
 
 };
 
+module.exports.promiseJson = function(url, params){
+
+    params = params || {};
+
+    _.extend(params, {
+        jsonp: 'jsonp',
+        dataType: 'jsonp',
+        type: 'GET'
+    });
+
+    return jQuery.ajax(url, params);
+
+};
+
 
 module.exports.promiseRedditListing = function(url, params){
 

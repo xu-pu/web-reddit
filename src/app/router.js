@@ -38,23 +38,20 @@ module.exports = function(App){
     App.SubredditPostRoute = Ember.Route.extend({
 
         model: function(params){
-            var post = this.controllerFor('stream').get('model').findBy('id', params.post);
-            if (post) {
-                return post;
-            }
-            else {
-                return utils
-                    .promiseRedditListing('https://reddit.com/by_id/' + TYPES.LINK + '_' + params.post + '.json')
-                    .then(function(listing){
-                        return Link.create(listing[0]);
-                    });
-            }
-        },
 
-        serialize: function(model){
-            return {
-                post: model.get('id')
-            };
+            var postID = params.post,
+                subredditName = this.modelFor('subreddit').get('name');
+
+            return utils
+                .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
+                .then(function(data){
+                    var post = Link.create(data[0].data.children[0].data);
+                    return {
+                        post: post,
+                        comments: data[1].data.children
+                    };
+                });
+
         }
 
     });

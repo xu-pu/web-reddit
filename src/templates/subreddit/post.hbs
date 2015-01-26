@@ -1,15 +1,21 @@
 <div class="subreddit__post-container">
 
-    {{#if hasFull}}
-        <img {{bind-attr src=url}}>
+    {{#if post.hasFull}}
+        <img {{bind-attr src=post.url}}>
     {{/if}}
 
     <div class="post__title-bar">
-        <h1 class="post__title-bar__title">{{title}}</h1>
+        <h1 class="post__title-bar__title">{{post.title}}</h1>
         <h1 class="post__title-bar__stats">
-            <span class="post__title-bar__up">{{ups}}</span>
-            <span class="post__title-bar__down">{{downs}}</span>
+            <span class="post__title-bar__up">{{post.ups}}</span>
+            <span class="post__title-bar__down">{{post.downs}}</span>
         </h1>
+    </div>
+
+    <div class="post__comments-container">
+        {{#if comments}}
+            {{view "commentTree" comments=comments}}
+        {{/if}}
     </div>
 
 </div>

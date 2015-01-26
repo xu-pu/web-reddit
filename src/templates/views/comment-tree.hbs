@@ -1,0 +1,13 @@
+<ul>
+    {{#each comment in view.comments}}
+        <li>
+
+            <h1>{{comment.data.body}}</h1>
+
+            {{#if comment.data.replies}}
+                {{view "commentTree" comments=comment.data.replies.data.children}}
+            {{/if}}
+
+        </li>
+    {{/each}}
+</ul>

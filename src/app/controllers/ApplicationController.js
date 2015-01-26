@@ -4,7 +4,7 @@ module.exports = Ember.Controller.extend({
 
     needs: ['sidebar'],
 
-    isFullscreen: false,
+    isFullscreen: true,
 
     actions: {
 
