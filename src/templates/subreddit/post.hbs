@@ -5,7 +5,11 @@
     {{/if}}
 
     <div class="post__title-bar">
-        <h1 class="post__title-bar__title">{{post.title}}</h1>
+        <h1 class="post__title-bar__title">
+            <a target="_blank" {{bind-attr href=post.url}}>
+                {{post.title}}
+            </a>
+        </h1>
         <h1 class="post__title-bar__stats">
             <span class="post__title-bar__up">{{post.ups}}</span>
             <span class="post__title-bar__down">{{post.downs}}</span>

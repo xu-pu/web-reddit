@@ -25,10 +25,14 @@
   font-size: 1.5em;
   line-height: 1.5em;
   font-weight: bold;
-  color: rgb(48, 48, 48);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  a {
+    color: rgb(48, 48, 48);
+  }
+
 }
 
 .post__title-bar__stats {
