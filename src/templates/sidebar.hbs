@@ -1,3 +1,7 @@
 This is side bar
 
-<a target="_blank" {{bind-attr href=loginURL}}>Click me to login</a>
+{{#if controllers.account.popup}}
+    <div>Please finish login in the pupup window</div>
+{{else}}
+    <div {{action "loginPopup" target=controllers.account}}>Login</div>
+{{/if}}

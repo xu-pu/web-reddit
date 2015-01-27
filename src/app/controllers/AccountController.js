@@ -7,13 +7,35 @@ var STATE = require('../settings.js').ACCOUNT_STATE,
 
 module.exports = Ember.ObjectController.extend({
 
-    state: STATE.UNKNOWN,
+    loginURL: function(){
+        var clientID = 'WeVdB8YkKe-TJw',
+            scopes = 'identity',
+            callbackURL = 'http://reddit.localhost/oauth/callback';
+        return 'https://ssl.reddit.com/api/v1/authorize?' +
+            'client_id='+clientID+'&'+
+            'response_type=code&'+
+            'state='+'RANDOM_STRING'+'&'+
+            'redirect_uri='+callbackURL+'&'+
+            'duration=permanent&'+
+            'scope='+scopes;
+    }.property(),
 
-    username: null,
-
-    password: null,
+    popup: null,
 
     actions: {
+
+        loginPopup: function(){
+            var _self = this;
+            if (this.get('popup')) return;
+            var handle = window.open(this.get('loginURL'), '_blank');
+            if (!handle) return;
+            this.set('popup', handle);
+            setInterval(function(){
+                if (handle.closed) {
+                    _self.set('popup', null);
+                }
+            }, 500);
+        },
 
         login: function(){
             var _self = this;
