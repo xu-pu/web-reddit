@@ -18,6 +18,12 @@ module.exports = function(App){
 
     App.SubredditPostController = Ember.ObjectController.extend({
 
+        requestID: null,
+
+        isLoadingComments: function(){
+            return !!this.get('requestID');
+        }.property('requestID'),
+
         loadComments: function(){
 
             if (this.get('comments')) {
@@ -29,14 +35,15 @@ module.exports = function(App){
                 postID = this.get('post.id'),
                 _self = this;
 
-            _self.requestID = requestID;
+            _self.set('requestID', requestID);
 
             return utils
                 .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
                 .then(function(data){
-                    if (_self.requestID === requestID) {
+                    if (_self.get('requestID') === requestID) {
                         var comments = data[1].data.children;
                         _self.set('comments', comments);
+                        _self.set('requestID', null);
                     }
                 });
 

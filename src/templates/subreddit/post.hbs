@@ -19,9 +19,11 @@
 
     <div class="post__comments-container">
         {{#if comments}}
-            {{view "commentTree" comments=comments}}
+            <div class="post__comments__tree">
+                {{view "commentTree" comments=comments}}
+            </div>
         {{else}}
-            <div>Loading Comments...</div>
+            <div class="post__comments__loading">Loading Comments...</div>
         {{/if}}
     </div>
 
