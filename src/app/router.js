@@ -40,17 +40,23 @@ module.exports = function(App){
         model: function(params){
 
             var postID = params.post,
-                subredditName = this.modelFor('subreddit').get('name');
+                subredditName = this.modelFor('subreddit').get('name'),
+                postModel = this.controllerFor('stream').get('model').findBy('id', postID);
 
-            return utils
-                .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
-                .then(function(data){
-                    var post = Link.create(data[0].data.children[0].data);
-                    return {
-                        post: post,
-                        comments: data[1].data.children
-                    };
-                });
+            if (postModel) {
+                return { post: postModel };
+            }
+            else {
+                return utils
+                    .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
+                    .then(function(data){
+                        var post = Link.create(data[0].data.children[0].data);
+                        return {
+                            post: post,
+                            comments: data[1].data.children
+                        };
+                    });
+            }
 
         }
 

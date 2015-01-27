@@ -16,6 +16,8 @@
     <div class="post__comments-container">
         {{#if comments}}
             {{view "commentTree" comments=comments}}
+        {{else}}
+            <div>Loading Comments...</div>
         {{/if}}
     </div>
 
