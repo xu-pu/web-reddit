@@ -46,12 +46,17 @@
   height: 100%;
   font-weight: bold;
   font-size: 2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   @include justify-content(center);
   @include align-items(center);
 }
 
+.post__title-bar__score {
+  @extend %stats-entry;
+  background-color: rgb(69, 69, 69);
+  color: rgb(231, 231, 231);
+}
 
 .post__title-bar__up {
   @extend %stats-entry;
