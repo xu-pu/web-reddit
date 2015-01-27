@@ -74,7 +74,13 @@
 
         {{/if}}
 
-        <div class="subreddit__load" {{action "loadMore"}}>load More</div>
+        <div class="subreddit__load" {{action "loadMore"}}>
+            {{#if controllers.stream.isLoading}}
+                Loading...
+            {{else}}
+                Load More
+            {{/if}}
+        </div>
 
     </div>
 

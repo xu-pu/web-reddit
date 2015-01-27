@@ -127,6 +127,12 @@ $feed-list-gap: 8px;
   cursor: pointer;
   text-align: center;
   background-color: #212022;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  font-weight: bold;
+  color: gray;
+  text-transform: uppercase;
 }
 
 
