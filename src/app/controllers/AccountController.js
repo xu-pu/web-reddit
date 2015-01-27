@@ -3,24 +3,37 @@
 var _ = require('underscore');
 
 var STATE = require('../settings.js').ACCOUNT_STATE,
-    Profile = require('../models/Profile.js');
+    Profile = require('../models/Profile.js'),
+    utils = require('../utils.js');
 
 module.exports = Ember.ObjectController.extend({
 
-    loginURL: function(){
-        var clientID = 'WeVdB8YkKe-TJw',
-            scopes = 'identity',
-            callbackURL = 'http://reddit.localhost/oauth/callback';
-        return 'https://ssl.reddit.com/api/v1/authorize?' +
-            'client_id='+clientID+'&'+
-            'response_type=code&'+
-            'state='+'RANDOM_STRING'+'&'+
-            'redirect_uri='+callbackURL+'&'+
-            'duration=permanent&'+
-            'scope='+scopes;
-    }.property(),
+    uuid: null,
+
+    loginURL: null,
 
     popup: null,
+
+    prepare: function(){
+
+        var clientID = 'WeVdB8YkKe-TJw',
+            scopes = 'identity',
+            callbackURL = 'http://reddit.localhost/oauth/callback',
+            uuid = utils.getRandomString(30),
+            url = 'https://ssl.reddit.com/api/v1/authorize?' +
+                'client_id='+clientID+'&'+
+                'response_type=code&'+
+                'state='+uuid+'&'+
+                'redirect_uri='+callbackURL+'&'+
+                'duration=permanent&'+
+                'scope='+scopes;
+
+        this.setProperties({
+            uuid: uuid,
+            loginURL: url
+        });
+
+    }.on('init'),
 
     actions: {
 

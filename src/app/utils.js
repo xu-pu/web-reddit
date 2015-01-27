@@ -58,3 +58,13 @@ module.exports.promiseRedditListing = function(url, params){
         });
 
 };
+
+
+module.exports.getRandomString = function(len){
+    var str = '';
+    var pos;
+    for (pos=0; pos<len; pos++) {
+        str += Math.round(Math.random()*10);
+    }
+    return str;
+};
