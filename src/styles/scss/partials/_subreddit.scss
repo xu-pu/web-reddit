@@ -109,6 +109,7 @@ $feed-list-gap: 8px;
 // feed list
 
 .subreddit__feed-list__item {
+
   background-color: #3F3D3F;
   height: 5em;
   margin-bottom: $feed-list-gap;
@@ -118,6 +119,16 @@ $feed-list-gap: 8px;
   display: flex;
   @include align-items(center);
   overflow: hidden;
+
+  &.is-current, &.is-current:hover {
+    background-color: #A1A1A1;
+    color: #212022;
+  }
+
+  &:hover {
+    background-color: #212022;
+  }
+
 }
 
 .subreddit__load {

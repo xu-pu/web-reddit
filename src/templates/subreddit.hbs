@@ -50,7 +50,7 @@
 
                         {{#link-to "subreddit.post" feed.id}}
 
-                            <li class="subreddit__feed-list__item">
+                            <li {{bind-attr class=":subreddit__feed-list__item feed.isCurrent"}}>
 
                                 {{#if feed.hasThumbnail}}
                                     <div class="feed-list__item__thumbnail" {{bind-attr style=feed.backgroundStyle}}>
