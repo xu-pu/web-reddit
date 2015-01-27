@@ -39,13 +39,19 @@ module.exports = function(App){
 
             return utils
                 .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
-                .then(function(data){
+                .then(
+                function(data){
                     if (_self.get('requestID') === requestID) {
                         var comments = data[1].data.children;
                         _self.set('comments', comments);
                         _self.set('requestID', null);
                     }
-                });
+                },
+                function(){
+                    console.log('loading failed');
+                    _self.loadComments();
+                }
+            );
 
         }.observes('model')
 
