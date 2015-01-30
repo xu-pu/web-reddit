@@ -1,5 +1,13 @@
 This is side bar
 
+{{input valueBinding="controllers.search.keyword"}}
+
+<ul>
+{{#each name in controllers.search.candidates}}
+    <li>{{name}}</li>
+{{/each}}
+</ul>
+
 {{#if controllers.account.popup}}
     <div>Please finish login in the pupup window</div>
 {{else}}

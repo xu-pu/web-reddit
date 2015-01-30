@@ -10,7 +10,7 @@ module.exports = function(App){
     App.SidebarController = require('./controllers/SidebarController.js');
     App.StreamController = require('./controllers/StreamController.js');
     App.FeedController = require('./controllers/FeedController.js');
-
+    App.SearchController = require('./controllers/SearchController.js');
 
     App.ApplicationController = require('./controllers/ApplicationController.js');
 

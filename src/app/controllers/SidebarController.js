@@ -2,6 +2,6 @@
 
 module.exports = Ember.Controller.extend({
 
-    needs: ['account']
+    needs: ['account', 'search']
 
 });
