@@ -13,6 +13,11 @@ module.exports = Ember.Controller.extend({
         var timestamp = (new Date()).getTime(),
             _self = this;
 
+        if (this.get('keyword') === '') {
+            _self.set('candidates', []);
+            _self.set('currentTime', timestamp);
+        }
+
         jQuery
             .ajax('/proxy/api/search_reddit_names.json', {
                 dataType: 'json',

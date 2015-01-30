@@ -1,12 +1,22 @@
-This is side bar
+<div class="sidebar__search">
 
-{{input valueBinding="controllers.search.keyword"}}
+    <div class="sidebar__search__input-container">
+        {{input valueBinding="controllers.search.keyword" placeholder="Search..."}}
+    </div>
 
-<ul>
-{{#each name in controllers.search.candidates}}
-    <li>{{name}}</li>
-{{/each}}
-</ul>
+    <div class="sidebar__search__candidates-container">
+        {{#if controllers.search.candidates}}
+            <ul>
+                {{#each name in controllers.search.candidates}}
+                    {{#link-to "subreddit" name}}
+                        <li>/r/{{name}}</li>
+                    {{/link-to}}
+                {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+
+</div>
 
 {{#if controllers.account.popup}}
     <div>Please finish login in the pupup window</div>

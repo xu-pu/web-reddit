@@ -1,39 +1,19 @@
 @import "reset";
 @import "compass";
 
-@import "partials/welcome";
-@import "partials/sidebar";
-@import "partials/subreddit";
-@import "partials/feed-tile";
-@import "partials/post";
-
 html, body {
   height: 100%;
   background-color: #424245;
   font-family: "Times New Roman";
 }
 
-a:link, a:hover, a:visited, a:active {
+a, a:link, a:hover, a:visited, a:active {
   text-decoration: none;
+  color: #000000;
 }
 
-.main-container {
-
-  @include box-shadow(-4px 0px 3px 0px rgba(68, 68, 68, 0.7));
-  @include transition(left 0.5s);
-  position: absolute;
-  top:0;
-  bottom: 0;
-  right: 0;
-  left: 15em;
-
-  padding-top: $navbar-height+1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: #2C2B2C;
-
-  &.is-fullscreen {
-    left: 0;
-  }
-
-}
+@import "partials/welcome";
+@import "partials/sidebar";
+@import "partials/subreddit";
+@import "partials/feed-tile";
+@import "partials/post";

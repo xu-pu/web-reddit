@@ -1,0 +1,53 @@
+@import "compass";
+
+.sidebar-container {
+  width: 20em;
+}
+
+.sidebar__search {
+
+}
+
+.sidebar__search__input-container {
+
+  height: 4em;
+  background-color: rgb(218, 218, 218);
+  display: flex;
+  padding-left: 2em;
+  padding-right: 2em;
+  @include justify-content(center);
+  @include align-items(center);
+
+  input {
+    outline: none;
+    border: 0;
+    font-size: 2em;
+    background-color: transparent;
+  }
+
+}
+
+.sidebar__search__candidates-container {
+
+  background-color: gray;
+
+  ul {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  li {
+    padding: 5px;
+    padding-left: 1em;
+    color: #D2D2D2;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #5E94B2;
+    }
+
+  }
+
+}
