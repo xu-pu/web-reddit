@@ -42,7 +42,7 @@ module.exports = Ember.View.extend({
             $fullsize
                 .addClass('fullsize')
                 .on('load', function(){
-                    _self.get('fullsizeReady', true);
+                    _self.set('fullsizeReady', true);
                     Ember.run.once(_self, 'onFullsizeReady');
                 });
             this.set('$fullsize', $fullsize);
