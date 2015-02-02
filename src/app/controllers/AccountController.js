@@ -2,13 +2,15 @@
 
 var _ = require('underscore');
 
-var STATE = require('../settings.js').ACCOUNT_STATE,
-    Profile = require('../models/Profile.js'),
-    utils = require('../utils.js');
+var utils = require('../utils.js');
 
 module.exports = Ember.ObjectController.extend({
 
-    isLoggedIn: false,
+    isLoggedIn: function(){
+        return !!this.get('token');
+    }.property('token'),
+
+    token: null,
 
     uuid: null,
 
@@ -16,7 +18,7 @@ module.exports = Ember.ObjectController.extend({
 
     popup: null,
 
-    prepare: function(){
+    resume: function(){
 
         var clientID = 'WeVdB8YkKe-TJw',
             scopes = [
@@ -42,7 +44,21 @@ module.exports = Ember.ObjectController.extend({
             loginURL: url
         });
 
+        var token = localStorage.getItem('token');
+        if (token) {
+            this.set('token', token);
+        }
+
     }.on('init'),
+
+
+    storeToken: function(){
+        var token = this.get('token');
+        if (token) {
+            localStorage.setItem('token', token);
+        }
+    }.observes('token'),
+
 
     actions: {
 
@@ -55,56 +71,48 @@ module.exports = Ember.ObjectController.extend({
         },
 
         loginPopup: function(){
-            var _self = this;
+
             if (this.get('popup')) return;
-            var handle = window.open(this.get('loginURL'), '_blank');
+
+            var _self = this,
+                handle = window.open(this.get('loginURL'), '_blank');
+
             if (!handle) return;
+
             this.set('popup', handle);
-            setInterval(function(){
+
+            var timer = setInterval(function(){
                 if (handle.closed) {
+                    clearInterval(timer);
                     _self.set('popup', null);
+                    _self.send('login');
                 }
             }, 500);
+
         },
 
         login: function(){
-            var _self = this;
-            jQuery.ajax({
-                jsonp: 'jsonp',
-                dataType: 'jsonp',
-                type: 'POST',
-                data: {
-                    username: this.get('username'),
-                    passwd: this.get('password'),
-                    api_type: 'json'
-                }
-            }).then(function(resp){
-                if (!_.isUndefined(resp.json)) {
-                    _self.send('resume');
-                }
-                else {
-                    _self.set('state', STATE.LOGGEDOUT);
-                }
-            });
-        },
 
-        resume: function(){
-            var _self = this;
-            jQuery.ajax('https://www.reddit.com/api/me.json', {
-                jsonp: 'jsonp',
-//                dataType: 'jsonp',
-                dataType: 'json',
-                type: 'GET'
-            }).then(function(resp){
-                console.log(resp);
-                if (_.isUndefined(resp.data)) {
-                    _self.set('state', STATE.LOGGEDIN);
-                    _self.set('model', Profile.create(resp.data));
-                }
-                else {
-                    _self.set('state', STATE.LOGGEDOUT);
-                }
-            });
+            var _self = this,
+                MAX_TRIALS = 20,
+                counter = 0;
+
+            attempt();
+
+            function attempt(){
+                jQuery.ajax('/api/oauth/token', { data: { uuid: _self.get('uuid') } })
+                    .then(
+                    function(data){
+                        _self.set('token', data['access_token']);
+                    },
+                    function(){
+                        counter++;
+                        if (counter < MAX_TRIALS) {
+                            setTimeout(function(){ attempt(); }, 1000);
+                        }
+                    });
+            }
+
         }
 
     }
