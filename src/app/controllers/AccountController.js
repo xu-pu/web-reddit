@@ -8,6 +8,8 @@ var STATE = require('../settings.js').ACCOUNT_STATE,
 
 module.exports = Ember.ObjectController.extend({
 
+    isLoggedIn: false,
+
     uuid: null,
 
     loginURL: null,
@@ -17,8 +19,15 @@ module.exports = Ember.ObjectController.extend({
     prepare: function(){
 
         var clientID = 'WeVdB8YkKe-TJw',
-            scopes = 'identity',
-            callbackURL = 'http://reddit.localhost/oauth/callback',
+            scopes = [
+                'identity',
+                'save',
+                'read',
+                'subscribe',
+                'mysubreddits',
+                'history'
+            ].join(','),
+            callbackURL = 'http://reddit.localhost/api/oauth/callback',
             uuid = utils.getRandomString(30),
             url = 'https://ssl.reddit.com/api/v1/authorize?' +
                 'client_id='+clientID+'&'+
@@ -36,6 +45,14 @@ module.exports = Ember.ObjectController.extend({
     }.on('init'),
 
     actions: {
+
+        closePopup: function(){
+            var popup = this.get('popup');
+            if (popup) {
+                popup.close();
+                this.set('popup', null);
+            }
+        },
 
         loginPopup: function(){
             var _self = this;

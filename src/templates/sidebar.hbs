@@ -18,8 +18,19 @@
 
 </div>
 
-{{#if controllers.account.popup}}
-    <div>Please finish login in the pupup window</div>
+{{#if account.isLoggedIn}}
+
 {{else}}
-    <div {{action "loginPopup" target=controllers.account}}>Login</div>
+    <div class="sidebar__login-container">
+        {{#if account.popup}}
+            <div class="sidebar__login__popup">
+                <h1>Please finish login in the pupup window</h1>
+                <div {{action "closePopup" target=account}}>Cancel</div>
+            </div>
+        {{else}}
+            <div class="sidebar__login__before" {{action "loginPopup" target=account}}>
+                Login
+            </div>
+        {{/if}}
+    </div>
 {{/if}}
