@@ -5,13 +5,13 @@ $navbar-height: 4em;
 
 .main-container {
 
-  @include box-shadow(-4px 0px 3px 0px rgba(68, 68, 68, 0.7));
+  @include box-shadow(-4px 0px 3px 0px rgba(0, 0, 0, 0.5));
   @include transition(left 0.5s);
   position: absolute;
   top:0;
   bottom: 0;
   right: 0;
-  left: 20em;
+  left: 15em;
 
   padding-top: $navbar-height+1em;
   padding-left: 0.5em;
@@ -58,6 +58,53 @@ $navbar-height: 4em;
     font-size: $navbar-height/2;
     height: 1em;
     width: 1em;
+  }
+
+}
+
+.subreddit__navbar__order-switcher {
+
+  $navbar-switcher-gap: 5px;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 100%;
+  padding: $navbar-switcher-gap;
+
+  li {
+
+    display: inline-block;
+    height: 100%;
+
+    a:hover, &.is-current a {
+      border-bottom: solid 0.5em #5E94B2;
+      background-color: #504F50;
+    }
+
+    a {
+
+      display: block;
+      position: relative;
+      min-width: 5em;
+      background-color: #3C3B3C;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1em;
+
+      span {
+        font-size: 1.5em;
+        font-weight: bold;
+        height: 1em;
+        text-align: center;
+        vertical-align: middle;
+        text-transform: uppercase;
+      }
+
+    }
+
+
   }
 
 }
@@ -165,54 +212,4 @@ $feed-list-gap: 8px;
   font-weight: bold;
   color: gray;
   text-transform: uppercase;
-}
-
-
-
-
-.subreddit__navbar__order-switcher {
-
-  $navbar-switcher-gap: 5px;
-
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  font-size: 100%;
-  padding: $navbar-switcher-gap;
-
-  li {
-
-    display: inline-block;
-    height: 100%;
-
-    a:hover, &.is-current a {
-      border-bottom: solid 0.5em #5E94B2;
-      background-color: #504F50;
-    }
-
-    a {
-
-      display: block;
-      position: relative;
-      min-width: 5em;
-      background-color: #3C3B3C;
-      height: 100%;
-      box-sizing: border-box;
-      padding: 1em;
-
-      span {
-        font-size: 1.5em;
-        font-weight: bold;
-        height: 1em;
-        text-align: center;
-        vertical-align: middle;
-        text-transform: uppercase;
-      }
-
-    }
-
-
-  }
-
 }

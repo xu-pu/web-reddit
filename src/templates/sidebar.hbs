@@ -25,6 +25,18 @@
             <h1>{{account.name}}</h1>
             <div {{action "logout" target=account}}>&#10060;</div>
         </div>
+        <div class="sidebar__profile-container">
+            <ul>
+                {{#link-to "me.liked"}}<li>Overview</li>{{/link-to}}
+                {{#link-to "me.liked"}}<li>Submitted</li>{{/link-to}}
+                {{#link-to "me.saved"}}<li>Comments</li>{{/link-to}}
+                {{#link-to "me.liked"}}<li>Liked</li>{{/link-to}}
+                {{#link-to "me.liked"}}<li>Disliked</li>{{/link-to}}
+                {{#link-to "me.saved"}}<li>Saved</li>{{/link-to}}
+                {{#link-to "me.saved"}}<li>Hidden</li>{{/link-to}}
+                {{#link-to "me.saved"}}<li>Gilded</li>{{/link-to}}
+            </ul>
+        </div>
     {{else}}
         {{#if account.isFetchingProfile}}
             <div id="sidebar__account__fetching" class="sidebar__account">
@@ -52,5 +64,3 @@
     {{/if}}
 
 </div>
-
-{{#link-to "me.liked"}}click{{/link-to}}

@@ -1,7 +1,7 @@
 @import "compass";
 
 .sidebar-container {
-  width: 20em;
+  width: 15em;
 }
 
 .sidebar__search {
@@ -39,7 +39,7 @@
 
   li {
     padding: 5px;
-    padding-left: 1em;
+    padding-left: 0.5em;
     color: #D2D2D2;
     cursor: pointer;
     font-size: 1.5em;
@@ -54,7 +54,8 @@
 }
 
 .sidebar__account-container {
-  padding: 1em;
+  padding: 0.5em;
+  padding-right: 0;
 }
 
 .sidebar__account {
@@ -108,6 +109,28 @@
   > div {
     background-color: green;
     color: greenyellow;
+  }
+
+}
+
+
+.sidebar__profile-container {
+
+  li {
+    height: 3em;
+    padding-left: 1em;
+    background-color: #212022;
+    color: #ADADAD;
+    display: flex;
+    @include align-items(center);
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &:hover {
+      border-left: solid 0.5em #5E94B2;
+      background-color: #504F50;
+    }
+
   }
 
 }

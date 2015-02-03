@@ -15,7 +15,7 @@ module.exports = Ember.ArrayController.extend({
 
     url: null,
 
-    after: null,
+    after: Infinity,
 
     requestID: null,
 
@@ -33,9 +33,8 @@ module.exports = Ember.ArrayController.extend({
 
         loadMore: function(){
 
-            if (this.get('isLoading')) {
-                return;
-            }
+            if (this.get('isLoading')) return;
+            if (!this.get('after')) return;
 
             var _self = this,
                 feeds = this.get('model'),
@@ -44,7 +43,6 @@ module.exports = Ember.ArrayController.extend({
                 params;
 
             this.set('requestID', timestamp);
-
 
             if (this.get('isOauth')) {
                 params = {
@@ -61,7 +59,7 @@ module.exports = Ember.ArrayController.extend({
                 };
             }
 
-            if (this.get('after') !== null) {
+            if (this.get('after') !== null && this.get('after') !== Infinity) {
                 params.data = {
                     after: this.get('after')
                 };
@@ -86,7 +84,7 @@ module.exports = Ember.ArrayController.extend({
             this.get('model').clear();
             this.setProperties({
                 requestID: null,
-                after: null
+                after: Infinity
             });
             this.send('loadMore');
         }

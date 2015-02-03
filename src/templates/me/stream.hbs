@@ -54,7 +54,12 @@
             {{#if controllers.stream.isLoading}}
                 Loading...
             {{else}}
-                Load More
+                {{#if controllers.stream.after}}
+                    More
+                {{else}}
+                    It Ends Here
+                {{/if}}
+
             {{/if}}
         </div>
 

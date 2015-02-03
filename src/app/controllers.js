@@ -77,4 +77,12 @@ module.exports = function(App){
 
     });
 
+    App.MeSavedController = Ember.Controller.extend({
+
+        needs: ['stream'],
+
+        isFull: true
+
+    });
+
 };

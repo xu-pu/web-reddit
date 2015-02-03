@@ -3,8 +3,7 @@
 var utils = require('./utils.js'),
     Subreddit = require('./models/Subreddit.js'),
     Link = require('./models/Link.js'),
-    settings = require('./settings.js'),
-    TYPES = settings.CONTENT_TYPES;
+    settings = require('./settings.js');
 
 module.exports = function(App){
 
@@ -15,6 +14,7 @@ module.exports = function(App){
         });
         this.route('me', function(){
             this.route('liked');
+            this.route('saved');
         });
     });
 
@@ -67,6 +67,8 @@ module.exports = function(App){
 
     App.MeLikedRoute = Ember.Route.extend({
 
+        templateName: 'me/stream',
+
         beforeModel: function(transition){
             var account = this.controllerFor('account');
             return account.promiseResume();
@@ -75,6 +77,25 @@ module.exports = function(App){
         setupController: function(){
             var username = this.controllerFor('account').get('name');
             var url = '/reddit/user/' + username + '/liked';
+            this.controllerFor('stream').set('isOauth', true);
+            this.controllerFor('stream').set('url', url);
+            this.controllerFor('application').set('isFullscreen', false);
+        }
+
+    });
+
+    App.MeSavedRoute = Ember.Route.extend({
+
+        templateName: 'me/stream',
+
+        beforeModel: function(transition){
+            var account = this.controllerFor('account');
+            return account.promiseResume();
+        },
+
+        setupController: function(){
+            var username = this.controllerFor('account').get('name');
+            var url = '/reddit/user/' + username + '/saved';
             this.controllerFor('stream').set('isOauth', true);
             this.controllerFor('stream').set('url', url);
             this.controllerFor('application').set('isFullscreen', false);
