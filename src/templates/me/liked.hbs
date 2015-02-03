@@ -1,0 +1,65 @@
+<div {{bind-attr class=":user__stream-container isFull::not-full"}}>
+
+    <div {{bind-attr class=":user__feeds-container isFull::not-full"}}>
+
+        {{#if isFull}}
+
+            <div class="subreddit__grid-container">
+
+                {{#view "feedGrid" controller=controllers.stream}}
+
+                    {{#each feed in this}}
+
+                        {{view "feedTile" controller=feed}}
+
+                    {{/each}}
+
+                {{/view}}
+
+            </div>
+
+        {{else}}
+
+            <div class="subreddit__feed-list-container">
+                <ul>
+                    {{#each feed in controllers.stream}}
+
+                        {{#link-to "subreddit.post" feed.id}}
+
+                            <li {{bind-attr class=":subreddit__feed-list__item feed.isCurrent"}}>
+
+                                {{#if feed.hasThumbnail}}
+                                    <div class="feed-list__item__thumbnail" {{bind-attr style=feed.backgroundStyle}}>
+                                        <h1>{{feed.score}}</h1>
+                                    </div>
+                                {{else}}
+                                    <div class="feed-list__item__thumbnail">
+                                        <h1>{{feed.score}}</h1>
+                                    </div>
+                                {{/if}}
+
+                                <div class="feed-list__item__title">{{feed.title}}</div>
+
+                            </li>
+
+                        {{/link-to}}
+
+                    {{/each}}
+                </ul>
+            </div>
+
+        {{/if}}
+
+        <div class="subreddit__load" {{action "loadMore" target=controllers.stream}}>
+            {{#if controllers.stream.isLoading}}
+                Loading...
+            {{else}}
+                Load More
+            {{/if}}
+        </div>
+
+    </div>
+
+    {{outlet}}
+
+</div>

@@ -1,0 +1,17 @@
+@import "compass";
+
+.user__stream-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.user__feeds-container {
+  padding-top: 1em;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

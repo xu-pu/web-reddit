@@ -26,7 +26,10 @@ module.exports = Ember.ObjectController.extend({
     }.property('name', 'order'),
 
     updateStream: function(){
-        this.get('stream').set('url', this.get('url'));
+        this.get('stream').setProperties({
+            url: this.get('url'),
+            isOauth: false
+        });
     }.observes('order', 'name'),
 
     actions: {

@@ -69,4 +69,12 @@ module.exports = function(App){
 
     });
 
+    App.MeLikedController = Ember.Controller.extend({
+
+        needs: ['stream'],
+
+        isFull: true
+
+    });
+
 };

@@ -50,6 +50,8 @@ module.exports = Ember.ObjectController.extend({
             this.set('token', token);
         }
 
+        this.promiseResume();
+
     }.on('init'),
 
 
@@ -64,30 +66,37 @@ module.exports = Ember.ObjectController.extend({
     }.observes('token'),
 
 
-    resumeProfile: function(){
+    promiseResume: function(){
 
         var _self = this,
             token = this.get('token');
-        if (!token) return;
 
-        token = 'bearer ' + token;
+        if (!token) return Promise.reject();
+        if (this.get('model')) return Promise.resolve();
+        if (this.promised) return this.promised;
 
-        _self.set('isFetchingProfile', true);
+        this.set('isFetchingProfile', true);
 
-        jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: token } })
+        var promised = jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: 'bearer ' + token } })
             .then(
             function(data){
                 _self.setProperties({
                     isFetchingProfile: false,
                     model: Profile.create(data)
                 });
+                delete _self.promised;
             },
             function(){
+                delete _self.promised;
                 _self.set('isFetchingProfile', false);
                 _self.send('logout');
                 Ember.Logger.log('token invalid, logout and login again');
             }
-        )
+        );
+
+        this.promised = promised;
+
+        return promised;
 
     }.observes('token'),
 

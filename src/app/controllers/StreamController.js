@@ -5,9 +5,13 @@ var Link = require('../models/Link.js'),
 
 module.exports = Ember.ArrayController.extend({
 
+    needs: ['account'],
+
     itemController: 'feed',
 
     model: [],
+
+    isOauth: false,
 
     url: null,
 
@@ -35,15 +39,27 @@ module.exports = Ember.ArrayController.extend({
 
             var _self = this,
                 feeds = this.get('model'),
-                timestamp = (new Date()).getTime();
+                timestamp = (new Date()).getTime(),
+                account = this.get('controllers.account'),
+                params;
 
             this.set('requestID', timestamp);
 
-            var params = {
-                jsonp: 'jsonp',
-                dataType: 'jsonp',
-                type: 'GET'
-            };
+
+            if (this.get('isOauth')) {
+                params = {
+                    headers: {
+                        Authorization: 'bearer ' + account.get('token')
+                    }
+                };
+            }
+            else {
+                params = {
+                    jsonp: 'jsonp',
+                    dataType: 'jsonp',
+                    type: 'GET'
+                };
+            }
 
             if (this.get('after') !== null) {
                 params.data = {
