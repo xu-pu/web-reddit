@@ -52,3 +52,62 @@
   }
 
 }
+
+.sidebar__account-container {
+  padding: 1em;
+}
+
+.sidebar__account {
+  background-color: gray;
+  position: relative;
+  display: flex;
+  height: 4em;
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+
+  > h1 {
+    @include flex(5 0 0);
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  > div {
+    cursor: pointer;
+    @include flex(1 0 0);
+    background-color: red;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+}
+
+#sidebar__account__profile {
+
+  > h1 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 2em;
+  }
+
+  > div {
+    background-color: darkred;
+    color: red;
+  }
+
+}
+
+#sidebar__account__login {
+
+  > div {
+    background-color: green;
+    color: greenyellow;
+  }
+
+}

@@ -2,13 +2,14 @@
 
 var _ = require('underscore');
 
-var utils = require('../utils.js');
+var utils = require('../utils.js'),
+    Profile = require('../models/Profile.js');
 
 module.exports = Ember.ObjectController.extend({
 
-    isLoggedIn: function(){
-        return !!this.get('token');
-    }.property('token'),
+    isFetchingProfile: false,
+
+    isFetchingToken: false,
 
     token: null,
 
@@ -57,6 +58,37 @@ module.exports = Ember.ObjectController.extend({
         if (token) {
             localStorage.setItem('token', token);
         }
+        else {
+            localStorage.removeItem('token');
+        }
+    }.observes('token'),
+
+
+    resumeProfile: function(){
+
+        var _self = this,
+            token = this.get('token');
+        if (!token) return;
+
+        token = 'bearer ' + token;
+
+        _self.set('isFetchingProfile', true);
+
+        jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: token } })
+            .then(
+            function(data){
+                _self.setProperties({
+                    isFetchingProfile: false,
+                    model: Profile.create(data)
+                });
+            },
+            function(){
+                _self.set('isFetchingProfile', false);
+                _self.send('logout');
+                Ember.Logger.log('token invalid, logout and login again');
+            }
+        )
+
     }.observes('token'),
 
 
@@ -97,22 +129,37 @@ module.exports = Ember.ObjectController.extend({
                 MAX_TRIALS = 20,
                 counter = 0;
 
+            _self.set('isFetchingToken', true);
+
             attempt();
 
             function attempt(){
                 jQuery.ajax('/api/oauth/token', { data: { uuid: _self.get('uuid') } })
                     .then(
                     function(data){
-                        _self.set('token', data['access_token']);
+                        _self.setProperties({
+                            isFetchingToken: false,
+                            token: data['access_token']
+                        });
                     },
                     function(){
                         counter++;
                         if (counter < MAX_TRIALS) {
                             setTimeout(function(){ attempt(); }, 1000);
                         }
+                        else {
+                            _self.set('isFetchingToken', false);
+                        }
                     });
             }
 
+        },
+
+        logout: function(){
+            this.setProperties({
+                token: null,
+                model: null
+            });
         }
 
     }
