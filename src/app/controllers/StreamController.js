@@ -1,18 +1,15 @@
 'use strict';
 
 var Link = require('../models/Link.js'),
-    settings = require('../settings.js'),
-    ORDERS = settings.SUBREDDIT_ORDERS;
+    settings = require('../settings.js');
 
 module.exports = Ember.ArrayController.extend({
-
-    needs: ['subreddit'],
 
     itemController: 'feed',
 
     model: [],
 
-    url: Ember.computed.alias('controllers.subreddit.url'),
+    url: null,
 
     after: null,
 
@@ -22,16 +19,17 @@ module.exports = Ember.ArrayController.extend({
         return this.get('requestID') !== null;
     }.property('requestID'),
 
+    onNewUrl: function(){
+        if (this.get('url')) {
+            this.send('refresh');
+        }
+    }.observes('url'),
 
     actions: {
 
         loadMore: function(){
 
             if (this.get('isLoading')) {
-                return;
-            }
-
-            if (!this.get('controllers.subreddit.name')) {
                 return;
             }
 
@@ -72,8 +70,7 @@ module.exports = Ember.ArrayController.extend({
             this.get('model').clear();
             this.setProperties({
                 requestID: null,
-                after: null,
-                order: ORDERS.HOT
+                after: null
             });
             this.send('loadMore');
         }
