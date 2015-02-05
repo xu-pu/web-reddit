@@ -24,6 +24,7 @@
     font-size: 2em;
     background-color: transparent;
     width: 100%;
+    color: rgb(110, 110, 110)
   }
 
 }
@@ -94,7 +95,9 @@
   > h1 {
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 2em;
+    font-size: 1.5em;
+    color: rgb(42, 42, 42);
+    font-family: Montserrat;
   }
 
   > div {
