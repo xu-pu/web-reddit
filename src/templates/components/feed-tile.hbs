@@ -1,0 +1,19 @@
+{{#if feed.isImage}}
+    {{image-thumbnail feed=feed}}
+{{/if}}
+
+<h1 class="grid-tile__metadata">
+    <span>{{feed.author}}</span>
+    <a target="_blank" {{bind-attr href=feed.redditLink}}>Comments</a>
+    {{#link-to "subreddit.post" feed.id}}Enter{{/link-to}}
+</h1>
+
+<h1 class="grid-tile__title-bar">
+    {{#if feed.url}}
+        <a target="_blank" {{bind-attr href=feed.url}}>
+            <span>{{feed.title}}</span>
+        </a>
+    {{else}}
+        <span>{{feed.title}}</span>
+    {{/if}}
+</h1>

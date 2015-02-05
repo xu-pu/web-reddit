@@ -1,14 +1,16 @@
 'use strict';
 
-module.exports = Ember.View.extend({
+module.exports = Ember.Component.extend({
 
     tagName: 'div',
 
     classNames: ['thumbnail-container'],
 
-    templateName: 'views/image-thumbnail',
-
     tile: Ember.computed.alias('parentView'),
+
+    thumbnail: Ember.computed.alias('feed.thumbnail'),
+
+    url: Ember.computed.alias('feed.url'),
 
     $thumbnail: null,
 
@@ -22,7 +24,7 @@ module.exports = Ember.View.extend({
 
         var _self = this;
 
-        if (this.get('controller.hasThumbnail')) {
+        if (this.get('feed.hasThumbnail')) {
             var thumbnail = document.createElement('img');
             var $thumbnail = jQuery(thumbnail);
             thumbnail.src = this.get('thumbnail');
@@ -35,7 +37,7 @@ module.exports = Ember.View.extend({
             this.set('$thumbnail', $thumbnail);
         }
 
-        if (this.get('controller.hasFull')) {
+        if (this.get('feed.hasFull')) {
             var fullsize = document.createElement('img');
             var $fullsize = jQuery(fullsize);
             fullsize.src = this.get('url');

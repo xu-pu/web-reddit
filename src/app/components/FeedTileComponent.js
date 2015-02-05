@@ -2,11 +2,9 @@
 
 var _  = require('underscore');
 
-module.exports = Ember.View.extend({
+module.exports = Ember.Component.extend({
 
     tagName: 'li',
-
-    templateName: 'views/feed-tile',
 
     classNames: [
         'subreddit__grid-tile',

@@ -30,15 +30,7 @@
 
             <div class="subreddit__grid-container">
 
-                {{#view "feedGrid" controller=controllers.stream}}
-
-                    {{#each feed in this}}
-
-                        {{view "feedTile" controller=feed}}
-
-                    {{/each}}
-
-                {{/view}}
+                {{feed-grid stream=controllers.stream}}
 
             </div>
 
