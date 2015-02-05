@@ -2,7 +2,11 @@
 
 module.exports = Ember.Controller.extend({
 
-    needs: ['sidebar'],
+    needs: ['account', 'search'],
+
+    account: Ember.computed.alias('controllers.account'),
+
+    search: Ember.computed.alias('controllers.search'),
 
     isFullscreen: true,
 
