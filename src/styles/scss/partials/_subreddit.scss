@@ -140,6 +140,12 @@ $feed-list-gap: 8px;
   overflow: hidden;
 }
 
+.subreddit__body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .subreddit__feeds-container {
   padding-top: 1em;
   height: 100%;
@@ -149,7 +155,7 @@ $feed-list-gap: 8px;
 
 // when post
 
-.subreddit__container.not-full {
+.subreddit__body.not-full {
   display: flex;
   @include flex-direction(row);
 }
