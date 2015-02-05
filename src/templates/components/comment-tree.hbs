@@ -1,0 +1,17 @@
+<ul class="post__comments__list">
+
+    {{#each comment in view.comments}}
+
+        <li class="post__comments__item">
+
+            {{comment-leaf comment=comment}}
+
+            {{#if comment.data.replies}}
+                {{comment-tree comments=comment.data.replies.data.children}}
+            {{/if}}
+
+        </li>
+
+    {{/each}}
+
+</ul>

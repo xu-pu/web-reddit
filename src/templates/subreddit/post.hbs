@@ -24,7 +24,7 @@
         {{else}}
             {{#if comments}}
                 <div class="post__comments__tree">
-                    {{view "commentTree" comments=comments}}
+                    {{comment-Tree comments=comments}}
                 </div>
             {{else}}
                 <div class="post__comments__loading">No Comment Yet</div>
