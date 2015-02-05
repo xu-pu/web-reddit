@@ -12,9 +12,16 @@ var App = window.App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+//============================
+// Components
+//============================
+
 App.FeedGridComponent = require('./components/FeedGridComponent.js');
 App.FeedTileComponent = require('./components/FeedTileComponent.js');
 App.ImageThumbnailComponent = require('./components/ImageThumbnailComponent.js');
+App.SubredditWindowComponent = require('./components/SubredditWindowComponent.js');
+App.SubredditOrderTabComponent = require('./components/SubredditOrderTabComponent.js');
+
 
 setupRoutes(App);
 setupControllers(App);

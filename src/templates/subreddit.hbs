@@ -1,28 +1,4 @@
-<div class="subreddit__navbar">
-
-    <div class="subreddit__navbar__toggle" {{action "toggleFullscreen"}}>
-        <span>&#9776;</span>
-    </div>
-
-    <div class="subreddit__navbar__header">
-        <h1>{{name}}</h1>
-    </div>
-
-    <ul class="subreddit__navbar__order-switcher">
-        {{#each order in orders}}
-
-            {{#view view.OrderTabView order=order}}
-                {{#link-to "subreddit" name (query-params order=view.order)}}
-                    <span>{{view.order}}</span>
-                {{/link-to}}
-            {{/view}}
-
-        {{/each}}
-    </ul>
-
-</div>
-
-<div class="subreddit__container">
+{{#subreddit-window subreddit=controller application=controllers.application}}
 
     <div {{bind-attr class=":subreddit__body isFull::not-full"}}>
 
@@ -82,4 +58,4 @@
 
     </div>
 
-</div>
+{{/subreddit-window}}

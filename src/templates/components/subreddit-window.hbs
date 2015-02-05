@@ -1,0 +1,21 @@
+<div class="subreddit__navbar">
+
+    <div class="subreddit__navbar__toggle" {{action "toggleFullscreen" target=application}}>
+        <span>&#9776;</span>
+    </div>
+
+    <div class="subreddit__navbar__header">
+        <h1>{{subreddit.name}}</h1>
+    </div>
+
+    <ul class="subreddit__navbar__order-switcher">
+        {{#each order in subreddit.orders}}
+            {{subreddit-order-tab order=order subreddit=subreddit}}
+        {{/each}}
+    </ul>
+
+</div>
+
+<div class="subreddit__container">
+    {{yield}}
+</div>
