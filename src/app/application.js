@@ -22,6 +22,8 @@ App.SubredditWindowComponent = require('./components/SubredditWindowComponent.js
 App.SubredditOrderTabComponent = require('./components/SubredditOrderTabComponent.js');
 App.CommentTreeComponent = require('./components/CommentTreeComponent.js');
 App.CommentLeafComponent = require('./components/CommentLeafComponent.js');
+App.FeedListComponent = require('./components/FeedListComponent.js');
+App.FeedListItemComponent = require('./components/FeedListItemComponent.js');
 
 
 //============================

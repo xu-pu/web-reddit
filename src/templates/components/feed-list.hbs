@@ -1,0 +1,9 @@
+{{#each feed in stream}}
+
+    {{#link-to "subreddit.post" feed.id}}
+
+        {{feed-list-item feed=feed}}
+
+    {{/link-to}}
+
+{{/each}}

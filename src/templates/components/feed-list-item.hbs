@@ -1,0 +1,11 @@
+{{#if feed.hasThumbnail}}
+    <div class="feed-list__item__thumbnail" {{bind-attr style=feed.backgroundStyle}}>
+        <h1>{{feed.score}}</h1>
+    </div>
+{{else}}
+    <div class="feed-list__item__thumbnail">
+        <h1>{{feed.score}}</h1>
+    </div>
+{{/if}}
+
+<div class="feed-list__item__title">{{feed.title}}</div>
