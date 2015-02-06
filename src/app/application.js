@@ -2,8 +2,6 @@
 
 var setupRoutes = require('./router.js');
 
-jQuery.event.props.push( "dataTransfer" );
-
 window.Promise = Promise || Ember.RSVP.Promise;
 
 var App = window.App = Ember.Application.create({
@@ -18,7 +16,7 @@ var App = window.App = Ember.Application.create({
 App.FeedGridComponent = require('./components/FeedGridComponent.js');
 App.FeedTileComponent = require('./components/FeedTileComponent.js');
 App.ImageThumbnailComponent = require('./components/ImageThumbnailComponent.js');
-App.SubredditWindowComponent = require('./components/SubredditWindowComponent.js');
+App.SubredditWindowComponent = Ember.Component.extend();
 App.SubredditOrderTabComponent = require('./components/SubredditOrderTabComponent.js');
 App.CommentTreeComponent = require('./components/CommentTreeComponent.js');
 App.CommentLeafComponent = require('./components/CommentLeafComponent.js');

@@ -6,7 +6,7 @@ module.exports = Ember.Component.extend({
 
     tagName: 'div',
 
-    classNames: ['subreddit__grid-container'],
+    classNames: ['subreddit__feed-grid'],
 
     onChangeSize: function(){
         this.send('organize');

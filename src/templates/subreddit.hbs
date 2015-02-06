@@ -1,25 +1,20 @@
 {{#subreddit-window subreddit=controller application=controllers.application}}
 
-    <div {{bind-attr class=":subreddit__body isFull::not-full"}}>
+    {{#if isFull}}
 
-        <div {{bind-attr class=":subreddit__feeds-container isFull::not-full"}}>
-
-            {{#if isFull}}
-
-                {{feed-grid stream=controllers.stream}}
-
-            {{else}}
-
-                <div class="subreddit__feed-list-container">
-                    {{feed-list stream=controllers.stream}}
-                </div>
-
-            {{/if}}
-
+        <div class="subreddit__feed-grid-container">
+            {{feed-grid stream=controllers.stream}}
         </div>
 
-        {{outlet}}
+    {{else}}
 
-    </div>
+        <div class="dual-panel__container">
+            <div class="dual-panel__feed-list-container">
+                {{feed-list stream=controllers.stream}}
+            </div>
+            {{outlet}}
+        </div>
+
+    {{/if}}
 
 {{/subreddit-window}}
