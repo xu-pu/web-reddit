@@ -4,13 +4,13 @@ var _ = require('underscore');
 
 module.exports = Ember.Component.extend({
 
-    tagName: 'ul',
+    tagName: 'div',
 
-    classNames: ['subreddit__grid'],
+    classNames: ['subreddit__grid-container'],
 
     onChangeSize: function(){
         this.send('organize');
-    }.observes('controller.length'),
+    }.observes('stream.length'),
 
     actions: {
 
@@ -22,7 +22,7 @@ module.exports = Ember.Component.extend({
 
     reorganize: function(){
         jQuery('.js__grid-tile').wookmark({
-            container: jQuery(this.get('element')),
+            container: jQuery('ul', this.get('element')),
             align: 'center',
             offset: 15
         });

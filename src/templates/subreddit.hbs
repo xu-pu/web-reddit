@@ -6,11 +6,7 @@
 
             {{#if isFull}}
 
-                <div class="subreddit__grid-container">
-
-                    {{feed-grid stream=controllers.stream}}
-
-                </div>
+                {{feed-grid stream=controllers.stream}}
 
             {{else}}
 
@@ -19,14 +15,6 @@
                 </div>
 
             {{/if}}
-
-            <div class="subreddit__load" {{action "loadMore"}}>
-                {{#if controllers.stream.isLoading}}
-                    Loading...
-                {{else}}
-                    Load More
-                {{/if}}
-            </div>
 
         </div>
 

@@ -7,3 +7,11 @@
     {{/link-to}}
 
 {{/each}}
+
+<div class="subreddit__load" {{action "loadMore" target=stream}}>
+    {{#if stream.isLoading}}
+        Loading...
+    {{else}}
+        Load More
+    {{/if}}
+</div>
