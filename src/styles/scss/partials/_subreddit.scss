@@ -152,6 +152,7 @@ $feed-list-gap: 8px;
   display: flex;
   @include flex-direction(row);
   height: 100%;
+  width: 100%;
 }
 
 .dual-panel__feed-list-container {
@@ -161,6 +162,11 @@ $feed-list-gap: 8px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.dual-panel__post-container {
+  height: 100%;
+  overflow-y: auto;
 }
 
 .subreddit__post-container {

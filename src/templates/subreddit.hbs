@@ -9,10 +9,15 @@
     {{else}}
 
         <div class="dual-panel__container">
+
             <div class="dual-panel__feed-list-container">
                 {{feed-list stream=controllers.stream}}
             </div>
-            {{outlet}}
+
+            <div class="dual-panel__post-container">
+                {{outlet}}
+            </div>
+
         </div>
 
     {{/if}}
