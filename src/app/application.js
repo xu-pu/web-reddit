@@ -10,6 +10,13 @@ var App = window.App = Ember.Application.create({
 
 
 //============================
+// Services
+//============================
+
+App.BackendService = require('./services/Backend.js');
+
+
+//============================
 // Components
 //============================
 

@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "dependencies": {
         "jquery": "latest",
-        "ember": "latest",
+        "ember": "1.11",
         "wookmark-jquery": "latest"
     },
     "devDependencies": {}

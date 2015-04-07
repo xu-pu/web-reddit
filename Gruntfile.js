@@ -36,10 +36,14 @@ module.exports = function (grunt) {
         },
 
         emberTemplates: {
+
             options: {
                 templateName: function (tName) {
                     return tName.replace('src/templates/', '');
-                }
+                },
+                precompile: false,
+                templateCompilerPath: 'venders/ember/ember-template-compiler.js',
+                templateNamespace: 'HTMLBars'
             },
 
             build: {
