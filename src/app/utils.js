@@ -2,6 +2,31 @@
 
 var _ = require('underscore');
 
+var Link = require('./models/Link.js'),
+    Comment = require('./models/Comment.js'),
+    settings = require('./settings.js'),
+    TYPES = settings.CONTENT_TYPES;
+
+exports.convertRedditThing = function(thing){
+
+    var ThingType;
+
+    switch (thing.kind) {
+        case TYPES.LINK:
+            ThingType = Link;
+            break;
+        case TYPES.COMMENT:
+            ThingType = Comment;
+            break;
+        default:
+            throw 'Invalid reddit thing type';
+    }
+
+    return ThingType.create(thing.data);
+
+};
+
+
 module.exports.promiseLoadedUrl = function(url){
 
     return new Promise(function(resolve, reject){

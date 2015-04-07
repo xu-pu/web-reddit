@@ -22,5 +22,11 @@ module.exports.SUBREDDIT_ORDERS = {
 };
 
 module.exports.CONTENT_TYPES = {
-    LINK: 't3'
+    COMMENT: 't1',
+    ACCOUNT: 't2',
+    LINK: 't3',
+    MESSAGE: 't4',
+    SUBREDDIT: 't5',
+    AWARD: 't6',
+    PROMO_CAMPAIGN: 't8'
 };
