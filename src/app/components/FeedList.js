@@ -13,10 +13,15 @@ module.exports = Ember.Component.extend({
     tagName: 'ul',
 
     actions: {
+
         more: function(){
             if (!this.get('isEnd')) {
                 this.get('subreddit').more();
             }
+        },
+
+        enter: function(model){
+            this.sendAction('enter', model);
         }
     }
 
