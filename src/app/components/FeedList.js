@@ -12,6 +12,8 @@ module.exports = Ember.Component.extend({
 
     tagName: 'ul',
 
+    classNames: ['feed-list'],
+
     actions: {
 
         more: function(){

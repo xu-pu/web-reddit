@@ -149,23 +149,31 @@ $feed-list-gap: 8px;
 // when post
 
 .dual-panel__container {
-  display: flex;
-  @include flex-direction(row);
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
+$feed-list-width: 25em;
+
 .dual-panel__feed-list-container {
-  @include flex(0 0 25em);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $feed-list-width;
   padding: $feed-list-gap;
-  padding-top: 1em;
-  height: 100%;
+  box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
 .dual-panel__post-container {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: $feed-list-width;
   overflow-y: auto;
 }
 
