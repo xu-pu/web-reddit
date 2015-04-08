@@ -5,7 +5,7 @@
 <h1 class="grid-tile__metadata">
     <span>{{feed.author}}</span>
     <a target="_blank" {{bind-attr href=feed.redditLink}}>Comments</a>
-    {{#link-to "subreddit.post" feed.id}}Enter{{/link-to}}
+    <a {{action "enter"}}>Enter</a>
 </h1>
 
 <h1 class="grid-tile__title-bar">

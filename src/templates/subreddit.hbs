@@ -1,9 +1,9 @@
-{{#subreddit-window subreddit=controller application=controllers.application}}
+{{#subreddit-window subreddit=subreddit application=controllers.application}}
 
     {{#if isFull}}
 
         <div class="subreddit__feed-grid-container">
-            {{feed-grid stream=controllers.stream}}
+            {{feed-grid subreddit=subreddit enter="enter"}}
         </div>
 
     {{else}}
@@ -11,7 +11,7 @@
         <div class="dual-panel__container">
 
             <div class="dual-panel__feed-list-container">
-                {{feed-list stream=controllers.stream}}
+                {{feed-list subreddit=subreddit}}
             </div>
 
             <div class="dual-panel__post-container">

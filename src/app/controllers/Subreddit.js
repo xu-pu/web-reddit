@@ -1,38 +1,32 @@
 'use strict';
 
-var settings = require('../settings.js'),
+var Subreddit = require('../models/Subreddit.js'),
+    settings = require('../settings.js'),
     ORDERS = settings.SUBREDDIT_ORDERS;
 
-module.exports = Ember.ObjectController.extend({
+module.exports = Ember.Controller.extend({
+
+    backend: Ember.inject.service(),
 
     queryParams: ['order'],
 
     order: ORDERS.HOT,
 
-    needs: ['stream', 'application'],
+    name: Ember.computed.alias('model'),
 
-    stream: Ember.computed.alias('controllers.stream'),
+    subreddit: function(){
+        return Subreddit.create(this.getProperties('order', 'name', 'backend'));
+    }.property('order', 'name'),
+
+    needs: ['application'],
+
+    stream: Ember.computed.alias('subreddit.listing.list'),
 
     currentPath: Ember.computed.alias('controllers.application.currentPath'),
 
     isFull: function(){
         return this.get('currentPath') === 'subreddit.index';
     }.property('currentPath'),
-
-    orders: ['hot', 'top', 'new', 'controversial'],
-
-    url: function(){
-        return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
-    }.property('name', 'order'),
-
-    updateStream: function(){
-        if (this.get('name')) {
-            this.get('stream').setProperties({
-                url: this.get('url'),
-                isOauth: false
-            });
-        }
-    }.observes('order', 'name'),
 
     actions: {
 
@@ -41,7 +35,11 @@ module.exports = Ember.ObjectController.extend({
         },
 
         loadMore: function(){
-            this.get('stream').send('loadMore');
+            this.get('subreddit').more();
+        },
+
+        enter: function(model){
+            this.transitionTo('subreddit.post', this.get('model'), model);
         }
 
     }

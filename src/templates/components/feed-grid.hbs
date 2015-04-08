@@ -1,13 +1,17 @@
 <ul class="subreddit__grid">
     {{#each feed in stream}}
-        {{feed-tile feed=feed}}
+        {{feed-tile feed=feed enter="enter"}}
     {{/each}}
 </ul>
 
-<div class="subreddit__load" {{action "loadMore" target=stream}}>
-    {{#if stream.isLoading}}
-        Loading...
-    {{else}}
-        Load More
-    {{/if}}
-</div>
+{{#if isEnd}}
+    <div class="subreddit__load">This is the end</div>
+{{else}}
+    <div class="subreddit__load" {{action "more"}}>
+        {{#if isLoading}}
+            Loading...
+        {{else}}
+            Load More
+        {{/if}}
+    </div>
+{{/if}}

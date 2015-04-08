@@ -12,10 +12,12 @@ module.exports = function(App){
         this.route('subreddit', { path: '/r/:name' }, function(){
             this.route('post', { path: '/post/:post'});
         });
+/*
         this.route('me', function(){
             this.route('liked');
             this.route('saved');
         });
+*/
     });
 
     App.ApplicationRoute = Ember.Route.extend();
@@ -27,12 +29,12 @@ module.exports = function(App){
     App.SubredditRoute = Ember.Route.extend({
 
         model: function(params){
-            return Subreddit.create(params)
+            return params.name;
         },
 
         serialize: function(model){
             return {
-                name: model.get('name')
+                name: model
             };
         }
 
@@ -41,30 +43,28 @@ module.exports = function(App){
     App.SubredditPostRoute = Ember.Route.extend({
 
         model: function(params){
-
             var postID = params.post,
-                subredditName = this.modelFor('subreddit').get('name'),
-                postModel = this.controllerFor('stream').get('model').findBy('id', postID);
+                subredditName = params.name;
+            return utils
+                .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
+                .then(function(data){
+                    var post = Link.create(data[0].data.children[0].data);
+                    return {
+                        post: post,
+                        comments: data[1].data.children
+                    };
+                });
+        },
 
-            if (postModel) {
-                return { post: postModel };
-            }
-            else {
-                return utils
-                    .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
-                    .then(function(data){
-                        var post = Link.create(data[0].data.children[0].data);
-                        return {
-                            post: post,
-                            comments: data[1].data.children
-                        };
-                    });
-            }
-
+        serialize: function(model){
+            return {
+                post: model.get('id')
+            };
         }
 
     });
 
+    /*
     App.MeLikedRoute = Ember.Route.extend({
 
         templateName: 'me/stream',
@@ -102,5 +102,5 @@ module.exports = function(App){
         }
 
     });
-
+*/
 };

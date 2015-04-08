@@ -8,8 +8,9 @@
 
 {{/each}}
 
-<div class="subreddit__load" {{action "loadMore" target=stream}}>
-    {{#if stream.isLoading}}
+
+<div class="subreddit__load" {{action "more"}}>
+    {{#if isLoading}}
         Loading...
     {{else}}
         Load More

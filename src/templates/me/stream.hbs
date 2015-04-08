@@ -6,7 +6,7 @@
 
             <div class="subreddit__grid-container">
 
-                {{feed-grid stream=controllers.stream}}
+                {{feed-grid subreddit=subreddit}}
 
             </div>
 
@@ -14,7 +14,7 @@
 
             <div class="subreddit__feed-list-container">
                 <ul>
-                    {{#each feed in controllers.stream}}
+                    {{#each feed in stream}}
 
                         {{#link-to "subreddit.post" feed.id}}
 
@@ -43,10 +43,10 @@
         {{/if}}
 
         <div class="subreddit__load" {{action "loadMore" target=controllers.stream}}>
-            {{#if controllers.stream.isLoading}}
+            {{#if stream.isLoading}}
                 Loading...
             {{else}}
-                {{#if controllers.stream.after}}
+                {{#if stream.after}}
                     More
                 {{else}}
                     It Ends Here

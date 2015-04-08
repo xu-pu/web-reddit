@@ -4,6 +4,8 @@ var _  = require('underscore');
 
 module.exports = Ember.Component.extend({
 
+    feed: null,
+
     tagName: 'li',
 
     classNames: [
@@ -19,6 +21,10 @@ module.exports = Ember.Component.extend({
 
         resize: function(){
             this.get('parentView').send('organize');
+        },
+
+        enter: function(){
+            this.sendAction('enter', this.get('feed'));
         }
 
     }
