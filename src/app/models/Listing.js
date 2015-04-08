@@ -6,6 +6,10 @@ module.exports = Ember.Object.extend({
 
     list: null,
 
+    backend: null,
+
+    url: null,
+
     before: null,
 
     after: Infinity,
@@ -21,6 +25,30 @@ module.exports = Ember.Object.extend({
     isEnd: function(){
         return this.get('after') === null;
     }.property('after'),
+
+    isLoading: false,
+
+    more: function(){
+
+        var backend = this.get('backend'),
+            params = {},
+            _self = this;
+
+        if (this.get('isEnd')) { return; }
+        else if (this.get('isEmpty')) {}
+        else { params.after = this.get('after'); }
+
+        this.set('isLoading', true);
+        backend
+            .ajax(this.get('url'), params)
+            .then(function(data){
+                _self.set('isLoading', false);
+                _self.appendFromJson(data.data);
+            },function(){
+                _self.set('isLoading', false);
+            });
+
+    }.on('init'),
 
     appendFromJson: function(data){
         var after = data.after,

@@ -18,39 +18,20 @@ module.exports = Ember.Object.extend({
 
     isEnd: Ember.computed.alias('listing.isEnd'),
 
-    isLoading: false,
+    isLoading: Ember.computed.alias('listing.isLoading'),
 
     url: function(){
         return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
     }.property('name', 'order'),
 
     more: function(){
-
-        var backend = this.get('backend'),
-            params = {},
-            _self = this;
-
-        if (this.get('listing.isEnd')) { return; }
-        else if (this.get('listing.isEmpty')) {
-            console.log('no offset');
-        }
-        else { params.after = this.get('listing.after'); }
-
-        this.set('isLoading', true);
-        backend
-            .ajax(this.get('url'), params)
-            .then(function(data){
-                _self.set('isLoading', false);
-                _self.get('listing').appendFromJson(data.data);
-            },function(){
-                _self.set('isLoading', false);
-            });
-
+        this.get('listing').more();
     },
 
     onInit: function(){
-        this.set('listing', Listing.create());
-        this.more();
+        var listing = Listing.create(this.getProperties('url', 'backend'));
+        this.set('listing', listing);
+        listing.more();
     }.on('init')
 
 });
