@@ -31,17 +31,19 @@ module.exports = Ember.Object.extend({
             _self = this;
 
         if (this.get('listing.isEnd')) { return; }
-        else if (this.get('listing.isEmpty')) {}
+        else if (this.get('listing.isEmpty')) {
+            console.log('no offset');
+        }
         else { params.after = this.get('listing.after'); }
 
         this.set('isLoading', true);
         backend
-            .ajax(this.get('url', params))
+            .ajax(this.get('url'), params)
             .then(function(data){
-                _self.set('isLoading', true);
+                _self.set('isLoading', false);
                 _self.get('listing').appendFromJson(data.data);
             },function(){
-                _self.set('isLoading', true);
+                _self.set('isLoading', false);
             });
 
     },
