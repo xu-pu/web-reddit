@@ -1,0 +1,31 @@
+{{#if link.hasFull}}
+    <img src="{{link.url}}">
+{{/if}}
+
+<div class="post__title-bar">
+    <h1 class="post__title-bar__title">
+        <a target="_blank" href="{{link.url}}">
+            {{link.title}}
+        </a>
+    </h1>
+    <h1 class="post__title-bar__stats">
+        <span class="post__title-bar__score">{{link.score}}</span>
+        <span class="post__title-bar__up">&#9650;</span>
+        <span class="post__title-bar__down">&#9660;</span>
+        <a class="post__title-bar__link" target="_blank" href="{{link.redditLink}}">&#10132;</a>
+    </h1>
+</div>
+
+<div class="post__comments-container">
+    {{#if isLoadingComments}}
+        <div class="post__comments__loading">Loading Comments...</div>
+    {{else}}
+        {{#if comments}}
+            <div class="post__comments__tree">
+                {{comment-Tree comments=comments}}
+            </div>
+        {{else}}
+            <div class="post__comments__loading">No Comment Yet</div>
+        {{/if}}
+    {{/if}}
+</div>

@@ -39,7 +39,7 @@ module.exports = Ember.Controller.extend({
         },
 
         enter: function(model){
-            this.transitionTo('subreddit.post', this.get('model'), model);
+            this.transitionToRoute('subreddit.post', this.get('model'), model);
         }
 
     }

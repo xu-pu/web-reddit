@@ -1,7 +1,6 @@
 "use strict";
 
 var utils = require('./utils.js'),
-    Subreddit = require('./models/Subreddit.js'),
     Link = require('./models/Link.js'),
     settings = require('./settings.js');
 
@@ -42,17 +41,13 @@ module.exports = function(App){
 
     App.SubredditPostRoute = Ember.Route.extend({
 
-        model: function(params){
+        model: function(params, transition){
             var postID = params.post,
-                subredditName = params.name;
+                subredditName = transition.params.subreddit.name;
             return utils
                 .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
                 .then(function(data){
-                    var post = Link.create(data[0].data.children[0].data);
-                    return {
-                        post: post,
-                        comments: data[1].data.children
-                    };
+                    return Link.create(data[0].data.children[0].data);
                 });
         },
 

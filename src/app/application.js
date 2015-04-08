@@ -31,7 +31,7 @@ App.CommentTreeComponent = require('./components/CommentTree.js');
 App.CommentLeafComponent = require('./components/CommentLeaf.js');
 App.FeedListComponent = require('./components/FeedList.js');
 App.FeedListItemComponent = require('./components/FeedListItem.js');
-
+App.LinkDetailComponent = require('./components/LinkDetail.js');
 
 //============================
 // Resource Controllers
