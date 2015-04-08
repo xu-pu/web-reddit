@@ -1,5 +1,5 @@
 {{#if feed.hasThumbnail}}
-    <div class="feed-list__item__thumbnail" {{bind-attr style=feed.backgroundStyle}}>
+    <div class="feed-list__item__thumbnail" style="background-image: url({{ feed.thumbnail }})">
         <h1>{{feed.score}}</h1>
     </div>
 {{else}}

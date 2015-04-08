@@ -4,13 +4,13 @@
 
 <h1 class="grid-tile__metadata">
     <span>{{feed.author}}</span>
-    <a target="_blank" {{bind-attr href=feed.redditLink}}>Comments</a>
+    <a target="_blank" href="{{feed.redditLink}}">Comments</a>
     <a {{action "enter"}}>Enter</a>
 </h1>
 
 <h1 class="grid-tile__title-bar">
     {{#if feed.url}}
-        <a target="_blank" {{bind-attr href=feed.url}}>
+        <a target="_blank" href="{{feed.url}}">
             <span>{{feed.title}}</span>
         </a>
     {{else}}

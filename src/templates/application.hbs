@@ -70,6 +70,6 @@
 </div>
 
 
-<div {{bind-attr class=":main-container isFullscreen"}}>
+<div class="main-container {{if isFullscreen 'is-fullscreen'}}">
     {{outlet}}
 </div>
