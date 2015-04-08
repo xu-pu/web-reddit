@@ -11,12 +11,12 @@ module.exports = function(App){
         this.route('subreddit', { path: '/r/:name' }, function(){
             this.route('post', { path: '/post/:post'});
         });
-/*
+
         this.route('me', function(){
             this.route('liked');
             this.route('saved');
         });
-*/
+
     });
 
     App.ApplicationRoute = Ember.Route.extend();
