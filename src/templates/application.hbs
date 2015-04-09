@@ -29,14 +29,14 @@
             </div>
             <div class="sidebar__profile-container">
                 <ul>
-                    {{#link-to "me.liked"}}<li>Overview</li>{{/link-to}}
-                    {{#link-to "me.liked"}}<li>Submitted</li>{{/link-to}}
-                    {{#link-to "me.saved"}}<li>Comments</li>{{/link-to}}
-                    {{#link-to "me.liked"}}<li>Liked</li>{{/link-to}}
-                    {{#link-to "me.liked"}}<li>Disliked</li>{{/link-to}}
-                    {{#link-to "me.saved"}}<li>Saved</li>{{/link-to}}
-                    {{#link-to "me.saved"}}<li>Hidden</li>{{/link-to}}
-                    {{#link-to "me.saved"}}<li>Gilded</li>{{/link-to}}
+                    {{#link-to "mine" "overview"}}<li>Overview</li>{{/link-to}}
+                    {{#link-to "mine" "submitted"}}<li>Submitted</li>{{/link-to}}
+                    {{#link-to "mine" "comments"}}<li>Comments</li>{{/link-to}}
+                    {{#link-to "mine" "liked"}}<li>Liked</li>{{/link-to}}
+                    {{#link-to "mine" "disliked"}}<li>Disliked</li>{{/link-to}}
+                    {{#link-to "mine" "saved"}}<li>Saved</li>{{/link-to}}
+                    {{#link-to "mine" "hidden"}}<li>Hidden</li>{{/link-to}}
+                    {{#link-to "mine" "gilded"}}<li>Gilded</li>{{/link-to}}
                 </ul>
             </div>
         {{else}}

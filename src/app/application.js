@@ -15,7 +15,6 @@ var App = window.App = Ember.Application.create({
 
 App.BackendService = require('./services/Backend.js');
 
-
 //============================
 // Components
 //============================
@@ -40,15 +39,13 @@ App.LinkDetailComponent = require('./components/LinkDetail.js');
 App.AccountController = require('./controllers/Account.js');
 App.SearchController = require('./controllers/Search.js');
 
-
 //============================
 // Route Controllers
 //============================
 
 App.ApplicationController = require('./controllers/Application.js');
-
 App.SubredditController = require('./controllers/Subreddit.js');
-
 App.SubredditPostController = require('./controllers/SubredditPost.js');
+App.MineController = require('./controllers/Mine.js');
 
 setupRoutes(App);

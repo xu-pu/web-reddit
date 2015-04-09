@@ -11,12 +11,7 @@ module.exports = function(App){
         this.route('subreddit', { path: '/r/:name' }, function(){
             this.route('post', { path: '/post/:post'});
         });
-
-        this.route('me', function(){
-            this.route('liked');
-            this.route('saved');
-        });
-
+        this.route('mine', { path: '/mine/:name' });
     });
 
     App.ApplicationRoute = Ember.Route.extend();
@@ -60,39 +55,18 @@ module.exports = function(App){
     });
 
 
-    App.MeLikedRoute = Ember.Route.extend({
-
-        templateName: 'me/stream',
+    App.MineRoute = Ember.Route.extend({
 
         beforeModel: function(transition){
             var account = this.controllerFor('account');
             return account.promiseResume();
         },
 
-        setupController: function(){
-            var username = this.controllerFor('account').get('name');
-            var url = '/reddit/user/' + username + '/liked';
-            this.controllerFor('stream').set('isOauth', true);
-            this.controllerFor('stream').set('url', url);
-            this.controllerFor('application').set('isFullscreen', false);
-        }
-
-    });
-
-    App.MeSavedRoute = Ember.Route.extend({
-
-        templateName: 'me/stream',
-
-        beforeModel: function(transition){
-            var account = this.controllerFor('account');
-            return account.promiseResume();
+        model: function(params){
+            return params.name;
         },
 
-        setupController: function(){
-            var username = this.controllerFor('account').get('name');
-            var url = '/reddit/user/' + username + '/saved';
-            this.controllerFor('stream').set('isOauth', true);
-            this.controllerFor('stream').set('url', url);
+        afterModel: function(){
             this.controllerFor('application').set('isFullscreen', false);
         }
 
