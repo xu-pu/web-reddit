@@ -1,5 +1,8 @@
 'use strict';
 
+var settings = require('../settings.js'),
+    TYPES = settings.CONTENT_TYPES;
+
 module.exports = Ember.Object.extend({
 
     isImage: function () {
@@ -24,6 +27,10 @@ module.exports = Ember.Object.extend({
         if (this.get('hasThumbnail')) {
             return 'background-image: url(' + this.get('thumbnail') + ')';
         }
-    }.property('hasThumbnail', 'thumbnail')
+    }.property('hasThumbnail', 'thumbnail'),
+
+    fullname: function(){
+        return TYPES.LINK + '_' + this.get('id');
+    }.property('id')
 
 });

@@ -6,6 +6,14 @@
     <span>{{feed.author}}</span>
     <a target="_blank" href="{{feed.redditLink}}">Comments</a>
     <a {{action "enter"}}>Enter</a>
+    {{#if savePending}}
+        <span>Saving</span>
+    {{else if feed.saved}}
+        <a {{action "toggleSave"}}>Unsave</a>
+    {{else}}
+        <a {{action "toggleSave"}}>Save</a>
+    {{/if}}
+
 </h1>
 
 <h1 class="grid-tile__title-bar">
