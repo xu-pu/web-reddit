@@ -32,7 +32,6 @@ module.exports = Ember.Component.extend({
             .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
             .then(
             function(data){
-                console.log(data);
                 if (_self.get('requestID') === requestID) {
                     var comments = data[1].data.children;
                     _self.set('comments', comments);

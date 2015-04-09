@@ -4,13 +4,13 @@ var _ = require('underscore');
 
 module.exports = Ember.Component.extend({
 
-    subreddit: null, // need
+    listing: null, // need
 
-    stream: Ember.computed.alias('subreddit.listing.list'),
+    stream: Ember.computed.alias('listing.list'),
 
-    isLoading: Ember.computed.alias('subreddit.isLoading'),
+    isLoading: Ember.computed.alias('listing.isLoading'),
 
-    isEnd: Ember.computed.alias('subreddit.isEnd'),
+    isEnd: Ember.computed.alias('listing.isEnd'),
 
     tagName: 'div',
 
@@ -28,7 +28,7 @@ module.exports = Ember.Component.extend({
 
         more: function(){
             if (!this.get('isEnd')) {
-                this.get('subreddit').more();
+                this.get('listing').more();
             }
         },
 

@@ -3,7 +3,7 @@
     {{#if isFull}}
 
         <div class="subreddit__feed-grid-container">
-            {{feed-grid subreddit=subreddit enter="enter"}}
+            {{feed-grid listing=subreddit.listing enter="enter"}}
         </div>
 
     {{else}}
@@ -11,7 +11,7 @@
         <div class="dual-panel__container">
 
             <div class="dual-panel__feed-list-container">
-                {{feed-list subreddit=subreddit enter="enter"}}
+                {{feed-list listing=subreddit.listing enter="enter"}}
             </div>
 
             <div class="dual-panel__post-container">
