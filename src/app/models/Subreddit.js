@@ -21,7 +21,7 @@ module.exports = Ember.Object.extend({
     isLoading: Ember.computed.alias('listing.isLoading'),
 
     url: function(){
-        return  'https://reddit.com/r/' + this.get('name') + '/' + this.get('order') + '.json';
+        return  '/r/' + this.get('name') + '/' + this.get('order') + '.json';
     }.property('name', 'order'),
 
     more: function(){

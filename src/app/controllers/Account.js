@@ -7,6 +7,8 @@ var utils = require('../utils.js'),
 
 module.exports = Ember.ObjectController.extend({
 
+    backend: Ember.inject.service(),
+
     isFetchingProfile: false,
 
     isFetchingToken: false,
@@ -48,6 +50,7 @@ module.exports = Ember.ObjectController.extend({
         var token = localStorage.getItem('token');
         if (token) {
             this.set('token', token);
+            this.set('backend.token', token);
         }
 
         this.promiseResume();
@@ -150,6 +153,7 @@ module.exports = Ember.ObjectController.extend({
                             isFetchingToken: false,
                             token: data['access_token']
                         });
+                        _self.set('backend.token', data['access_token']);
                     },
                     function(){
                         counter++;

@@ -59,7 +59,7 @@ module.exports = function(App){
 
     });
 
-    /*
+
     App.MeLikedRoute = Ember.Route.extend({
 
         templateName: 'me/stream',
@@ -97,5 +97,5 @@ module.exports = function(App){
         }
 
     });
-*/
+
 };

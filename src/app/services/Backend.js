@@ -9,6 +9,7 @@ module.exports = Ember.Service.extend({
         var params;
 
         if (this.get('token')) {
+            url = '/reddit' + url;
             params = {
                 headers: {
                     Authorization: 'bearer ' + this.get('token')
@@ -16,6 +17,7 @@ module.exports = Ember.Service.extend({
             };
         }
         else {
+            url = 'https://reddit.com' + url;
             params = {
                 jsonp: 'jsonp',
                 dataType: 'jsonp',
