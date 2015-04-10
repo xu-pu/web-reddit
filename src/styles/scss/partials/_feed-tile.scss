@@ -36,15 +36,17 @@
   width: 400px;
   background-color: #3F3D3F;
 
-  span, a {
-    color: #ADADAD;
-  }
-
   img {
     display: block;
     width: 100%;
   }
 
+}
+
+.grid-tile__metadata, .grid-tile__title-bar {
+  span, a {
+    color: #ADADAD;
+  }
 }
 
 .grid-tile__metadata {
