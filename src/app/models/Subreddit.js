@@ -29,9 +29,7 @@ module.exports = Ember.Object.extend({
     },
 
     onInit: function(){
-        var listing = Listing.create(this.getProperties('url', 'backend'));
-        this.set('listing', listing);
-        listing.more();
+        this.set('listing', Listing.create(this.getProperties('url', 'backend')));
     }.on('init')
 
 });
