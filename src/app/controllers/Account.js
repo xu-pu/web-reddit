@@ -5,7 +5,7 @@ var _ = require('underscore');
 var utils = require('../utils.js'),
     Profile = require('../models/Profile.js');
 
-module.exports = Ember.ObjectController.extend({
+module.exports = Ember.Controller.extend({
 
     backend: Ember.inject.service(),
 
@@ -13,7 +13,13 @@ module.exports = Ember.ObjectController.extend({
 
     isFetchingToken: false,
 
-    token: null,
+    token: Ember.computed.alias('backend.token'),
+
+    oauth: null,
+
+    model: Ember.computed.alias('profile'),
+
+    profile: null,
 
     uuid: null,
 
@@ -47,61 +53,78 @@ module.exports = Ember.ObjectController.extend({
             loginURL: url
         });
 
-        var token = localStorage.getItem('token');
-        if (token) {
-            this.set('token', token);
-            this.set('backend.token', token);
-        }
-
         this.promiseResume();
 
     }.on('init'),
 
 
-    storeToken: function(){
-        var token = this.get('token');
-        if (token) {
-            localStorage.setItem('token', token);
-        }
-        else {
-            localStorage.removeItem('token');
-        }
-    }.observes('token'),
-
-
     promiseResume: function(){
 
-        var _self = this,
-            token = this.get('token');
-
-        if (!token) return Promise.reject();
-        if (this.get('model')) return Promise.resolve();
+        if (this.get('profile')) return Promise.resolve();
         if (this.promised) return this.promised;
 
-        this.set('isFetchingProfile', true);
+        var _self = this,
+            oauthStr = localStorage.getItem('oauth'),
+            oauth;
 
-        var promised = jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: 'bearer ' + token } })
-            .then(
-            function(data){
+        if (oauthStr) {
+            oauth = JSON.parse(oauthStr);
+            this.set('oauth', oauth);
+        }
+        else {
+            return Promise.reject();
+        }
+
+        this.promised = Promise.resolve()
+            .then(function(){
+                // refresh token
+                _self.set('isRefreshingToken', true);
+                console.log('refresh');
+                return jQuery.ajax('/refresh_token', {
+                    method: 'POST',
+                    data: {
+                        'grant_type': 'refresh_token',
+                        'refresh_token': oauth['refresh_token']
+                    }
+                });
+            }, failureHandler)
+            .then(function(resp){
+                console.log('refreshed');
+                // token refreshed, resume profile
+                var token = resp['access_token'];
+                _self.set('token', token);
+                _self.set('isRefreshingToken', false);
+                _self.set('isFetchingProfile', true);
+                return jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: 'bearer ' + token } });
+            }, failureHandler)
+            .then(function(data){
+               // profile resumed
                 _self.setProperties({
                     isFetchingProfile: false,
-                    model: Profile.create(data)
+                    profile: Profile.create(data)
                 });
-                delete _self.promised;
-            },
-            function(){
-                delete _self.promised;
-                _self.set('isFetchingProfile', false);
-                _self.send('logout');
-                Ember.Logger.log('token invalid, logout and login again');
-            }
-        );
+            });
 
-        this.promised = promised;
+        return this.promised;
 
-        return promised;
+        function failureHandler(e){
+            console.log(e);
+            _self.setProperties({
+                isFetchingProfile: false,
+                isRefreshingToken: false
+            });
+            delete _self.promised;
+        }
 
-    }.observes('token'),
+    },
+
+
+    saveOauth: function(){
+        var oauth = this.get('oauth');
+        if (oauth) {
+            localStorage.setItem('oauth', JSON.stringify(oauth));
+        }
+    }.observes('oauth'),
 
 
     actions: {
@@ -151,9 +174,9 @@ module.exports = Ember.ObjectController.extend({
                     function(data){
                         _self.setProperties({
                             isFetchingToken: false,
-                            token: data['access_token']
+                            oauth: data
                         });
-                        _self.set('backend.token', data['access_token']);
+                        _self.promiseResume();
                     },
                     function(){
                         counter++;

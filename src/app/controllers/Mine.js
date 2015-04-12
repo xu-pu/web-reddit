@@ -13,7 +13,7 @@ module.exports = Ember.Controller.extend({
     name: Ember.computed.alias('model'),
 
     url: function(){
-        return '/user/' + this.get('account.name') + '/' + this.get('name');
+        return '/user/' + this.get('account.profile.name') + '/' + this.get('name');
     }.property('name'),
 
     listing: function(){
