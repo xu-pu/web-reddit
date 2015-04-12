@@ -1,5 +1,7 @@
 'use strict';
 
+var urlUtils = require('url');
+
 var settings = require('../settings.js'),
     TYPES = settings.CONTENT_TYPES;
 
@@ -31,6 +33,26 @@ module.exports = Ember.Object.extend({
 
     fullname: function(){
         return TYPES.LINK + '_' + this.get('id');
-    }.property('id')
+    }.property('id'),
+
+    isImgur: function(){
+        return !!this.get('url').match(/imgur\.com/);
+    }.property('url'),
+
+    imgurEmbedUrl: function(){
+        if (!this.get('isImgur')) { return; }
+
+        var url = this.get('url');
+        var parsed = urlUtils.parse(url);
+        var path = parsed.pathname;
+        if (!!path.match(/\/$/)) {
+            parsed.pathname = path + 'embed';
+        }
+        else {
+            parsed.pathname = path + '/embed';
+        }
+        return urlUtils.format(parsed);
+
+    }.property('isImgur', 'url')
 
 });

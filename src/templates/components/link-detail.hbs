@@ -1,5 +1,9 @@
 {{#if link.hasFull}}
     <img src="{{link.url}}">
+{{else}}
+    {{#if link.isImgur}}
+        <iframe class="link-detail__imgur-embed" frameborder="0" src="{{link.imgurEmbedUrl}}"></iframe>
+    {{/if}}
 {{/if}}
 
 <div class="post__title-bar">
