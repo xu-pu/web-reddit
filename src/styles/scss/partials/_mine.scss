@@ -1,13 +1,1 @@
 @import "compass";
-
-.mine__post-container {
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  overflow-y: auto;
-  @include box-shadow(0 0 10px 1px black);
-
-}
