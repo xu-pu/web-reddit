@@ -79,7 +79,7 @@ module.exports = Ember.Controller.extend({
             .then(function(){
                 // refresh token
                 _self.set('isRefreshingToken', true);
-                console.log('refresh');
+                //console.log('refresh');
                 return jQuery.ajax('/refresh_token', {
                     method: 'POST',
                     data: {
@@ -89,7 +89,7 @@ module.exports = Ember.Controller.extend({
                 });
             }, failureHandler)
             .then(function(resp){
-                console.log('refreshed');
+                //console.log('refreshed');
                 // token refreshed, resume profile
                 var token = resp['access_token'];
                 _self.set('token', token);
