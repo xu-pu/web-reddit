@@ -18,6 +18,12 @@ module.exports = Ember.Controller.extend({
 
     listing: function(){
         return Listing.create(this.getProperties('url', 'backend'));
-    }.property('name')
+    }.property('name'),
+
+    actions: {
+        enter: function(link){
+            this.transitionToRoute('mine.post', link);
+        }
+    }
 
 });

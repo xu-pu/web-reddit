@@ -9,9 +9,11 @@ module.exports = function(App){
     App.Router.map(function() {
         this.route('welcome');
         this.route('subreddit', { path: '/r/:name' }, function(){
-            this.route('post', { path: '/post/:post'});
+            this.route('post', { path: '/:post'});
         });
-        this.route('mine', { path: '/mine/:name' });
+        this.route('mine', { path: '/mine/:name'}, function(){
+            this.route('post', { path: '/:post'});
+        });
     });
 
     App.ApplicationRoute = Ember.Route.extend();
@@ -21,6 +23,11 @@ module.exports = function(App){
     App.WelcomeRoute = Ember.Route.extend();
 
     App.SubredditRoute = Ember.Route.extend({
+
+        beforeModel: function(){
+            var account = this.controllerFor('account');
+            return account.promiseResume().catch();
+        },
 
         model: function(params){
             return params.name;
@@ -71,5 +78,25 @@ module.exports = function(App){
         }
 
     });
+
+    App.MinePostRoute = Ember.Route.extend({
+
+/*        model: function(params, transition){
+            var postID = params.post;
+            return utils
+                .promiseJson('https://reddit.com/r/' + subredditName + '/comments/' + postID + '.json')
+                .then(function(data){
+                    return Link.create(data[0].data.children[0].data);
+                });
+        },
+*/
+        serialize: function(model){
+            return {
+                post: model.get('id')
+            };
+        }
+
+    });
+
 
 };

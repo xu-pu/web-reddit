@@ -5,8 +5,6 @@ module.exports = Ember.Component.extend({
 
     link: null,
 
-    subreddit: null,
-
     comments: null,
 
     classNames: ['subreddit__post-container'],
@@ -22,7 +20,7 @@ module.exports = Ember.Component.extend({
         this.set('comments', null);
 
         var requestID = _.uniqueId(),
-            subredditName = this.get('subreddit.name'),
+            subredditName = this.get('link.subreddit.'),
             postID = this.get('link.id'),
             _self = this;
 
