@@ -17,7 +17,15 @@ module.exports = function(App){
         });
     });
 
-    App.ApplicationRoute = Ember.Route.extend();
+    App.ApplicationRoute = Ember.Route.extend({
+
+        actions: {
+            toggleFullscreen: function(){
+                this.controllerFor('application').toggleProperty('isFullscreen');
+            }
+        }
+
+    });
 
     App.IndexRoute = Ember.Route.extend();
 

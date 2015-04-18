@@ -1,1 +1,24 @@
 @import "compass";
+
+.mine__fullscreen-toggle {
+  @include transition(0.5s);
+  cursor: pointer;
+  $gap: 0.5em;
+  $size: 2em;
+  font-size: 2em;
+  position: absolute;
+  top: $gap;
+  left: $gap;
+  height: $size;
+  width: $size;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  display: flex;
+  @include align-items(center);
+  @include justify-content(center);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000000;
+  }
+}
