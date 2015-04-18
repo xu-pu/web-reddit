@@ -58,6 +58,12 @@ module.exports = function(App){
             return {
                 post: model.get('id')
             };
+        },
+
+        actions: {
+            close: function(){
+                this.transitionTo('subreddit');
+            }
         }
 
     });

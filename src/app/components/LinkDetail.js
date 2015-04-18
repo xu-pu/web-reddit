@@ -3,6 +3,8 @@ var _  = require('underscore'),
 
 module.exports = Ember.Component.extend({
 
+    backend: Ember.inject.service(),
+
     link: null,
 
     comments: null,

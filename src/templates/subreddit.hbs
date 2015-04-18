@@ -1,25 +1,9 @@
 {{#subreddit-window subreddit=subreddit application=controllers.application}}
 
-    {{#if isFull}}
+    <div class="subreddit__feed-grid-container">
+        {{feed-grid listing=subreddit.listing enter="enter"}}
+    </div>
 
-        <div class="subreddit__feed-grid-container">
-            {{feed-grid listing=subreddit.listing enter="enter"}}
-        </div>
-
-    {{else}}
-
-        <div class="dual-panel__container">
-
-            <div class="dual-panel__feed-list-container">
-                {{feed-list listing=subreddit.listing enter="enter"}}
-            </div>
-
-            <div class="dual-panel__post-container">
-                {{outlet}}
-            </div>
-
-        </div>
-
-    {{/if}}
+    {{outlet}}
 
 {{/subreddit-window}}
