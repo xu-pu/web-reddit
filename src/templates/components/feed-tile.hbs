@@ -16,7 +16,7 @@
         <span>&#9660;</span>
     </div>
 
-    <div class="link__status-icon link__save {{if savePending "is-pending"}}" {{action "toggleSave"}}>
+    <div class="link__status-icon link__save {{if savePending "is-pending"}} {{if feed.saved "is-on"}}" {{action "toggleSave"}}>
         <span>
             {{#if feed.saved}}
                 &#9733;

@@ -37,22 +37,34 @@ $status-item-size: 60px;
 }
 
 .link__status-icon {
+  @include transition(0.5s);
   height: 100%;
   display: flex;
   @include justify-content(center);
   @include align-items(center);
+  span { font-weight: bold; }
 }
 
 .link__upvote {
-  background-color: rgb(74, 142, 74);
-  &:hover {}
+  background-color: #6EC26E;
+
+  &:hover {
+    background-color: white;
+    span { color: #6EC26E; }
+  }
+
   &.is-pending {}
   &.is-on {}
 }
 
 .link__downvote {
-  background-color: rgb(166, 59, 59);
-  &:hover {}
+  background-color: #DA7575;
+
+  &:hover {
+    background-color: white;
+    span { color: #DA7575; }
+  }
+
   &.is-pending {}
   &.is-on {}
 }
@@ -62,26 +74,43 @@ $status-item-size: 60px;
 }
 
 .link__save {
-  background-color: rgb(142, 142, 65);
-  span { color: gold; }
+  background-color: #B6B67F;
+//  span { color: rgb(249, 255, 0); }
 
-  &:hover {}
+  &:hover {
+    background-color: #ffffff;
+    span { color: #B6B67F; }
+  }
 
   &.is-pending {
     span { color: whitesmoke; }
   }
 
-  &.is-on {}
+  &.is-on {
+    span { color: rgb(249, 255, 0); }
+  }
 
 }
 
 .link__reddit {
   background-color: rgb(87, 87, 87);
   span { color: white; }
+
+  &:hover {
+    background-color: white;
+    span { color: rgb(87, 87, 87); }
+  }
+
 }
 
 
 .link__enter {
-  background-color: rgb(231, 231, 231);
-  span { color: gray; }
+  background-color: gray;
+  span { color: rgb(231, 231, 231); }
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+    span { color: gray; }
+  }
+
 }
