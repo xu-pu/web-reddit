@@ -1,0 +1,49 @@
+@import "compass";
+
+.subreddit__feed-grid-container {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+$grid-load-height: 4em;
+
+.subreddit__feed-grid {
+  position: relative;
+  padding-top: 1em;
+  padding-bottom: $grid-load-height;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.subreddit__grid {
+  position: relative;
+}
+
+
+.subreddit__load {
+
+  @include transition(0.5s);
+  position: absolute;
+  bottom: 0;
+  height: $grid-load-height;
+  width: 100%;
+  cursor: pointer;
+  background-color: #212022;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+
+  span {
+    color: gray;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  &:hover {
+    background-color: gray;
+    span { color: #212022; }
+  }
+
+}

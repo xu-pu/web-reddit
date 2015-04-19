@@ -179,23 +179,6 @@ $feed-list-width: 25em;
   background-color: #424245;
 }
 
-// grid tile
-
-.subreddit__feed-grid-container {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.subreddit__feed-grid {
-  padding-top: 1em;
-}
-
-.subreddit__grid {
-  min-height: 95%;
-  position: relative;
-}
-
 // feed list
 
 .subreddit__feed-list__item {
@@ -219,21 +202,6 @@ $feed-list-width: 25em;
     background-color: #212022;
   }
 
-}
-
-.subreddit__load {
-  font-size: $navbar-height/3;
-  height: 2em;
-  width: 100%;
-  cursor: pointer;
-  text-align: center;
-  background-color: #212022;
-  display: flex;
-  @include justify-content(center);
-  @include align-items(center);
-  font-weight: bold;
-  color: gray;
-  text-transform: uppercase;
 }
 
 .stream-container {

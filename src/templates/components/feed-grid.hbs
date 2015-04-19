@@ -5,13 +5,17 @@
 </ul>
 
 {{#if isEnd}}
-    <div class="subreddit__load">This is the end</div>
+    <div class="subreddit__load">
+        <span>This is the end</span>
+    </div>
 {{else}}
     <div class="subreddit__load" {{action "more"}}>
-        {{#if isLoading}}
-            Loading...
-        {{else}}
-            Load More
-        {{/if}}
+        <span>
+            {{#if isLoading}}
+                Loading...
+            {{else}}
+                Load More
+            {{/if}}
+        </span>
     </div>
 {{/if}}
