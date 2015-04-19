@@ -35,7 +35,7 @@ module.exports = function(App){
 
         beforeModel: function(){
             var account = this.controllerFor('account');
-            return account.promiseResume().catch();
+            return account.promiseResume().catch(function(){});
         },
 
         model: function(params){

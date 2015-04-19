@@ -36,17 +36,16 @@
 
 </div>
 
+<div class="feed-tile__info">
 
-<h1 class="grid-tile__metadata">
-    <span>{{feed.author}}</span>
-</h1>
-
-<h1 class="grid-tile__title-bar">
-    {{#if feed.url}}
-        <a target="_blank" href="{{feed.url}}">
+    <h1 class="grid-tile__title-bar">
+        {{#if feed.url}}
+            <a target="_blank" href="{{feed.url}}">
+                <span>{{feed.title}}</span>
+            </a>
+        {{else}}
             <span>{{feed.title}}</span>
-        </a>
-    {{else}}
-        <span>{{feed.title}}</span>
-    {{/if}}
-</h1>
+        {{/if}}
+    </h1>
+
+</div>
