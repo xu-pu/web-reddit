@@ -1,14 +1,5 @@
 @import "compass";
 
-.feed-tile__save {
-  color: gold !important;
-
-  &.is-pending {
-    color: whitesmoke !important;
-  }
-
-}
-
 $status-item-size: 60px;
 
 .feed-tile__status-bar {
@@ -22,44 +13,9 @@ $status-item-size: 60px;
 
 }
 
-.feed-tile__status-bar__item {
-  @include flex(0 0 $status-item-size);
-  background-color: blue;
-  cursor: pointer;
-
-  span, a {
-    font-size: 2em;
-  }
-
-  &.feed-save {
-    background-color: rgb(142, 142, 65);
-  }
-
-  &.feed-upvote {
-    background-color: rgb(74, 142, 74);
-    span.is-upvoted { color: greenyellow; }
-  }
-
-  &.feed-downvote {
-    background-color: rgb(166, 59, 59);
-    //span { color: red; }
-  }
-
-  &.feed-link {
-    background-color: rgb(87, 87, 87);
-    a { color: white; }
-  }
-
-  &.feed-enter {
-    background-color: rgb(231, 231, 231);
-    span { color: gray; }
-  }
-
-}
-
-
-.feed-tile__status-bar__fill {
+.link__score {
   @include flex(1 0 0);
+  cursor: pointer;
   background-color: gray;
 
   span {
@@ -67,12 +23,65 @@ $status-item-size: 60px;
     font-size: 2em;
     font-weight: bold;
   }
+}
+
+.link__upvote, .link__downvote, .link__save, .link__reddit, .link__enter {
+
+  @include flex(0 0 $status-item-size);
+  cursor: pointer;
+
+  span, a {
+    font-size: 2em;
+  }
 
 }
 
-.feed-tile__status-bar__item, .feed-tile__status-bar__fill {
+.link__status-icon {
   height: 100%;
   display: flex;
   @include justify-content(center);
   @include align-items(center);
+}
+
+.link__upvote {
+  background-color: rgb(74, 142, 74);
+  &:hover {}
+  &.is-pending {}
+  &.is-on {}
+}
+
+.link__downvote {
+  background-color: rgb(166, 59, 59);
+  &:hover {}
+  &.is-pending {}
+  &.is-on {}
+}
+
+.link__score {
+  &:hover {}
+}
+
+.link__save {
+  background-color: rgb(142, 142, 65);
+  span { color: gold !important; }
+
+  &:hover {}
+
+  &.is-pending {
+    span { color: whitesmoke !important; }
+  }
+
+  &.is-on {}
+
+}
+
+.link__reddit {
+  background-color: rgb(87, 87, 87);
+  a { color: white; }
+}
+
+
+.link__enter {
+  background-color: rgb(231, 231, 231);
+  span { color: gray; }
 }

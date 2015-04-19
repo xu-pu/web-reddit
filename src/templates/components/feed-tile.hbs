@@ -4,20 +4,20 @@
 
 <div class="feed-tile__status-bar">
 
-    <div class="feed-tile__status-bar__fill feed-score">
+    <div class="link__status-icon link__score">
         <span>{{feed.score}}</span>
     </div>
 
-    <div class="feed-tile__status-bar__item feed-upvote">
-        <span class="{{if feed.likes "is-upvoted"}}">&#9650;</span>
+    <div class="link__status-icon link__upvote {{if feed.likes "is-upvoted"}}">
+        <span>&#9650;</span>
     </div>
 
-    <div class="feed-tile__status-bar__item feed-downvote">
+    <div class="link__status-icon link__downvote">
         <span>&#9660;</span>
     </div>
 
-    <div class="feed-tile__status-bar__item feed-save">
-        <span class="feed-tile__save {{if savePending "is-pending"}}" {{action "toggleSave"}}>
+    <div class="link__status-icon link__save {{if savePending "is-pending"}}" {{action "toggleSave"}}>
+        <span>
             {{#if feed.saved}}
                 &#9733;
             {{else}}
@@ -26,11 +26,11 @@
         </span>
     </div>
 
-    <div class="feed-tile__status-bar__item feed-link">
+    <div class="link__status-icon link__reddit">
         <a target="_blank" href="{{feed.redditLink}}">r</a>
     </div>
 
-    <div class="feed-tile__status-bar__item feed-enter" {{action "enter"}}>
+    <div class="link__status-icon link__enter" {{action "enter"}}>
         <span>&#10132;</span>
     </div>
 
