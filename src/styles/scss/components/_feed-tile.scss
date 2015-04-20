@@ -84,7 +84,11 @@ $status-item-size: 60px;
   }
 
   &.is-pending {}
-  &.is-on {}
+
+  &.is-on {
+    span { color: green; }
+  }
+
 }
 
 .link__downvote {
@@ -96,7 +100,11 @@ $status-item-size: 60px;
   }
 
   &.is-pending {}
-  &.is-on {}
+
+  &.is-on {
+    span { color: darkred; }
+  }
+
 }
 
 .link__score {

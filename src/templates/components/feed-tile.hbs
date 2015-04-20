@@ -8,11 +8,11 @@
         <span>{{feed.score}}</span>
     </div>
 
-    <div class="link__status-icon link__upvote {{if feed.likes "is-upvoted"}}">
+    <div class="link__status-icon link__upvote {{if votePending "is-pending"}} {{if upvoted "is-on"}}"  {{action "toggleVote" true}}>
         <span>&#9650;</span>
     </div>
 
-    <div class="link__status-icon link__downvote">
+    <div class="link__status-icon link__downvote {{if votePending "is-pending"}} {{if downvoted "is-on"}}" {{action "toggleVote" false}}>
         <span>&#9660;</span>
     </div>
 

@@ -53,13 +53,14 @@ module.exports = Ember.Service.extend({
 
     },
 
-    promiseUnsave: function(content){
+
+    promiseVote: function(content, vote){
 
         if (!this.get('token')) {
             return Promise.reject();
         }
 
-        var params, url = '/reddit' + '/api/unsave';
+        var params, url = '/reddit/api/vote';
 
         params = {
             headers: {
@@ -67,14 +68,13 @@ module.exports = Ember.Service.extend({
             },
             method: 'POST',
             data: {
-                id: content.get('fullname')
+                id: content.get('fullname'),
+                dir: vote
             }
         };
 
         return jQuery.ajax(url, params);
 
-    },
-
-    promiseVote: function(){}
+    }
 
 });

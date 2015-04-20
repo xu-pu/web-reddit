@@ -19,7 +19,17 @@ module.exports = Ember.Component.extend({
         this.send('resize');
     },
 
+    upvoted: function(){
+        return this.get('feed.likes') === true;
+    }.property('feed.likes'),
+
+    downvoted: function(){
+        return this.get('feed.likes') === false;
+    }.property('feed.likes'),
+
     savePending: false,
+
+    votePending: false,
 
     actions: {
 
@@ -42,6 +52,49 @@ module.exports = Ember.Component.extend({
                 .then(function(){
                     _self.set('savePending', false);
                     _self.toggleProperty('feed.saved');
+                }, function(){
+                    _self.set('savePending', false);
+                });
+        },
+
+        toggleVote: function(isUp){
+            if (this.get('votePending')) {
+                return;
+            }
+            var _self = this;
+            var liked = this.get('feed.likes');
+            var vote;
+
+            if (isUp) {
+                if (liked === true) {
+                    vote = 0;
+                }
+                else {
+                    vote = 1;
+                }
+            }
+            else {
+                if (liked === false) {
+                    vote = 0;
+                }
+                else {
+                    vote = -1;
+                }
+            }
+            this.set('votePending', true);
+            this.get('backend')
+                .promiseVote(this.get('feed'), vote)
+                .then(function(){
+                    _self.set('savePending', false);
+                    if (vote === 0) {
+                        _self.set('feed.likes', null);
+                    }
+                    else if (vote === 1) {
+                        _self.set('feed.likes', true);
+                    }
+                    else {
+                        _self.set('feed.likes', false);
+                    }
                 }, function(){
                     _self.set('savePending', false);
                 });

@@ -32,6 +32,7 @@ module.exports = Ember.Controller.extend({
         var clientID = 'WeVdB8YkKe-TJw',
             scopes = [
                 'identity',
+                'vote',
                 'save',
                 'read',
                 'subscribe',
@@ -124,6 +125,9 @@ module.exports = Ember.Controller.extend({
         if (oauth) {
             localStorage.setItem('oauth', JSON.stringify(oauth));
         }
+        else {
+            localStorage.removeItem('oauth');
+        }
     }.observes('oauth'),
 
 
@@ -194,7 +198,8 @@ module.exports = Ember.Controller.extend({
         logout: function(){
             this.setProperties({
                 token: null,
-                model: null
+                oauth: null,
+                profile: null
             });
         }
 
