@@ -85,7 +85,7 @@ module.exports = Ember.Component.extend({
             this.get('backend')
                 .promiseVote(this.get('feed'), vote)
                 .then(function(){
-                    _self.set('savePending', false);
+                    _self.set('votePending', false);
                     if (vote === 0) {
                         _self.set('feed.likes', null);
                     }
@@ -96,7 +96,7 @@ module.exports = Ember.Component.extend({
                         _self.set('feed.likes', false);
                     }
                 }, function(){
-                    _self.set('savePending', false);
+                    _self.set('votePending', false);
                 });
         }
 

@@ -75,6 +75,18 @@ $status-item-size: 60px;
   span { font-weight: bold; }
 }
 
+@mixin icon-blink($name, $from, $to, $speed) {
+  @include keyframes($name) {
+    0% { color: $from }
+    100% { color: $to }
+  };
+  @include animation-name($name);
+  @include animation-duration($speed);
+  @include animation-iteration-count(infinite);
+  @include animation-direction(alternate);
+}
+
+
 .link__upvote {
   background-color: #6EC26E;
 
@@ -83,7 +95,11 @@ $status-item-size: 60px;
     span { color: #6EC26E; }
   }
 
-  &.is-pending {}
+  &.is-pending {
+    span {
+      @include icon-blink(upvote-blink, white, green, 0.3s);
+    }
+  }
 
   &.is-on {
     span { color: green; }
@@ -99,7 +115,11 @@ $status-item-size: 60px;
     span { color: #DA7575; }
   }
 
-  &.is-pending {}
+  &.is-pending {
+    span {
+      @include icon-blink(downvote-blink, white, darkred, 0.3s);
+    }
+  }
 
   &.is-on {
     span { color: darkred; }
@@ -120,7 +140,9 @@ $status-item-size: 60px;
   }
 
   &.is-pending {
-    span { color: whitesmoke; }
+    span {
+      @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
+    }
   }
 
   &.is-on {
