@@ -1,0 +1,132 @@
+@import "compass";
+
+.link__score {
+
+  cursor: pointer;
+  background-color: gray;
+
+  span {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+  }
+}
+
+.link__upvote, .link__downvote, .link__save, .link__reddit, .link__enter {
+
+  cursor: pointer;
+
+  span {
+    font-size: 2em;
+  }
+
+}
+
+.link__status-icon {
+  @include transition(0.5s);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  span { font-weight: bold; }
+}
+
+@mixin icon-blink($name, $from, $to, $speed) {
+  @include keyframes($name) {
+    0% { color: $from }
+    100% { color: $to }
+  };
+  @include animation-name($name);
+  @include animation-duration($speed);
+  @include animation-iteration-count(infinite);
+  @include animation-direction(alternate);
+}
+
+
+.link__upvote {
+  background-color: #6EC26E;
+
+  &:hover {
+    background-color: white;
+    span { color: #6EC26E; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(upvote-blink, white, green, 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: green; }
+  }
+
+}
+
+.link__downvote {
+  background-color: #DA7575;
+
+  &:hover {
+    background-color: white;
+    span { color: #DA7575; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(downvote-blink, white, darkred, 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: darkred; }
+  }
+
+}
+
+.link__score {
+  &:hover {}
+}
+
+.link__save {
+  background-color: #B6B67F;
+
+  &:hover {
+    background-color: #ffffff;
+    span { color: #B6B67F; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: rgb(249, 255, 0); }
+  }
+
+}
+
+.link__reddit {
+  background-color: rgb(87, 87, 87);
+  span { color: white; }
+
+  &:hover {
+    background-color: white;
+    span { color: rgb(87, 87, 87); }
+  }
+
+}
+
+
+.link__enter {
+  background-color: gray;
+  span { color: rgb(231, 231, 231); }
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+    span { color: gray; }
+  }
+
+}

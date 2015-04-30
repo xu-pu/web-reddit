@@ -2,21 +2,28 @@
     {{image-thumbnail feed=feed}}
 {{/if}}
 
-<div class="feed-tile__status-bar">
+<ul class="feed-tile__status-bar">
 
-    <div class="link__status-icon link__score">
-        <span>{{feed.score}}</span>
-    </div>
+    <li class="feet-tile__status-bar__item score">
+        <div class="link__status-icon link__score">
+            <span>{{feed.score}}</span>
+        </div>
+    </li>
 
-    <div class="link__status-icon link__upvote {{if votePending "is-pending"}} {{if upvoted "is-on"}}"  {{action "toggleVote" true}}>
-        <span>&#9650;</span>
-    </div>
+    <li class="feet-tile__status-bar__item upvote">
+        <div class="link__status-icon link__upvote {{if votePending "is-pending"}} {{if upvoted "is-on"}}"  {{action "toggleVote" true}}>
+            <span>&#9650;</span>
+        </div>
+    </li>
 
-    <div class="link__status-icon link__downvote {{if votePending "is-pending"}} {{if downvoted "is-on"}}" {{action "toggleVote" false}}>
-        <span>&#9660;</span>
-    </div>
+    <li class="feet-tile__status-bar__item downvote">
+        <div class="link__status-icon link__downvote {{if votePending "is-pending"}} {{if downvoted "is-on"}}" {{action "toggleVote" false}}>
+            <span>&#9660;</span>
+        </div>
+    </li>
 
-    <div class="link__status-icon link__save {{if savePending "is-pending"}} {{if feed.saved "is-on"}}" {{action "toggleSave"}}>
+    <li class="feet-tile__status-bar__item save">
+        <div class="link__status-icon link__save {{if savePending "is-pending"}} {{if feed.saved "is-on"}}" {{action "toggleSave"}}>
         <span>
             {{#if feed.saved}}
                 &#9733;
@@ -24,17 +31,22 @@
                 &#9734;
             {{/if}}
         </span>
-    </div>
+        </div>
+    </li>
 
-    <a class="link__status-icon link__reddit" target="_blank" href="{{feed.redditLink}}">
-        <span>r</span>
-    </a>
+    <li class="feet-tile__status-bar__item link">
+        <a class="link__status-icon link__reddit" target="_blank" href="{{feed.redditLink}}">
+            <span>r</span>
+        </a>
+    </li>
 
-    <div class="link__status-icon link__enter" {{action "enter"}}>
-        <span>&#10132;</span>
-    </div>
+    <li class="feet-tile__status-bar__item enter">
+        <div class="link__status-icon link__enter" {{action "enter"}}>
+            <span>&#10132;</span>
+        </div>
+    </li>
 
-</div>
+</ul>
 
 <div class="feed-tile__info">
 
