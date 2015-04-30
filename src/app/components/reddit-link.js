@@ -8,7 +8,7 @@ module.exports = Ember.Component.extend({
 
     attributeBindings: ['target', 'href'],
 
-    classNames: ['content-status', 'reddit-link'],
+    classNames: 'reddit-link',
 
     href: Ember.computed.alias('content.redditLink'),
 

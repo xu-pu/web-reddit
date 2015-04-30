@@ -6,7 +6,7 @@ module.exports = Ember.Component.extend({
 
     classNameBindings: ['savePending:is-pending', 'saved:is-on'],
 
-    classNames: ['content-status', 'save-button'],
+    classNames: 'save-button',
 
     backend: Ember.inject.service(),
 

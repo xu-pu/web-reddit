@@ -24,7 +24,7 @@ module.exports = Ember.Component.extend({
 
     classNameBindings: ['isUp:upvote:downvote', 'votePending:is-pending', 'isOn:is-on'],
 
-    classNames: ['content-status', 'vote-button'],
+    classNames: 'vote-button',
 
     backend: Ember.inject.service(),
 

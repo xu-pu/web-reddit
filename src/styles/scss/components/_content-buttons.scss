@@ -28,6 +28,9 @@
 
 }
 
+.vote-button, .save-button, .reddit-link {
+  @extend .content-status;
+}
 
 .save-button {
   background-color: #B6B67F;
