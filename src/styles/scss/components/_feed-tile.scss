@@ -60,3 +60,27 @@ $status-item-size: 60px;
   }
 
 }
+
+.link__score {
+
+  cursor: pointer;
+  background-color: gray;
+
+  span {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+  }
+}
+
+
+.link__enter {
+  background-color: gray;
+  span { color: rgb(231, 231, 231); }
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+    span { color: gray; }
+  }
+
+}

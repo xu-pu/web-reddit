@@ -11,17 +11,6 @@
   @include animation-direction(alternate);
 }
 
-.link__score {
-
-  cursor: pointer;
-  background-color: gray;
-
-  span {
-    color: white;
-    font-size: 2em;
-    font-weight: bold;
-  }
-}
 
 .content-status {
   height: 100%;
@@ -129,12 +118,6 @@
 }
 
 
-
-
-.link__score {
-  &:hover {}
-}
-
 .link__reddit {
   background-color: rgb(87, 87, 87);
   span { color: white; }
@@ -142,18 +125,6 @@
   &:hover {
     background-color: white;
     span { color: rgb(87, 87, 87); }
-  }
-
-}
-
-
-.link__enter {
-  background-color: gray;
-  span { color: rgb(231, 231, 231); }
-
-  &:hover {
-    background-color: rgb(231, 231, 231);
-    span { color: gray; }
   }
 
 }
