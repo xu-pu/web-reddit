@@ -33,7 +33,10 @@
 }
 
 .save-button {
+
   background-color: #B6B67F;
+
+  span { color: white; }
 
   &:hover {
     background-color: #ffffff;
@@ -42,7 +45,7 @@
 
   &.is-pending {
     span {
- //     @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
+      //@include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
     }
   }
 
@@ -52,8 +55,12 @@
 
 }
 
+.vote-button {
+  span { color: white; }
+}
 
 .vote-button.upvote {
+
   background-color: #6EC26E;
 
   &:hover {
@@ -74,6 +81,7 @@
 }
 
 .vote-button.downvote {
+
   background-color: #DA7575;
 
   &:hover {
@@ -95,6 +103,7 @@
 
 
 .reddit-link {
+
   background-color: rgb(87, 87, 87);
   span { color: white; }
 
