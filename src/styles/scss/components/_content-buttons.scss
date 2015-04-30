@@ -42,7 +42,7 @@
 
   &.is-pending {
     span {
-      @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
+ //     @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
     }
   }
 
