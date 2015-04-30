@@ -19,18 +19,18 @@ App.BackendService = require('./services/Backend.js');
 // Components
 //============================
 
-App.FeedGridComponent = require('./components/FeedGrid.js');
-App.FeedTileComponent = require('./components/FeedTile.js');
-App.ImageThumbnailComponent = require('./components/ImageThumbnail.js');
+App.FeedGridComponent = require('./components/feed-grid.js');
+App.FeedTileComponent = require('./components/feed-tile.js');
+App.ImageThumbnailComponent = require('./components/image-thumbnail.js');
 App.SubredditWindowComponent = Ember.Component.extend({
     orders: ['hot', 'top', 'new', 'controversial']
 });
-App.SubredditOrderTabComponent = require('./components/SubredditOrderTab.js');
-App.CommentTreeComponent = require('./components/CommentTree.js');
-App.CommentLeafComponent = require('./components/CommentLeaf.js');
-App.FeedListComponent = require('./components/FeedList.js');
-App.FeedListItemComponent = require('./components/FeedListItem.js');
-App.LinkDetailComponent = require('./components/LinkDetail.js');
+App.SubredditOrderTabComponent = require('./components/subreddit-order-tab.js');
+App.CommentTreeComponent = require('./components/comment-tree.js');
+App.CommentLeafComponent = require('./components/comment-leaf.js');
+App.FeedListComponent = require('./components/feed-list.js');
+App.FeedListItemComponent = require('./components/feed-list-item.js');
+App.LinkDetailComponent = require('./components/link-detail.js');
 App.ExpansionWindowComponent = require('./components/expansion-window.js');
 
 App.VoteButtonComponent = require('./components/vote-button.js');
