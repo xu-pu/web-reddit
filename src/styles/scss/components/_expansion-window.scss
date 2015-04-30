@@ -33,15 +33,16 @@
   left: $gap;
   height: $size;
   width: $size;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
   display: flex;
   @include align-items(center);
   @include justify-content(center);
 
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
+
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
   }
 
 
