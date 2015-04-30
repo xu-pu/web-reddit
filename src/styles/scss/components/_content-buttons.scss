@@ -91,6 +91,16 @@
 }
 
 
+.reddit-link {
+  background-color: rgb(87, 87, 87);
+  span { color: white; }
+
+  &:hover {
+    background-color: white;
+    span { color: rgb(87, 87, 87); }
+  }
+
+}
 
 
 //============================
@@ -115,16 +125,4 @@
   @include justify-content(center);
   @include align-items(center);
   span { font-weight: bold; }
-}
-
-
-.link__reddit {
-  background-color: rgb(87, 87, 87);
-  span { color: white; }
-
-  &:hover {
-    background-color: white;
-    span { color: rgb(87, 87, 87); }
-  }
-
 }

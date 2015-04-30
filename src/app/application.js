@@ -35,7 +35,7 @@ App.ExpansionWindowComponent = require('./components/expansion-window.js');
 
 App.VoteButtonComponent = require('./components/vote-button.js');
 App.SaveButtonComponent = require('./components/save-botton.js');
-//App.RedditLinkComponent = require('./components/reddit-link.js');
+App.RedditLinkComponent = require('./components/reddit-link.js');
 
 //============================
 // Resource Controllers
