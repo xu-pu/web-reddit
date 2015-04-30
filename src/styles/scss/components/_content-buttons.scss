@@ -1,5 +1,16 @@
 @import "compass";
 
+@mixin icon-blink($name, $from, $to, $speed) {
+  @include keyframes($name) {
+    0% { color: $from }
+    100% { color: $to }
+  };
+  @include animation-name($name);
+  @include animation-duration($speed);
+  @include animation-iteration-count(infinite);
+  @include animation-direction(alternate);
+}
+
 .link__score {
 
   cursor: pointer;
@@ -11,6 +22,49 @@
     font-weight: bold;
   }
 }
+
+.content-status {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include transition(0.5s);
+
+  span {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+}
+
+
+.save-button {
+  background-color: #B6B67F;
+
+  &:hover {
+    background-color: #ffffff;
+    span { color: #B6B67F; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: rgb(249, 255, 0); }
+  }
+
+}
+
+
+
+//============================
+// old
+//============================
 
 .link__upvote, .link__downvote, .link__save, .link__reddit, .link__enter {
 
@@ -32,16 +86,6 @@
   span { font-weight: bold; }
 }
 
-@mixin icon-blink($name, $from, $to, $speed) {
-  @include keyframes($name) {
-    0% { color: $from }
-    100% { color: $to }
-  };
-  @include animation-name($name);
-  @include animation-duration($speed);
-  @include animation-iteration-count(infinite);
-  @include animation-direction(alternate);
-}
 
 
 .link__upvote {
@@ -86,26 +130,6 @@
 
 .link__score {
   &:hover {}
-}
-
-.link__save {
-  background-color: #B6B67F;
-
-  &:hover {
-    background-color: #ffffff;
-    span { color: #B6B67F; }
-  }
-
-  &.is-pending {
-    span {
-      @include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
-    }
-  }
-
-  &.is-on {
-    span { color: rgb(249, 255, 0); }
-  }
-
 }
 
 .link__reddit {

@@ -23,15 +23,7 @@
     </li>
 
     <li class="feet-tile__status-bar__item save">
-        <div class="link__status-icon link__save {{if savePending "is-pending"}} {{if feed.saved "is-on"}}" {{action "toggleSave"}}>
-        <span>
-            {{#if feed.saved}}
-                &#9733;
-            {{else}}
-                &#9734;
-            {{/if}}
-        </span>
-        </div>
+        {{save-button content=feed}}
     </li>
 
     <li class="feet-tile__status-bar__item link">
