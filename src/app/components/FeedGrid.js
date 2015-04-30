@@ -40,7 +40,7 @@ module.exports = Ember.Component.extend({
 
     reorganize: function(){
         jQuery('.js__grid-tile').wookmark({
-            container: jQuery('ul', this.get('element')),
+            container: jQuery('.js__feed-grid', this.get('element')),
             align: 'center',
             offset: 15
         });
