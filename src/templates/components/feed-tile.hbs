@@ -11,15 +11,11 @@
     </li>
 
     <li class="feet-tile__status-bar__item upvote">
-        <div class="link__status-icon link__upvote {{if votePending "is-pending"}} {{if upvoted "is-on"}}"  {{action "toggleVote" true}}>
-            <span>&#9650;</span>
-        </div>
+        {{vote-button content=feed isUp=true}}
     </li>
 
     <li class="feet-tile__status-bar__item downvote">
-        <div class="link__status-icon link__downvote {{if votePending "is-pending"}} {{if downvoted "is-on"}}" {{action "toggleVote" false}}>
-            <span>&#9660;</span>
-        </div>
+        {{vote-button content=feed isUp=false}}
     </li>
 
     <li class="feet-tile__status-bar__item save">

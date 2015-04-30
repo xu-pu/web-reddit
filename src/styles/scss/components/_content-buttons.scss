@@ -61,6 +61,48 @@
 }
 
 
+.vote-button.upvote {
+  background-color: #6EC26E;
+
+  &:hover {
+    background-color: white;
+    span { color: #6EC26E; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(upvote-blink, white, green, 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: green; }
+  }
+
+}
+
+.vote-button.downvote {
+  background-color: #DA7575;
+
+  &:hover {
+    background-color: white;
+    span { color: #DA7575; }
+  }
+
+  &.is-pending {
+    span {
+      @include icon-blink(downvote-blink, white, darkred, 0.3s);
+    }
+  }
+
+  &.is-on {
+    span { color: darkred; }
+  }
+
+}
+
+
+
 
 //============================
 // old
@@ -88,45 +130,6 @@
 
 
 
-.link__upvote {
-  background-color: #6EC26E;
-
-  &:hover {
-    background-color: white;
-    span { color: #6EC26E; }
-  }
-
-  &.is-pending {
-    span {
-      @include icon-blink(upvote-blink, white, green, 0.3s);
-    }
-  }
-
-  &.is-on {
-    span { color: green; }
-  }
-
-}
-
-.link__downvote {
-  background-color: #DA7575;
-
-  &:hover {
-    background-color: white;
-    span { color: #DA7575; }
-  }
-
-  &.is-pending {
-    span {
-      @include icon-blink(downvote-blink, white, darkred, 0.3s);
-    }
-  }
-
-  &.is-on {
-    span { color: darkred; }
-  }
-
-}
 
 .link__score {
   &:hover {}
