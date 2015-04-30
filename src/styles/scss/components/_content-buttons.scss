@@ -101,28 +101,3 @@
   }
 
 }
-
-
-//============================
-// old
-//============================
-
-.link__upvote, .link__downvote, .link__save, .link__reddit, .link__enter {
-
-  cursor: pointer;
-
-  span {
-    font-size: 2em;
-  }
-
-}
-
-.link__status-icon {
-  @include transition(0.5s);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  @include justify-content(center);
-  @include align-items(center);
-  span { font-weight: bold; }
-}

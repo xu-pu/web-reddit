@@ -61,7 +61,9 @@ $status-item-size: 60px;
 
 }
 
-.link__score {
+.feet-tile__status-bar__score {
+
+  @extend .content-status;
 
   cursor: pointer;
   background-color: gray;
@@ -74,7 +76,10 @@ $status-item-size: 60px;
 }
 
 
-.link__enter {
+.feet-tile__status-bar__enter {
+
+  @extend .content-status;
+
   background-color: gray;
   span { color: rgb(231, 231, 231); }
 
