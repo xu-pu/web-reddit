@@ -2,8 +2,8 @@
 
 @mixin icon-blink($name, $from, $to, $speed) {
   @include keyframes($name) {
-    0% { color: $from }
-    100% { color: $to }
+    0% { background-color: $from }
+    100% { background-color: $to }
   };
   @include animation-name($name);
   @include animation-duration($speed);
@@ -44,9 +44,7 @@
   }
 
   &.is-pending {
-    span {
-      //@include icon-blink(save-blink, white, rgb(249, 255, 0), 0.3s);
-    }
+    @include icon-blink(save-blink, #B6B67F, rgb(249, 255, 0), 0.3s);
   }
 
   &.is-on {
@@ -69,9 +67,7 @@
   }
 
   &.is-pending {
-    span {
-      @include icon-blink(upvote-blink, white, green, 0.3s);
-    }
+    @include icon-blink(upvote-blink, #6EC26E, green, 0.3s);
   }
 
   &.is-on {
@@ -90,9 +86,7 @@
   }
 
   &.is-pending {
-    span {
-      @include icon-blink(downvote-blink, white, darkred, 0.3s);
-    }
+    @include icon-blink(downvote-blink, #DA7575, darkred, 0.3s);
   }
 
   &.is-on {
