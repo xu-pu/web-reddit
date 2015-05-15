@@ -1,11 +1,26 @@
-<ul>
-{{#each subreddit in subscribed.list}}
-    {{#link-to 'subreddit' subreddit.display_name}}
-        <li>
-            <h1>{{subreddit.display_name}}</h1>
-            <h2>{{subreddit.title}}</h2>
-            <p>{{subreddit.description}}</p>
-        </li>
-    {{/link-to}}
-{{/each}}
-</ul>
+<div class="home__subscription-container">
+
+    <ul class="home__subscription-list">
+        {{#each subreddit in subscribed.list}}
+            <li class="home__subscription-item">
+                {{#link-to 'subreddit' subreddit.display_name}}
+                    <h1>{{subreddit.display_name}}</h1>
+                {{/link-to}}
+                <div>{{subreddit.title}}</div>
+            </li>
+        {{/each}}
+    </ul>
+
+    {{#if subscribed.isEnd}}
+        <div>This is the end</div>
+    {{else}}
+        {{#if subscribed.isLoading}}
+            <div>loading</div>
+        {{else}}
+            <div {{action 'more'}}>more</div>
+        {{/if}}
+    {{/if}}
+
+
+
+</div>

@@ -11,6 +11,12 @@ module.exports = Ember.Controller.extend({
             backend: this.get('backend'),
             url: '/subreddits/mine/subscriber'
         });
-    }.property()
+    }.property(),
+
+    actions: {
+        more: function(){
+            this.get('subscribed').more();
+        }
+    }
 
 });
