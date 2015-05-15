@@ -25,8 +25,6 @@ module.exports = Ember.Controller.extend({
 
     loginURL: null,
 
-    popup: null,
-
     resume: function(){
 
         var clientID = 'WeVdB8YkKe-TJw',
@@ -126,35 +124,6 @@ module.exports = Ember.Controller.extend({
 
 
     actions: {
-
-        closePopup: function(){
-            var popup = this.get('popup');
-            if (popup) {
-                popup.close();
-                this.set('popup', null);
-            }
-        },
-
-        loginPopup: function(){
-
-            if (this.get('popup')) return;
-
-            var _self = this,
-                handle = window.open(this.get('loginURL'), '_blank');
-
-            if (!handle) return;
-
-            this.set('popup', handle);
-
-            var timer = setInterval(function(){
-                if (handle.closed) {
-                    clearInterval(timer);
-                    _self.set('popup', null);
-                    _self.send('login');
-                }
-            }, 500);
-
-        },
 
         login: function(){
 

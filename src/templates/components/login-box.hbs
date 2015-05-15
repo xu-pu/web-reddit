@@ -6,14 +6,14 @@
     <div id="sidebar__account__fetching" class="sidebar__account">
         <h1>Fetching Reddit API credentials</h1>
     </div>
-{{else if account.popup}}
+{{else if popup}}
     <div id="sidebar__account__popup" class="sidebar__account">
         <h1>Please finish login in the pupup window</h1>
-        <div {{action "closePopup" target=account}}>&#10060;</div>
+        <div {{action "closePopup"}}>&#10060;</div>
     </div>
 {{else}}
     <div id="sidebar__account__login" class="sidebar__account">
         <h1>You are not logged in</h1>
-        <div {{action "loginPopup" target=account}}>&#10132;</div>
+        <div {{action "loginPopup"}}>&#10132;</div>
     </div>
 {{/if}}
