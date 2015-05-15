@@ -40,29 +40,25 @@
                 </ul>
             </div>
         {{else}}
-            {{#if account.isFetchingProfile}}
-                <div id="sidebar__account__fetching" class="sidebar__account">
-                    <h1>Fetching your profile</h1>
-                </div>
-            {{else}}
-                {{#if account.isFetchingToken}}
-                    <div id="sidebar__account__fetching" class="sidebar__account">
-                        <h1>Fetching Reddit API credentials</h1>
-                    </div>
-                {{else}}
-                    {{#if account.popup}}
+                {{#if account.isResuming}}
+                        <div id="sidebar__account__fetching" class="sidebar__account">
+                            <h1>Fetching your profile</h1>
+                        </div>
+                {{else if account.isAuthenticating}}
+                        <div id="sidebar__account__fetching" class="sidebar__account">
+                            <h1>Fetching Reddit API credentials</h1>
+                        </div>
+                {{else if account.popup}}
                         <div id="sidebar__account__popup" class="sidebar__account">
                             <h1>Please finish login in the pupup window</h1>
                             <div {{action "closePopup" target=account}}>&#10060;</div>
                         </div>
-                    {{else}}
+                {{else}}
                         <div id="sidebar__account__login" class="sidebar__account">
                             <h1>You are not logged in</h1>
                             <div {{action "loginPopup" target=account}}>&#10132;</div>
                         </div>
-                    {{/if}}
                 {{/if}}
-            {{/if}}
         {{/if}}
 
     </div>

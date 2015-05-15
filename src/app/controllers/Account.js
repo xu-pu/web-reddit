@@ -9,9 +9,9 @@ module.exports = Ember.Controller.extend({
 
     backend: Ember.inject.service(),
 
-    isFetchingProfile: false,
+    isResuming: false,
 
-    isFetchingToken: false,
+    isAuthenticating: false,
 
     token: Ember.computed.alias('backend.token'),
 
@@ -54,7 +54,12 @@ module.exports = Ember.Controller.extend({
             loginURL: url
         });
 
-        this.promiseResume();
+        var oauthStr = localStorage.getItem('oauth');
+
+        if (oauthStr) {
+            this.set('oauth', JSON.parse(oauthStr));
+            this.promiseResume();
+        }
 
     }.on('init'),
 
@@ -65,22 +70,15 @@ module.exports = Ember.Controller.extend({
         if (this.promised) return this.promised;
 
         var _self = this,
-            oauthStr = localStorage.getItem('oauth'),
-            oauth;
+            oauth = this.get('oauth');
 
-        if (oauthStr) {
-            oauth = JSON.parse(oauthStr);
-            this.set('oauth', oauth);
-        }
-        else {
-            return Promise.reject();
-        }
+        if (!oauth) { return Promise.reject(); }
+
+        this.set('isResuming', true);
 
         this.promised = Promise.resolve()
             .then(function(){
                 // refresh token
-                _self.set('isRefreshingToken', true);
-                //console.log('refresh');
                 return jQuery.ajax('/refresh_token', {
                     method: 'POST',
                     data: {
@@ -90,18 +88,15 @@ module.exports = Ember.Controller.extend({
                 });
             }, failureHandler)
             .then(function(resp){
-                //console.log('refreshed');
                 // token refreshed, resume profile
                 var token = resp['access_token'];
                 _self.set('token', token);
-                _self.set('isRefreshingToken', false);
-                _self.set('isFetchingProfile', true);
                 return jQuery.ajax('/reddit/api/v1/me', { headers: { Authorization: 'bearer ' + token } });
             }, failureHandler)
             .then(function(data){
                // profile resumed
                 _self.setProperties({
-                    isFetchingProfile: false,
+                    isResuming: false,
                     profile: Profile.create(data)
                 });
             });
@@ -111,8 +106,7 @@ module.exports = Ember.Controller.extend({
         function failureHandler(e){
             console.log(e);
             _self.setProperties({
-                isFetchingProfile: false,
-                isRefreshingToken: false
+                isResuming: false
             });
             delete _self.promised;
         }
@@ -168,7 +162,7 @@ module.exports = Ember.Controller.extend({
                 MAX_TRIALS = 20,
                 counter = 0;
 
-            _self.set('isFetchingToken', true);
+            _self.set('isAuthenticating', true);
 
             attempt();
 
@@ -177,7 +171,7 @@ module.exports = Ember.Controller.extend({
                     .then(
                     function(data){
                         _self.setProperties({
-                            isFetchingToken: false,
+                            isAuthenticating: false,
                             oauth: data
                         });
                         _self.promiseResume();
@@ -188,7 +182,7 @@ module.exports = Ember.Controller.extend({
                             setTimeout(function(){ attempt(); }, 1000);
                         }
                         else {
-                            _self.set('isFetchingToken', false);
+                            _self.set('isAuthenticating', false);
                         }
                     });
             }
