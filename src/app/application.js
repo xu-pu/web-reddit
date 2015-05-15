@@ -32,10 +32,10 @@ App.FeedListComponent = require('./components/feed-list.js');
 App.FeedListItemComponent = require('./components/feed-list-item.js');
 App.LinkDetailComponent = require('./components/link-detail.js');
 App.ExpansionWindowComponent = require('./components/expansion-window.js');
-
 App.VoteButtonComponent = require('./components/vote-button.js');
 App.SaveButtonComponent = require('./components/save-botton.js');
 App.RedditLinkComponent = require('./components/reddit-link.js');
+App.LoginBoxComponent = require('./components/login-box.js');
 
 //============================
 // Resource Controllers
