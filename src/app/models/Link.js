@@ -5,10 +5,20 @@ var urlUtils = require('url');
 var settings = require('../settings.js'),
     TYPES = settings.CONTENT_TYPES;
 
+var imagePattern = /.(jpg)|(jpeg)|(gif)|(png)$/,
+    imgurPattern = /imgur\.com/;
+var albumPattern = /^\/a\/(.*)\/?$/;
+var galleryPattern = /^\/(?:gallery\/)(.*)\/?$/;
+var singlePattern = /^\/(.*)\/?$/;
+
 module.exports = Ember.Object.extend({
 
+    image: null,
+
+    imgurEmbedUrl: null,
+
     isImage: function () {
-        return this.get('hasFull') || this.get('hasThumbnail');
+        return this.get('image') || this.get('hasThumbnail');
     }.property('hasThumbnail', 'hasFull'),
 
     hasThumbnail: function () {
@@ -16,43 +26,64 @@ module.exports = Ember.Object.extend({
         return !!thumb && thumb != 'self' && thumb != 'default' && thumb != 'nsfw';
     }.property('thumbnail'),
 
-    hasFull: function () {
-        var url = this.get('url');
-        return url && url.match(/.(jpg)|(jpeg)|(gif)|(png)$/);
-    }.property('url'),
-
     redditLink: function () {
         return 'https://www.reddit.com' + this.get('permalink');
     }.property('permalink'),
-
-    backgroundStyle: function () {
-        if (this.get('hasThumbnail')) {
-            return 'background-image: url(' + this.get('thumbnail') + ')';
-        }
-    }.property('hasThumbnail', 'thumbnail'),
 
     fullname: function(){
         return TYPES.LINK + '_' + this.get('id');
     }.property('id'),
 
-    isImgur: function(){
-        return !!this.get('url').match(/imgur\.com/);
-    }.property('url'),
-
-    imgurEmbedUrl: function(){
-        if (!this.get('isImgur')) { return; }
+    analyzeUrl: function(){
 
         var url = this.get('url');
+
+        if (url && url.match(imagePattern)) {
+            this.set('image', url);
+            return;
+        }
+
+        if (!url.match(imgurPattern)) {
+            return;
+        }
+
+        var _self = this;
         var parsed = urlUtils.parse(url);
         var path = parsed.pathname;
-        if (!!path.match(/\/$/)) {
-            parsed.pathname = path + 'embed';
-        }
-        else {
-            parsed.pathname = path + '/embed';
-        }
-        return urlUtils.format(parsed);
+        var match, id;
 
-    }.property('isImgur', 'url')
+        match = path.match(galleryPattern);
+        if (match) {
+            id = match[1];
+            jQuery
+                .getJSON('/imgur/image/'+id)
+                .then(function(data){
+                    _self.set('image', data.data.link);
+                }, function(){
+                    parsed.pathname = '/a/'+id+'/embed';
+                    _self.set('imgurEmbedUrl', urlUtils.format(parsed));
+                });
+            return;
+        }
+
+        match = path.match(albumPattern);
+        if (match) {
+            id = match[1];
+            parsed.pathname = '/a/'+id+'/embed';
+            this.set('imgurEmbedUrl', urlUtils.format(parsed));
+            return;
+        }
+
+        match = path.match(singlePattern);
+        if (match) {
+            id = match[1];
+            jQuery
+                .getJSON('/imgur/image/'+id)
+                .then(function(data){
+                    _self.set('image', data.data.link);
+                });
+        }
+
+    }.on('init')
 
 });

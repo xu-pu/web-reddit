@@ -2,6 +2,8 @@
 
 module.exports = Ember.Component.extend({
 
+    feed: null, //need
+
     tagName: 'div',
 
     classNames: ['thumbnail-container'],
@@ -10,7 +12,7 @@ module.exports = Ember.Component.extend({
 
     thumbnail: Ember.computed.alias('feed.thumbnail'),
 
-    url: Ember.computed.alias('feed.url'),
+    url: Ember.computed.alias('feed.image'),
 
     $thumbnail: null,
 
@@ -20,8 +22,7 @@ module.exports = Ember.Component.extend({
 
     fullsizeReady: false,
 
-    initDownload: function(){
-
+    initThumbnail: function(){
         var _self = this;
 
         if (this.get('feed.hasThumbnail')) {
@@ -36,8 +37,12 @@ module.exports = Ember.Component.extend({
                 });
             this.set('$thumbnail', $thumbnail);
         }
+    }.observes('thumbnail'),
 
-        if (this.get('feed.hasFull')) {
+    initFullsize: function(){
+        var _self = this;
+
+        if (this.get('url')) {
             var fullsize = document.createElement('img');
             var $fullsize = jQuery(fullsize);
             fullsize.src = this.get('url');
@@ -49,7 +54,20 @@ module.exports = Ember.Component.extend({
                 });
             this.set('$fullsize', $fullsize);
         }
+    }.observes('url'),
 
+    onFeedChange: function(){
+        this.setProperties({
+            $thumbnail: null,
+            $fullsize: null,
+            thumbnailReady: false,
+            fullsizeReady: false
+        });
+    }.on('feed'),
+
+    initElement: function(){
+        this.initThumbnail();
+        this.initFullsize();
     }.on('didInsertElement'),
 
     onThumbnailReady: function(){

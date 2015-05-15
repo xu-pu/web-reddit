@@ -1,7 +1,7 @@
-{{#if link.hasFull}}
-    <img src="{{link.url}}">
+{{#if link.image}}
+    <img src="{{link.image}}">
 {{else}}
-    {{#if link.isImgur}}
+    {{#if link.imgurEmbedUrl}}
         <iframe class="link-detail__imgur-embed" frameborder="0" src="{{link.imgurEmbedUrl}}"></iframe>
     {{/if}}
 {{/if}}
