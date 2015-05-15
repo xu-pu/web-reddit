@@ -52,5 +52,6 @@ App.ApplicationController = require('./controllers/Application.js');
 App.SubredditController = require('./controllers/Subreddit.js');
 App.SubredditPostController = require('./controllers/SubredditPost.js');
 App.MineController = require('./controllers/Mine.js');
+App.HomeController = require('./controllers/home.js');
 
 setupRoutes(App);

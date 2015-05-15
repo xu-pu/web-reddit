@@ -9,6 +9,7 @@ module.exports = function(App){
 
     App.Router.map(function() {
         this.route('welcome');
+        this.route('home');
         this.route('subreddit', { path: '/r/:name' }, function(){
             this.route('post', { path: '/:post'});
         });
@@ -28,6 +29,18 @@ module.exports = function(App){
     });
 
     App.IndexRoute = Ember.Route.extend();
+
+    App.HomeRoute = Ember.Route.extend({
+
+        beforeModel: function(){
+            return this.controllerFor('account').promiseResume();
+        },
+
+        afterModel: function(){
+            this.controllerFor('application').set('isFullscreen', false);
+        }
+
+    });
 
     App.WelcomeRoute = Ember.Route.extend();
 

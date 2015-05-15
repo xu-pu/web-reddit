@@ -1,0 +1,11 @@
+<ul>
+{{#each subreddit in subscribed.list}}
+    {{#link-to 'subreddit' subreddit.display_name}}
+        <li>
+            <h1>{{subreddit.display_name}}</h1>
+            <h2>{{subreddit.title}}</h2>
+            <p>{{subreddit.description}}</p>
+        </li>
+    {{/link-to}}
+{{/each}}
+</ul>

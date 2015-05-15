@@ -6,9 +6,9 @@ module.exports = Ember.Object.extend({
 
     list: null,
 
-    backend: null,
+    backend: null, // need
 
-    url: null,
+    url: null, // need
 
     before: null,
 

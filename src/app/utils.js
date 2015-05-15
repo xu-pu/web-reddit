@@ -4,6 +4,7 @@ var _ = require('underscore');
 
 var Link = require('./models/Link.js'),
     Comment = require('./models/Comment.js'),
+    Subreddit = require('./models/content-subreddit.js'),
     settings = require('./settings.js'),
     TYPES = settings.CONTENT_TYPES;
 
@@ -17,6 +18,9 @@ exports.convertRedditThing = function(thing){
             break;
         case TYPES.COMMENT:
             ThingType = Comment;
+            break;
+        case TYPES.SUBREDDIT:
+            ThingType = Subreddit;
             break;
         default:
             throw 'Invalid reddit thing type';
