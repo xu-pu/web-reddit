@@ -23,12 +23,12 @@
     <div class="sidebar__account-container">
 
         {{#if account.profile}}
-            {{#link-to 'home'}}
-                <div id="sidebar__account__profile" class="sidebar__account">
+            <div id="sidebar__account__profile" class="sidebar__account">
+                {{#link-to 'home'}}
                     <h1>{{account.profile.name}}</h1>
-                    <div {{action "logout" target=account}}>&#10060;</div>
-                </div>
-            {{/link-to}}
+                {{/link-to}}
+                <div {{action "delete" target=account}}>&#10060;</div>
+            </div>
             <div class="sidebar__profile-container">
                 <ul>
                     {{#link-to "mine" "overview"}}<li>Overview</li>{{/link-to}}

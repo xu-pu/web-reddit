@@ -1,19 +1,19 @@
 {{#if account.isResuming}}
     <div id="sidebar__account__fetching" class="sidebar__account">
-        <h1>Fetching your profile</h1>
+        <h1>Fetching Profile</h1>
     </div>
 {{else if account.isAuthenticating}}
     <div id="sidebar__account__fetching" class="sidebar__account">
-        <h1>Fetching Reddit API credentials</h1>
+        <h1>Fetching Credentials</h1>
     </div>
 {{else if popup}}
     <div id="sidebar__account__popup" class="sidebar__account">
-        <h1>Please finish login in the pupup window</h1>
+        <h1>Popup</h1>
         <div {{action "closePopup"}}>&#10060;</div>
     </div>
 {{else}}
     <div id="sidebar__account__login" class="sidebar__account">
-        <h1>You are not logged in</h1>
+        <h1>Login</h1>
         <div {{action "loginPopup"}}>&#10132;</div>
     </div>
 {{/if}}

@@ -59,48 +59,46 @@
   padding-right: 0;
 }
 
-.sidebar__account {
+#sidebar__account__profile, .sidebar__account {
+
+  $height: 4em;
   background-color: gray;
   position: relative;
-  display: flex;
-  height: 4em;
+  height: $height;
   width: 100%;
   padding: 0.5em;
   box-sizing: border-box;
 
-  > h1 {
-    @include flex(5 0 0);
+  h1 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: $height;
     display: flex;
     @include justify-content(center);
     @include align-items(center);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    //font-size: 1.5em;
+    color: rgb(42, 42, 42);
+    font-family: Montserrat;
+
   }
 
   > div {
+    position: absolute;
+    height: $height;
+    width: $height;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
     cursor: pointer;
-    @include flex(1 0 0);
-    background-color: red;
     display: flex;
     @include justify-content(center);
     @include align-items(center);
     font-weight: bold;
     text-transform: uppercase;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-}
-
-#sidebar__account__profile {
-
-  > h1 {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 1.5em;
-    color: rgb(42, 42, 42);
-    font-family: Montserrat;
-  }
-
-  > div {
     background-color: darkred;
     color: red;
   }

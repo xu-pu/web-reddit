@@ -33,9 +33,7 @@ module.exports = Ember.Controller.extend({
                 'vote',
                 'save',
                 'read',
-                'subscribe',
-                'mysubreddits',
-                'history'
+                'mysubreddits'
             ].join(','),
             callbackURL = 'http://reddit.localhost/api/oauth/callback',
             uuid = utils.getRandomString(30),
@@ -156,6 +154,12 @@ module.exports = Ember.Controller.extend({
                     });
             }
 
+        },
+
+        'delete': function(){
+            if (confirm('Do you want to logout?')) {
+                this.send('logout');
+            }
         },
 
         logout: function(){
