@@ -21,9 +21,18 @@ module.exports = function(App){
     App.ApplicationRoute = Ember.Route.extend({
 
         actions: {
+
             toggleFullscreen: function(){
                 this.controllerFor('application').toggleProperty('isFullscreen');
+            },
+
+            error: function(e, transition){
+                if (transition) {
+                    transition.abort();
+                    this.transitionTo('subreddit', 'pics');
+                }
             }
+
         }
 
     });
@@ -59,6 +68,14 @@ module.exports = function(App){
             return {
                 name: model
             };
+        },
+
+        actions: {
+            error: function(e, transition){
+                if (transition) {
+                    transition.abort();
+                }
+            }
         }
 
     });
