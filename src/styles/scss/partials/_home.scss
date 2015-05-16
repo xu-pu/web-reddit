@@ -1,9 +1,17 @@
 @import "compass";
 
-.home__subscription-container {
+.home__container {
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+
+.home__body {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 4em;
+  box-sizing: border-box;
 }
 
 .home__subscription-list {

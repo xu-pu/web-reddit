@@ -1,0 +1,33 @@
+@import "compass";
+
+.listing-loader {
+
+  @include transition(0.5s);
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  width: 100%;
+  cursor: pointer;
+  background-color: #212022;
+
+  > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+
+  span {
+    color: gray;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  &:hover {
+    background-color: gray;
+    span { color: #212022; }
+  }
+
+}

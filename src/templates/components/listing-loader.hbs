@@ -1,0 +1,15 @@
+{{#if listing.isEnd}}
+    <div>
+        <span>This is the end</span>
+    </div>
+{{else}}
+    {{#if listing.isLoading}}
+        <div>
+            <span>loading</span>
+        </div>
+    {{else}}
+        <div {{action 'more'}}>
+            <span>more</span>
+        </div>
+    {{/if}}
+{{/if}}

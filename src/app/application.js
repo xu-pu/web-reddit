@@ -37,6 +37,8 @@ App.SaveButtonComponent = require('./components/save-botton.js');
 App.RedditLinkComponent = require('./components/reddit-link.js');
 App.LoginBoxComponent = require('./components/login-box.js');
 
+App.ListingLoaderComponent = require('./components/listing-loader.js');
+
 //============================
 // Resource Controllers
 //============================

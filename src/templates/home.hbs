@@ -1,30 +1,21 @@
-<div class="home__subscription-container">
+<div class="home__container">
+    <div class="home__body">
+        <ul class="home__subscription-list">
+            {{#each subreddit in subscribed.list}}
+                <li>
+                    <div class="home__subscription-item" style="background-image: url('{{subreddit.header_img}}')">
+                        {{#link-to 'subreddit' subreddit.display_name}}
+                            <h1>{{subreddit.display_name}}</h1>
+                        {{/link-to}}
+                        {{#unless subreddit.header_img}}
+                            <div>{{subreddit.title}}</div>
+                        {{/unless}}
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
 
-    <ul class="home__subscription-list">
-        {{#each subreddit in subscribed.list}}
-            <li>
-                <div class="home__subscription-item" style="background-image: url('{{subreddit.header_img}}')">
-                    {{#link-to 'subreddit' subreddit.display_name}}
-                        <h1>{{subreddit.display_name}}</h1>
-                    {{/link-to}}
-                    {{#unless subreddit.header_img}}
-                        <div>{{subreddit.title}}</div>
-                    {{/unless}}
-                </div>
-            </li>
-        {{/each}}
-    </ul>
+        {{listing-loader listing=subscribed}}
 
-    {{#if subscribed.isEnd}}
-        <div>This is the end</div>
-    {{else}}
-        {{#if subscribed.isLoading}}
-            <div>loading</div>
-        {{else}}
-            <div {{action 'more'}}>more</div>
-        {{/if}}
-    {{/if}}
-
-
-
+    </div>
 </div>
