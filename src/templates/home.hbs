@@ -2,11 +2,13 @@
 
     <ul class="home__subscription-list">
         {{#each subreddit in subscribed.list}}
-            <li class="home__subscription-item">
-                {{#link-to 'subreddit' subreddit.display_name}}
-                    <h1>{{subreddit.display_name}}</h1>
-                {{/link-to}}
-                <div>{{subreddit.title}}</div>
+            <li>
+                <div class="home__subscription-item">
+                    {{#link-to 'subreddit' subreddit.display_name}}
+                        <h1>{{subreddit.display_name}}</h1>
+                    {{/link-to}}
+                    <div>{{subreddit.title}}</div>
+                </div>
             </li>
         {{/each}}
     </ul>

@@ -5,7 +5,7 @@ var urlUtils = require('url');
 var settings = require('../settings.js'),
     TYPES = settings.CONTENT_TYPES;
 
-var imagePattern = /\.(jpg)|(jpeg)|(gif)|(png)\?(.*)$/,
+var imagePattern = /\.(jpg)|(jpeg)|(gif)|(png)|(webm)\?(.*)$/,
     imgurPattern = /imgur\.com/;
 var albumPattern = /^\/a\/(.*)\/?$/;
 var galleryPattern = /^\/(?:gallery\/)(.*)\/?$/;
