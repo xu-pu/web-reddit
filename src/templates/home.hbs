@@ -3,11 +3,13 @@
     <ul class="home__subscription-list">
         {{#each subreddit in subscribed.list}}
             <li>
-                <div class="home__subscription-item">
+                <div class="home__subscription-item" style="background-image: url('{{subreddit.header_img}}')">
                     {{#link-to 'subreddit' subreddit.display_name}}
                         <h1>{{subreddit.display_name}}</h1>
                     {{/link-to}}
-                    <div>{{subreddit.title}}</div>
+                    {{#unless subreddit.header_img}}
+                        <div>{{subreddit.title}}</div>
+                    {{/unless}}
                 </div>
             </li>
         {{/each}}
