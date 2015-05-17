@@ -33,6 +33,7 @@ module.exports = Ember.Controller.extend({
                 'vote',
                 'save',
                 'read',
+                'history',
                 'mysubreddits'
             ].join(','),
             callbackURL = 'http://reddit.localhost/api/oauth/callback',
