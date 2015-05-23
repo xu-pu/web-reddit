@@ -36,7 +36,7 @@ module.exports = Ember.Controller.extend({
                 'history',
                 'mysubreddits'
             ].join(','),
-            callbackURL = 'http://reddit.localhost/api/oauth/callback',
+            callbackURL = 'http://webreddit.ptx.digital/api/oauth/callback',
             uuid = utils.getRandomString(30),
             url = 'https://ssl.reddit.com/api/v1/authorize?' +
                 'client_id='+clientID+'&'+
