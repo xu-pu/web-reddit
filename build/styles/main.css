@@ -1,0 +1,1154 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, ../../src/styles/scss/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../../src/styles/scss/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, ../../src/styles/scss/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../../src/styles/scss/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 37, ../../src/styles/scss/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, ../../src/styles/scss/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 45, ../../src/styles/scss/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 3, ../../src/styles/scss/components/_feed-tile.scss */
+.subreddit__grid-tile {
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 400px;
+  background-color: #3F3D3F;
+}
+/* line 9, ../../src/styles/scss/components/_feed-tile.scss */
+.subreddit__grid-tile img {
+  display: block;
+  width: 100%;
+}
+
+/* line 16, ../../src/styles/scss/components/_feed-tile.scss */
+.grid-tile__title-bar {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  font-weight: bold;
+}
+
+/* line 22, ../../src/styles/scss/components/_feed-tile.scss */
+.feed-tile__info {
+  font-family: "open sans";
+  padding: 0.7em;
+}
+/* line 26, ../../src/styles/scss/components/_feed-tile.scss */
+.feed-tile__info a, .feed-tile__info span {
+  color: #ADADAD;
+  display: block;
+}
+
+/* line 39, ../../src/styles/scss/components/_feed-tile.scss */
+.feed-tile__status-bar {
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  height: 60px;
+}
+/* line 44, ../../src/styles/scss/components/_feed-tile.scss */
+.feed-tile__status-bar span {
+  color: white;
+}
+
+/* line 50, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__item {
+  height: 100%;
+}
+/* line 54, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__item.score {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+}
+/* line 58, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__item.upvote, .feet-tile__status-bar__item.downvote, .feet-tile__status-bar__item.save, .feet-tile__status-bar__item.link, .feet-tile__status-bar__item.enter {
+  -webkit-flex: 0 0 60px;
+  flex: 0 0 60px;
+}
+
+/* line 64, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__score {
+  cursor: pointer;
+  background-color: gray;
+}
+/* line 71, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__score span {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 79, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__enter {
+  background-color: gray;
+}
+/* line 84, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__enter span {
+  color: #e7e7e7;
+}
+/* line 86, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__enter:hover {
+  background-color: #e7e7e7;
+}
+/* line 88, ../../src/styles/scss/components/_feed-tile.scss */
+.feet-tile__status-bar__enter:hover span {
+  color: gray;
+}
+
+/* line 3, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__imgur-embed {
+  width: 100%;
+  height: 45em;
+}
+/* line 6, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__imgur-embed body {
+  overflow: hidden;
+}
+
+/* line 13, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar {
+  height: 4em;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  background-color: #A1A1A1;
+}
+
+/* line 20, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item {
+  height: 100%;
+}
+/* line 24, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item.save, .link-detail__status-bar__item.upvote, .link-detail__status-bar__item.downvote, .link-detail__status-bar__item.link {
+  -webkit-flex: 0 0 4em;
+  flex: 0 0 4em;
+}
+/* line 28, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item.title {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+/* line 34, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item.title a {
+  color: #303030;
+}
+/* line 37, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item.score {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  background-color: gray;
+}
+/* line 47, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__item.score span {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 57, ../../src/styles/scss/components/_link-detail.scss */
+.link-detail__status-bar__title {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 73, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments-container {
+  overflow: hidden;
+}
+
+/* line 77, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments__tree {
+  overflow: hidden;
+  padding-right: 10px;
+}
+
+/* line 82, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments__loading {
+  height: 3em;
+  background-color: #212022;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  color: gray;
+  font-weight: bold;
+}
+
+/* line 92, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments__root {
+  margin-left: 10px;
+}
+
+/* line 96, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments__body {
+  background-color: #252525;
+  color: gray;
+  min-height: 2em;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  border-left: solid 10px #5E94B2;
+  padding: 10px;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 108, ../../src/styles/scss/components/_link-detail.scss */
+.post__comments__body p {
+  font-size: 1.2em;
+}
+
+/* line 3, ../../src/styles/scss/components/_expansion-window.scss */
+.expansion-window {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  -moz-animation: getin 0.5s;
+  -webkit-animation: getin 0.5s;
+  animation: getin 0.5s;
+  -moz-box-shadow: 0 0 20px 3px black;
+  -webkit-box-shadow: 0 0 20px 3px black;
+  box-shadow: 0 0 20px 3px black;
+}
+@-moz-keyframes getin {
+  0% {
+    right: -70%;
+  }
+  100% {
+    right: 0;
+  }
+}
+@-webkit-keyframes getin {
+  0% {
+    right: -70%;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes getin {
+  0% {
+    right: -70%;
+  }
+  100% {
+    right: 0;
+  }
+}
+/* line 19, ../../src/styles/scss/components/_expansion-window.scss */
+.expansion-window__container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* line 25, ../../src/styles/scss/components/_expansion-window.scss */
+.expansion-window__close {
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 2em;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  height: 2em;
+  width: 2em;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
+}
+/* line 43, ../../src/styles/scss/components/_expansion-window.scss */
+.expansion-window__close:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+/* line 3, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__feed-grid-container {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 11, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__feed-grid {
+  position: relative;
+  padding-top: 1em;
+  padding-bottom: 4em;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+/* line 19, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__grid {
+  position: relative;
+}
+
+/* line 24, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__load {
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  width: 100%;
+  cursor: pointer;
+  background-color: #212022;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 37, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__load span {
+  color: gray;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+/* line 44, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__load:hover {
+  background-color: gray;
+}
+/* line 46, ../../src/styles/scss/components/_feed-grid.scss */
+.subreddit__load:hover span {
+  color: #212022;
+}
+
+/* line 15, ../../src/styles/scss/components/_content-buttons.scss */
+.content-status, .feet-tile__status-bar__score, .feet-tile__status-bar__enter, .vote-button, .save-button, .reddit-link {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+/* line 24, ../../src/styles/scss/components/_content-buttons.scss */
+.content-status span, .feet-tile__status-bar__score span, .feet-tile__status-bar__enter span, .vote-button span, .save-button span, .reddit-link span {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 35, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button {
+  background-color: #B6B67F;
+}
+/* line 39, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button span {
+  color: white;
+}
+/* line 41, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button:hover {
+  background-color: #ffffff;
+}
+/* line 43, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button:hover span {
+  color: #B6B67F;
+}
+/* line 46, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button.is-pending {
+  -moz-animation-name: save-blink;
+  -webkit-animation-name: save-blink;
+  animation-name: save-blink;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+@-moz-keyframes save-blink {
+  0% {
+    background-color: #B6B67F;
+  }
+  100% {
+    background-color: #f9ff00;
+  }
+}
+@-webkit-keyframes save-blink {
+  0% {
+    background-color: #B6B67F;
+  }
+  100% {
+    background-color: #f9ff00;
+  }
+}
+@keyframes save-blink {
+  0% {
+    background-color: #B6B67F;
+  }
+  100% {
+    background-color: #f9ff00;
+  }
+}
+/* line 51, ../../src/styles/scss/components/_content-buttons.scss */
+.save-button.is-on span {
+  color: #f9ff00;
+}
+
+/* line 57, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button span {
+  color: white;
+}
+
+/* line 60, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.upvote {
+  background-color: #6EC26E;
+}
+/* line 64, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.upvote:hover {
+  background-color: white;
+}
+/* line 66, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.upvote:hover span {
+  color: #6EC26E;
+}
+/* line 69, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.upvote.is-pending {
+  -moz-animation-name: upvote-blink;
+  -webkit-animation-name: upvote-blink;
+  animation-name: upvote-blink;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+@-moz-keyframes upvote-blink {
+  0% {
+    background-color: #6EC26E;
+  }
+  100% {
+    background-color: green;
+  }
+}
+@-webkit-keyframes upvote-blink {
+  0% {
+    background-color: #6EC26E;
+  }
+  100% {
+    background-color: green;
+  }
+}
+@keyframes upvote-blink {
+  0% {
+    background-color: #6EC26E;
+  }
+  100% {
+    background-color: green;
+  }
+}
+/* line 74, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.upvote.is-on span {
+  color: green;
+}
+
+/* line 79, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.downvote {
+  background-color: #DA7575;
+}
+/* line 83, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.downvote:hover {
+  background-color: white;
+}
+/* line 85, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.downvote:hover span {
+  color: #DA7575;
+}
+/* line 88, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.downvote.is-pending {
+  -moz-animation-name: downvote-blink;
+  -webkit-animation-name: downvote-blink;
+  animation-name: downvote-blink;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+@-moz-keyframes downvote-blink {
+  0% {
+    background-color: #DA7575;
+  }
+  100% {
+    background-color: darkred;
+  }
+}
+@-webkit-keyframes downvote-blink {
+  0% {
+    background-color: #DA7575;
+  }
+  100% {
+    background-color: darkred;
+  }
+}
+@keyframes downvote-blink {
+  0% {
+    background-color: #DA7575;
+  }
+  100% {
+    background-color: darkred;
+  }
+}
+/* line 93, ../../src/styles/scss/components/_content-buttons.scss */
+.vote-button.downvote.is-on span {
+  color: darkred;
+}
+
+/* line 99, ../../src/styles/scss/components/_content-buttons.scss */
+.reddit-link {
+  background-color: #575757;
+}
+/* line 102, ../../src/styles/scss/components/_content-buttons.scss */
+.reddit-link span {
+  color: white;
+}
+/* line 104, ../../src/styles/scss/components/_content-buttons.scss */
+.reddit-link:hover {
+  background-color: white;
+}
+/* line 106, ../../src/styles/scss/components/_content-buttons.scss */
+.reddit-link:hover span {
+  color: #575757;
+}
+
+/* line 3, ../../src/styles/scss/components/_listing-loader.scss */
+.listing-loader {
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  width: 100%;
+  cursor: pointer;
+  background-color: #212022;
+}
+/* line 13, ../../src/styles/scss/components/_listing-loader.scss */
+.listing-loader > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 21, ../../src/styles/scss/components/_listing-loader.scss */
+.listing-loader span {
+  color: gray;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+/* line 28, ../../src/styles/scss/components/_listing-loader.scss */
+.listing-loader:hover {
+  background-color: gray;
+}
+/* line 30, ../../src/styles/scss/components/_listing-loader.scss */
+.listing-loader:hover span {
+  color: #212022;
+}
+
+/* line 11, ../../src/styles/scss/main.scss */
+html, body {
+  height: 100%;
+  background-color: #424245;
+  font-family: "Times New Roman";
+}
+
+/* line 17, ../../src/styles/scss/main.scss */
+a, a:link, a:hover, a:visited, a:active {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* line 3, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar-container {
+  width: 15em;
+}
+
+/* line 11, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__input-container {
+  height: 4em;
+  background-color: #dadada;
+  display: flex;
+  padding-left: 2em;
+  padding-right: 2em;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 21, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__input-container input {
+  outline: none;
+  border: 0;
+  font-size: 2em;
+  background-color: transparent;
+  width: 100%;
+  color: #6e6e6e;
+}
+
+/* line 32, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__candidates-container {
+  background-color: gray;
+}
+/* line 36, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__candidates-container ul {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+/* line 41, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__candidates-container li {
+  padding: 5px;
+  padding-left: 0.5em;
+  color: #D2D2D2;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+/* line 49, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__search__candidates-container li:hover {
+  background-color: #5E94B2;
+}
+
+/* line 57, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__account-container {
+  padding: 0.5em;
+  padding-right: 0;
+}
+
+/* line 62, ../../src/styles/scss/partials/_sidebar.scss */
+#sidebar__account__profile, .sidebar__account {
+  background-color: gray;
+  position: relative;
+  height: 4em;
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+/* line 72, ../../src/styles/scss/partials/_sidebar.scss */
+#sidebar__account__profile h1, .sidebar__account h1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 4em;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #2a2a2a;
+  font-family: Montserrat;
+}
+/* line 89, ../../src/styles/scss/partials/_sidebar.scss */
+#sidebar__account__profile > div, .sidebar__account > div {
+  position: absolute;
+  height: 4em;
+  width: 4em;
+  box-sizing: border-box;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: darkred;
+  color: red;
+}
+
+/* line 110, ../../src/styles/scss/partials/_sidebar.scss */
+#sidebar__account__login > div {
+  background-color: green;
+  color: greenyellow;
+}
+
+/* line 120, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__profile-container li {
+  height: 3em;
+  padding-left: 1em;
+  background-color: #212022;
+  color: #ADADAD;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* line 130, ../../src/styles/scss/partials/_sidebar.scss */
+.sidebar__profile-container li:hover {
+  border-left: solid 0.5em #5E94B2;
+  background-color: #504F50;
+}
+
+/* line 1, ../../src/styles/scss/_utils.scss */
+.subreddit__navbar__toggle span, .subreddit__navbar__header h1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* line 6, ../../src/styles/scss/partials/_subreddit.scss */
+.main-container {
+  -moz-box-shadow: -4px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: -4px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 15em;
+  background-color: #2C2B2C;
+}
+/* line 18, ../../src/styles/scss/partials/_subreddit.scss */
+.main-container.is-fullscreen {
+  left: 0;
+}
+
+/* line 24, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 30, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar {
+  position: absolute;
+  height: 4em;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #212022;
+  color: #ADADAD;
+}
+/* line 39, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar span {
+  color: #ADADAD;
+}
+
+/* line 45, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4em;
+  height: 4em;
+  cursor: pointer;
+}
+/* line 53, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__toggle span {
+  font-size: 2em;
+  height: 1em;
+  width: 1em;
+}
+
+/* line 62, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__order-switcher {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 100%;
+  padding: 5px;
+}
+/* line 73, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__order-switcher li {
+  display: inline-block;
+  height: 100%;
+}
+/* line 78, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__order-switcher li a:hover, .subreddit__navbar__order-switcher li.is-current a {
+  border-bottom: solid 0.5em #5E94B2;
+  background-color: #504F50;
+}
+/* line 83, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__order-switcher li a {
+  display: block;
+  position: relative;
+  min-width: 5em;
+  background-color: #3C3B3C;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+}
+/* line 93, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__order-switcher li a span {
+  font-size: 1.5em;
+  font-weight: bold;
+  height: 1em;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+/* line 110, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__header {
+  position: absolute;
+  left: 5em;
+  top: 0;
+  height: 100%;
+}
+/* line 116, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__navbar__header h1 {
+  font-size: 2em;
+  height: 1em;
+  text-transform: uppercase;
+}
+
+/* line 131, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__container {
+  position: absolute;
+  top: 4em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* line 140, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 148, ../../src/styles/scss/partials/_subreddit.scss */
+.dual-panel__container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* line 156, ../../src/styles/scss/partials/_subreddit.scss */
+.dual-panel__feed-list-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25em;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* line 168, ../../src/styles/scss/partials/_subreddit.scss */
+.dual-panel__post-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 25em;
+  overflow-y: auto;
+}
+
+/* line 177, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__post-container {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+  background-color: #424245;
+}
+
+/* line 184, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__feed-list__item {
+  background-color: #3F3D3F;
+  height: 5em;
+  margin-bottom: 8px;
+  padding: 5px;
+  font-size: 1.2em;
+  color: gray;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  overflow: hidden;
+}
+/* line 196, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__feed-list__item.is-current, .subreddit__feed-list__item.is-current:hover {
+  background-color: #A1A1A1;
+  color: #212022;
+}
+/* line 201, ../../src/styles/scss/partials/_subreddit.scss */
+.subreddit__feed-list__item:hover {
+  background-color: #212022;
+}
+
+/* line 207, ../../src/styles/scss/partials/_subreddit.scss */
+.stream-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* line 3, ../../src/styles/scss/partials/_profile.scss */
+.user__stream-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* line 12, ../../src/styles/scss/partials/_profile.scss */
+.user__feeds-container {
+  padding-top: 1em;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* line 5, ../../src/styles/scss/partials/_feed-tile.scss */
+.feed-list__item__thumbnail {
+  -webkit-flex: 0 0 4.5em;
+  flex: 0 0 4.5em;
+  height: 100%;
+  background-color: black;
+  color: white;
+  background-position: 50%;
+  background-size: cover;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 16, ../../src/styles/scss/partials/_feed-tile.scss */
+.feed-list__item__thumbnail h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 0 10px black;
+}
+
+/* line 24, ../../src/styles/scss/partials/_feed-tile.scss */
+.feed-list__item__title {
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+  margin-left: 0.5em;
+  max-height: 100%;
+  font-weight: bold;
+}
+
+/* line 3, ../../src/styles/scss/partials/_post.scss */
+.subreddit__post-container {
+  width: 100%;
+  min-height: 100%;
+}
+/* line 8, ../../src/styles/scss/partials/_post.scss */
+.subreddit__post-container img {
+  display: block;
+  width: 100%;
+}
+
+/* line 3, ../../src/styles/scss/partials/_mine.scss */
+.mine__fullscreen-toggle {
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 2em;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  height: 2em;
+  width: 2em;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
+}
+/* line 21, ../../src/styles/scss/partials/_mine.scss */
+.mine__fullscreen-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+/* line 3, ../../src/styles/scss/partials/_home.scss */
+.home__container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* line 9, ../../src/styles/scss/partials/_home.scss */
+.home__body {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 4em;
+  box-sizing: border-box;
+}
+
+/* line 17, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-list {
+  padding: 1em;
+  display: inline-table;
+}
+/* line 21, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-list > li {
+  display: inline-block;
+  position: relative;
+  margin: 5px;
+  width: 12em;
+  height: 12em;
+  vertical-align: top;
+}
+
+/* line 32, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-item {
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  position: absolute;
+  background-color: gray;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* line 41, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-item:hover {
+  -moz-box-shadow: 0 0 20px 2px black;
+  -webkit-box-shadow: 0 0 20px 2px black;
+  box-shadow: 0 0 20px 2px black;
+  z-index: 100;
+  top: -1em;
+  bottom: -1em;
+  left: -1em;
+  right: -1em;
+}
+/* line 50, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-item > a {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 3em;
+  padding-left: 1em;
+  background-color: #5E94B2;
+}
+/* line 57, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-item > a h1 {
+  font-weight: bold;
+}
+/* line 64, ../../src/styles/scss/partials/_home.scss */
+.home__subscription-item > div {
+  padding: 1em;
+}
