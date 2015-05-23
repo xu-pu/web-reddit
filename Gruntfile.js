@@ -73,12 +73,22 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
+                    'dist/app.min.js': [
+                        'build/scripts/templates.js',
+                        'build/scripts/application.js'
+                    ]
+                }
+            }
+        },
+
+        concat: {
+            dist: {
+                files: {
                     'dist/application.min.js': [
                         'venders/jquery/dist/jquery.js',
                         'venders/ember/ember.min.js',
                         'venders/wookmark-jquery/jquery.wookmark.min.js',
-                        'build/scripts/templates.js',
-                        'build/scripts/application.js'
+                        'dist/app.min.js'
                     ]
                 }
             }
@@ -86,6 +96,7 @@ module.exports = function (grunt) {
 
     });
 
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compass');
@@ -101,7 +112,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dist', [
         'build',
-        'uglify:dist'
+        'uglify:dist',
+        'concat:dist'
     ]);
 
 };

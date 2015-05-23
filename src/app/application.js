@@ -4,9 +4,7 @@ var setupRoutes = require('./router.js');
 
 window.Promise = Promise || Ember.RSVP.Promise;
 
-var App = window.App = Ember.Application.create({
-    LOG_TRANSITIONS: true
-});
+var App = window.App = Ember.Application.create({});
 
 
 //============================
