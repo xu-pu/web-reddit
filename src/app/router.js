@@ -37,7 +37,18 @@ module.exports = function(App){
 
     });
 
-    App.IndexRoute = Ember.Route.extend();
+    App.IndexRoute = Ember.Route.extend({
+
+        beforeModel: function(trasition){
+            var _self = this;
+            var account = this.controllerFor('account');
+            return account.promiseResume()
+                .then(function(){
+                    _self.transitionTo('home');
+                });
+        }
+
+    });
 
     App.HomeRoute = Ember.Route.extend({
 
