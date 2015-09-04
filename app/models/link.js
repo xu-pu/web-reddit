@@ -1,9 +1,8 @@
-'use strict';
+import Ember from 'ember';
+import urlUtils from 'npm:url';
+import settings from '../settings';
 
-var urlUtils = require('url');
-
-var settings = require('../settings.js'),
-    TYPES = settings.CONTENT_TYPES;
+var TYPES = settings.CONTENT_TYPES;
 
 var imagePattern = /\.(jpg)|(jpeg)|(gif)|(png)|(webm)\?(.*)$/,
     imgurPattern = /imgur\.com/;
@@ -11,7 +10,7 @@ var albumPattern = /^\/a\/(.*)\/?$/;
 var galleryPattern = /^\/(?:gallery\/)(.*)\/?$/;
 var singlePattern = /^\/(.*)\/?$/;
 
-module.exports = Ember.Object.extend({
+export default Ember.Object.extend({
 
     image: null,
 

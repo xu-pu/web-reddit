@@ -1,10 +1,10 @@
-'use strict';
+import Ember from 'ember';
+import settings from '../settings';
+import Listing from './listing'
 
-var Listing = require('./listing.js'),
-    settings = require('../settings.js'),
-    ORDERS = settings.SUBREDDIT_ORDERS;
+var ORDERS = settings.SUBREDDIT_ORDERS;
 
-module.exports = Ember.Object.extend({
+export default Ember.Object.extend({
 
     name: null,
 

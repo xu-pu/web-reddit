@@ -1,8 +1,7 @@
-"use strict";
+import Ember from 'ember';
+import utils from '../utils.js';
 
-var utils = require('../utils.js');
-
-module.exports = Ember.Object.extend({
+export default Ember.Object.extend({
 
     list: null,
 
