@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import settings from '../settings';
-import Listing from './listing'
+import Listing from './listing';
 
 var ORDERS = settings.SUBREDDIT_ORDERS;
 

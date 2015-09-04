@@ -90,7 +90,7 @@ export default Ember.Component.extend({
             this.get('$thumbnail').off('load');
         }
         if (this.get('$fullsize')) {
-            this.get('$fullsize').off('load')
+            this.get('$fullsize').off('load');
         }
     }.on('willDestroyElement')
 

@@ -22,7 +22,7 @@ export default Ember.Object.extend({
 
     hasThumbnail: function () {
         var thumb = this.get('thumbnail');
-        return !!thumb && thumb != 'self' && thumb != 'default' && thumb != 'nsfw';
+        return !!thumb && thumb !== 'self' && thumb !== 'default' && thumb !== 'nsfw';
     }.property('thumbnail'),
 
     redditLink: function () {

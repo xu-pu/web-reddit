@@ -22,12 +22,12 @@ export default Ember.Component.extend({
 
         loginPopup: function(){
 
-            if (this.get('popup')) return;
+            if (this.get('popup')) { return; }
 
             var _self = this,
                 handle = window.open(this.get('account.loginURL'), '_blank');
 
-            if (!handle) return;
+            if (!handle) { return; }
 
             this.set('popup', handle);
 

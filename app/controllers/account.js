@@ -61,8 +61,8 @@ export default Ember.Controller.extend({
 
     promiseResume: function(){
 
-        if (this.get('profile')) return Promise.resolve();
-        if (this.promised) return this.promised;
+        if (this.get('profile')) { return Promise.resolve(); }
+        if (this.promised) { return this.promised; }
 
         var _self = this,
             oauth = this.get('oauth');
