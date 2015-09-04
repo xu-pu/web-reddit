@@ -1,6 +1,6 @@
-"use strict";
+import Ember from 'ember';
 
-module.exports = Ember.Service.extend({
+export default Ember.Service.extend({
 
     token: null,
 
