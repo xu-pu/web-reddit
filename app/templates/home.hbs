@@ -1,7 +1,7 @@
 <div class="home__container">
     <div class="home__body">
         <ul class="home__subscription-list">
-            {{#each subreddit in subscribed.list}}
+            {{#each subscribed.list as |subreddit|}}
                 <li>
                     <div class="home__subscription-item" style="background-image: url('{{subreddit.header_img}}')">
                         {{#link-to 'subreddit' subreddit.display_name}}

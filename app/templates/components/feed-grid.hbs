@@ -1,5 +1,5 @@
 <ul class="subreddit__grid js__feed-grid">
-    {{#each feed in stream}}
+    {{#each stream as |feed|}}
         {{feed-tile feed=feed enter="enter"}}
     {{/each}}
 </ul>

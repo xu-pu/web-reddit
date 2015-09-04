@@ -9,7 +9,7 @@
     </div>
 
     <ul class="subreddit__navbar__order-switcher">
-        {{#each order in orders}}
+        {{#each orders as |order|}}
             {{subreddit-order-tab order=order subreddit=subreddit}}
         {{/each}}
     </ul>

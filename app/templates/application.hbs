@@ -9,7 +9,7 @@
         <div class="sidebar__search__candidates-container">
             {{#if search.candidates}}
                 <ul>
-                    {{#each name in search.candidates}}
+                    {{#each search.candidates as |name|}}
                         {{#link-to "subreddit" name}}
                             <li>/r/{{name}}</li>
                         {{/link-to}}
