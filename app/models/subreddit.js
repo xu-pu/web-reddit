@@ -1,6 +1,6 @@
 'use strict';
 
-var Listing = require('./Listing.js'),
+var Listing = require('./listing.js'),
     settings = require('../settings.js'),
     ORDERS = settings.SUBREDDIT_ORDERS;
 

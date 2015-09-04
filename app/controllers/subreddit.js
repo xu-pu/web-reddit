@@ -1,6 +1,6 @@
 'use strict';
 
-var Subreddit = require('../models/Subreddit.js'),
+var Subreddit = require('../models/subreddit.js'),
     settings = require('../settings.js'),
     ORDERS = settings.SUBREDDIT_ORDERS;
 

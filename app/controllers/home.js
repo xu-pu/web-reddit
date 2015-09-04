@@ -1,6 +1,6 @@
 "use strict";
 
-var Listing = require('../models/Listing.js');
+var Listing = require('../models/listing.js');
 
 module.exports = Ember.Controller.extend({
 

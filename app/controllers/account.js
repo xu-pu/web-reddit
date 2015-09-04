@@ -3,7 +3,7 @@
 var _ = require('underscore');
 
 var utils = require('../utils.js'),
-    Profile = require('../models/Profile.js');
+    Profile = require('../models/profile.js');
 
 module.exports = Ember.Controller.extend({
 
