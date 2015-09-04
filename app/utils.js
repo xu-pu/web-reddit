@@ -1,14 +1,21 @@
-'use strict';
+import _ from 'npm:underscore';
+import Link from './models/link';
+import Comment from './models/comment';
+import Subreddit from './models/content-subreddit';
+import settings from './settings';
 
-var _ = require('underscore');
+var TYPES = settings.CONTENT_TYPES;
 
-var Link = require('./models/link.js'),
-    Comment = require('./models/comment.js'),
-    Subreddit = require('./models/content-subreddit.js'),
-    settings = require('./settings.js'),
-    TYPES = settings.CONTENT_TYPES;
+export default {
+  convertRedditThing: convertRedditThing,
+  promiseLoadedUrl: promiseLoadedUrl,
+  promiseJson: promiseJson,
+  promiseRedditListing: promiseRedditListing,
+  getRandomString: getRandomString
+};
 
-exports.convertRedditThing = function(thing){
+
+function convertRedditThing(thing){
 
     var ThingType;
 
@@ -28,10 +35,10 @@ exports.convertRedditThing = function(thing){
 
     return ThingType.create(thing.data);
 
-};
+}
 
 
-module.exports.promiseLoadedUrl = function(url){
+function promiseLoadedUrl(url){
 
     return new Promise(function(resolve, reject){
 
@@ -51,9 +58,10 @@ module.exports.promiseLoadedUrl = function(url){
 
     });
 
-};
+}
 
-module.exports.promiseJson = function(url, params){
+
+function promiseJson(url, params){
 
     params = params || {};
 
@@ -65,10 +73,10 @@ module.exports.promiseJson = function(url, params){
 
     return jQuery.ajax(url, params);
 
-};
+}
 
 
-module.exports.promiseRedditListing = function(url, params){
+function promiseRedditListing(url, params){
 
     params = params || {};
 
@@ -86,14 +94,14 @@ module.exports.promiseRedditListing = function(url, params){
             });
         });
 
-};
+}
 
 
-module.exports.getRandomString = function(len){
+function getRandomString(len){
     var str = '';
     var pos;
     for (pos=0; pos<len; pos++) {
         str += Math.round(Math.random()*10);
     }
     return str;
-};
+}
