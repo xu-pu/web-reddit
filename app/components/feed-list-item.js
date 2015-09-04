@@ -1,6 +1,6 @@
-'use strict';
+import Ember from 'ember';
 
-module.exports = Ember.Component.extend({
+export default Ember.Component.extend({
 
     feed: null,
 

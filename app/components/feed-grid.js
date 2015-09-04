@@ -1,8 +1,6 @@
-'use strict';
+import Ember from 'ember';
 
-var _ = require('underscore');
-
-module.exports = Ember.Component.extend({
+export default Ember.Component.extend({
 
     listing: null, // need
 

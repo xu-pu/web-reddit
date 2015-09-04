@@ -1,7 +1,9 @@
-var _  = require('underscore'),
-    utils = require('../utils.js');
+import Ember from 'ember';
+import _ from 'npm:underscore';
 
-module.exports = Ember.Component.extend({
+import utils from '../utils';
+
+export default Ember.Component.extend({
 
     backend: Ember.inject.service(),
 
