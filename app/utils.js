@@ -2,8 +2,8 @@
 
 var _ = require('underscore');
 
-var Link = require('./models/Link.js'),
-    Comment = require('./models/Comment.js'),
+var Link = require('./models/link.js'),
+    Comment = require('./models/comment.js'),
     Subreddit = require('./models/content-subreddit.js'),
     settings = require('./settings.js'),
     TYPES = settings.CONTENT_TYPES;
