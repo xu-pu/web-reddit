@@ -1,11 +1,9 @@
-'use strict';
+import Ember from 'ember';
+import _ from 'npm:underscore';
+import utils from '../utils';
+import Profile from '../models/profile';
 
-var _ = require('underscore');
-
-var utils = require('../utils.js'),
-    Profile = require('../models/profile.js');
-
-module.exports = Ember.Controller.extend({
+export default Ember.Controller.extend({
 
     backend: Ember.inject.service(),
 

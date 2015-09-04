@@ -1,8 +1,7 @@
-"use strict";
+import Ember from 'ember';
+import Listing from '../models/listing.js';
 
-var Listing = require('../models/listing.js');
-
-module.exports = Ember.Controller.extend({
+export default Ember.Controller.extend({
 
     needs: ['account'],
 

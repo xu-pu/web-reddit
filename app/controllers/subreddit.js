@@ -1,10 +1,10 @@
-'use strict';
+import Ember from 'ember';
+import Subreddit from '../models/subreddit';
+import settings from '../settings';
 
-var Subreddit = require('../models/subreddit.js'),
-    settings = require('../settings.js'),
-    ORDERS = settings.SUBREDDIT_ORDERS;
+var ORDERS = settings.SUBREDDIT_ORDERS;
 
-module.exports = Ember.Controller.extend({
+export default Ember.Controller.extend({
 
     backend: Ember.inject.service(),
 

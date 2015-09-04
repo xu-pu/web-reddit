@@ -1,6 +1,6 @@
-'use strict';
+import Ember from 'ember';
 
-module.exports = Ember.Controller.extend({
+export default Ember.Controller.extend({
 
     keyword: '',
 
