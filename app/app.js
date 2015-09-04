@@ -3,6 +3,8 @@ import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
+window.Promise = Promise || Ember.RSVP.Promise;
+
 var App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
