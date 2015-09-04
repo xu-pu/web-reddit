@@ -20,6 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
+    "broccoli-funnel": "^0.2.8",
     "ember-browserify": "^1.0.5",
     "ember-cli": "1.13.1",
     "ember-cli-app-version": "0.4.0",
