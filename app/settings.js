@@ -1,19 +1,17 @@
-'use strict';
-
 var API_ROOT = 'https://www.reddit.com';
 
-module.exports.ACCOUNT_STATE = {
+var ACCOUNT_STATE = {
     'UNKNOWN': 0,
     'LOGGEDIN': 1,
     'LOGGEDOUT': 2
 };
 
-module.exports.API = {
+var API = {
     LOGIN: API_ROOT + '/api/login',
     ME: API_ROOT + '/api/me.json'
 };
 
-module.exports.SUBREDDIT_ORDERS = {
+var SUBREDDIT_ORDERS = {
     HOT: 'hot',
     TOP: 'top',
     NEW: 'new',
@@ -21,7 +19,7 @@ module.exports.SUBREDDIT_ORDERS = {
     CONTROVERSIAL: 'controversial'
 };
 
-module.exports.CONTENT_TYPES = {
+var CONTENT_TYPES = {
     COMMENT: 't1',
     ACCOUNT: 't2',
     LINK: 't3',
@@ -29,4 +27,11 @@ module.exports.CONTENT_TYPES = {
     SUBREDDIT: 't5',
     AWARD: 't6',
     PROMO_CAMPAIGN: 't8'
+};
+
+export default {
+  ACCOUNT_STATE: ACCOUNT_STATE,
+  API: API,
+  SUBREDDIT_ORDERS: SUBREDDIT_ORDERS,
+  CONTENT_TYPES: CONTENT_TYPES
 };
